@@ -1,0 +1,3 @@
+﻿Place your text files here.
+Check "Convert Multiple Files" in the Simple Book Creator inspector.
+Press play and wait until all files are converted and saved.

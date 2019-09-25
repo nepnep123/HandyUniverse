@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f4533057ca0eb284fb33f021995087ca
+timeCreated: 1499819818
+licenseType: Store
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Gentium Plus
+  fontNames:
+  - Gentium Plus
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
