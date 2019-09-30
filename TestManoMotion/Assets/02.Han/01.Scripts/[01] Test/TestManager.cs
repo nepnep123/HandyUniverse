@@ -8,10 +8,27 @@ public class TestManager : MonoBehaviour
     public Texture2D[] textures;
     public Book book;
 
+    bool isInited = false;
+
     private void Awake()
     {
         instance = GetComponent<TestManager>();
-        //book = Instantiate();
-        book.InitBook(new FolderInfo(textures, "Proto"));
     }
+    /*
+    private void LateUpdate()
+    {
+        if(!isInited)
+        {
+            string[] folders = PhotoUtils.GetFolders();
+            for(int i = 0;)
+            var a = PhotoUtils.GetFolders();
+            foreach (string b in a)
+            {
+                Debug.Log(b);
+            }
+            //book = Instantiate();
+            book.InitBook(new FolderInfo(textures, "Proto"));
+            isInited = true;
+        }
+    }*/
 }

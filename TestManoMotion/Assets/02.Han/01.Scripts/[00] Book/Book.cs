@@ -15,11 +15,13 @@ public class Book : MonoBehaviour
     private Animator bookAnim;
     private Page page;
     [SerializeField] private FolderInfo folderInfo;
-
-    private bool isBookOpened = false;  //책이 열려있는지
     private bool isOpenable = true;     //페이지든 책이든 열기 가능한지
     private float bookAnimTime = 0;     //책 애니메이션 시간
     private float pageAnimTime = 0;     //페이지 애니메이션 시간
+
+    //원래 isBookOpened 였는데 auto 속성하니까 이렇게 됨
+    public bool IsBookOpened { get; private set; } = false;
+
 
 
     #region Public Method : 외부에선 이 메서드에만 접근해야함
@@ -32,6 +34,12 @@ public class Book : MonoBehaviour
         pageAnimTime = page.InitPage();
         page.OnOffPage(false);
         folderInfo = info;
+
+        var colls = GetComponentsInChildren<ICollidable>();
+        foreach(ICollidable coll in colls)
+        {
+            coll.InitCollData(this);
+        }
 
         //책 애니메이션 클립 길이 찾기
         RuntimeAnimatorController acb = bookAnim.runtimeAnimatorController;
@@ -176,7 +184,7 @@ public class Book : MonoBehaviour
     void OCBook(bool booleana)
     {
         if (isOpenable == false) return;
-        if (booleana == isBookOpened) return;
+        if (booleana == IsBookOpened) return;
         StopAllCoroutines();
         bookAnim.SetBool("OpenBook", booleana);
         if (booleana == false) { page.OnOffPage(false); }
@@ -187,7 +195,7 @@ public class Book : MonoBehaviour
     void PNPage(bool booleana)
     {
         if (isOpenable == false) return;
-        if (isBookOpened == false) return;
+        if (IsBookOpened == false) return;
         //페이지 설정
         if (booleana == true)
         {
@@ -219,7 +227,7 @@ public class Book : MonoBehaviour
             yield return null;
         }
         isOpenable = true;
-        isBookOpened = booleana;
+        IsBookOpened = booleana;
     }
 
     IEnumerator CheckPageTime(bool booleana)
