@@ -27,8 +27,9 @@ public class ManoVisualization : MonoBehaviour
     [SerializeField]
     private Camera cam;
 
-    [SerializeField]
-    GameObject manomotionGenericLayer, layering_sphere;
+	[SerializeField]
+	GameObject manomotionGenericLayer;
+		//layering_sphere;
 
 
 
@@ -45,7 +46,7 @@ public class ManoVisualization : MonoBehaviour
     private GameObject contour_parent, inner_parent, fingertip_parent, palmcenter_parent, fingertip_label_parent, joints_parent, bounding_box_parent;
     private ManoUtils mano_utils;
     private MeshRenderer[] _layer_hands;
-    private MeshRenderer _layer_background, _layer_transparent;
+    public MeshRenderer _layer_background, _layer_transparent;
 
     int handsSupportedByLicence;
 
@@ -647,7 +648,7 @@ public class ManoVisualization : MonoBehaviour
     {
 
         layer_hands.gameObject.SetActive(_show_hand_layer);
-        layering_sphere.SetActive(_show_hand_layer);
+        //layering_sphere.SetActive(_show_hand_layer);
         if (_show_hand_layer)
         {
 
