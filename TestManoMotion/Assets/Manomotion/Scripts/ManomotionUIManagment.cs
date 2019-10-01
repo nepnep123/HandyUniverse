@@ -9,20 +9,13 @@ public class ManomotionUIManagment : MonoBehaviour
     GameObject[] handButtons;
 
     [SerializeField]
-    Text FPSValueText, processingTimeValueText, versionText;
+    Text FPSValueText, processingTimeValueText;
 
     private void Start()
     {
         string fullversion = ManomotionManager.Instance.Manomotion_Session.version.ToString();
         string test = fullversion[1].ToString();
-        versionText.text = "Version ";
-        for (int i = 0; i < fullversion.Length; i++)
-        {
-            versionText.text += fullversion[i].ToString() + ".";
 
-        }
-
-        versionText.text += " Beta";
     }
 
     void Update()
