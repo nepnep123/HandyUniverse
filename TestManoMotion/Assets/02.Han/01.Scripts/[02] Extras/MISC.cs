@@ -15,3 +15,8 @@ public interface ICollidable
     void InitCollData(Book book);
     void ProcessCollision();
 }
+
+public interface IPortalFolder
+{
+
+}

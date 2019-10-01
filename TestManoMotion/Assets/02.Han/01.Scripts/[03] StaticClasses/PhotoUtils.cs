@@ -33,21 +33,16 @@ public static class PhotoUtils
     /// <summary>
     /// <para>이 함수는 인자로 받는 폴더 경로에서부터 모든 Jpg파일들을 읽고, Texture2D의 배열로 반환해줍니다.</para>
     /// </summary>
-    /// <param name="folderName">읽어들일 파일들의 폴더 경로</param>
+    /// <param name="folderPath">읽어들일 파일들의 폴더 경로</param>
     /// <returns></returns>
-    static public Texture2D[] ReadTexturesInFolder(string folderName)
+    static public Texture2D[] ReadTexturesInFolder(string folderPath)
     {
         if (Directory.Exists(appPath) == false)
         {
             Debug.Log("Directory doesn't exist. Making New Folder.");
             MakeInitFolder();
         }
-        string folderPath = appPath + folderName;
-        if (Directory.Exists(folderPath) == false)
-        {
-            Debug.Log("FolderPath doesn't exist. Making New Folder.");
-            MakeFolder(folderName);
-        }
+
         string[] fileNames = Directory.GetFiles(folderPath);
         List<Texture2D> textures = new List<Texture2D>();
         //메타파일 제외하고 다른 파일들로 리스트 구성
@@ -96,6 +91,7 @@ public static class PhotoUtils
 
     static public string[] GetFolders()
     {
+        if (Directory.Exists(appPath) == false) MakeInitFolder();
         return Directory.GetDirectories(appPath);
     }
 }
