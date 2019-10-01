@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
-    public string worldName;
+    
 }
 
 public class WorldInfo
@@ -23,5 +23,5 @@ public class WorldInfo
         GameObject.Instantiate(world, pos, Quaternion.identity);
     }
 
-    public string GetWorldName() { return world.worldName; }
+    public string GetWorldName() { return world.name; }
 }

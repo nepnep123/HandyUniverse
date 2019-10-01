@@ -12,6 +12,7 @@ public struct RawImages
 
 public interface ICollidable
 {
+    Book book { get; set; }
     void InitCollData(Book book);
     void ProcessCollision();
 }

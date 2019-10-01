@@ -4,37 +4,39 @@ using UnityEngine;
 
 public class BookCreator : MonoBehaviour
 {
-    public static BookCreator instance;
+    public World[] worlds;
     public Book bookPrefab;
     bool isInited = false;
 
-    public IPortalFolder hello;
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance == null)
-            instance = GetComponent<BookCreator>();
-        else
-            Destroy(this);
+        
     }
+
     private void LateUpdate()
     {
         if(isInited == false)
         {
             CreateBook();
-            Destroy(this);
             isInited = true;
+            Destroy(this);
         }
     }
 
     void CreateBook()
     {
-        string[] folderPathes = PhotoUtils.GetFolders();
-        for(int i = 0; i < folderPathes.Length; i++)
+        int num = worlds.Length;
+        for (int i = 0; i < num; i++)
         {
-            var a = Instantiate(bookPrefab, transform.position + new Vector3(Random.Range(0f, 4f), 0, Random.Range(0f, 4f)), Quaternion.identity);
-            Texture2D[] textures = PhotoUtils.ReadTexturesInFolder(folderPathes[i]);
-            a.InitBook(new FolderInfo(textures, "Fuck"));
+            WorldInfo worldinfo = new WorldInfo(worlds[i]);
+            PhotoUtils.MakeFolder(worldinfo.GetWorldName());
+            List<Texture2D> textures = PhotoUtils.ReadTexturesInFolder(worldinfo.GetWorldName());
+            float randin = Random.Range(0f, 2f);
+            float randus = Random.Range(0f, 2f);
+            Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
+            var a = Instantiate(bookPrefab, transform.position + new Vector3(randin, -0.5f, randus), rot);
+            a.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()), worldinfo);
         }
     }
 }

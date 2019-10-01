@@ -16,13 +16,12 @@ public class TestManager : MonoBehaviour
 
     private void Awake()
     {
-        book.InitBook(new FolderInfo(textures, "Proto"));
+        //book.InitBook(new FolderInfo(textures, "Proto"));
         instance = GetComponent<TestManager>();
         var a = PhotoUtils.GetFolders();
         for(int i =0; i < a.Length; i++)
         {
             Debug.Log(Path.GetFileName(a[i]));
-
         }
         
     }

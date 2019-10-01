@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BookRightCollision : MonoBehaviour, ICollidable
 {
-    Book book;
+    public Book book { get; set; }
     public void InitCollData(Book book)
     {
         this.book = book;
