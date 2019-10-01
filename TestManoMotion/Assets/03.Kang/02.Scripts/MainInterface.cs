@@ -18,7 +18,7 @@ public class WorldInfo
     // _world : 
 
 
-    public void CreatePortal(Vector3 pos)
+    public void InToThePortalWorld(Vector3 pos)
     {
         GameObject.Instantiate(world, pos, Quaternion.identity);
     }

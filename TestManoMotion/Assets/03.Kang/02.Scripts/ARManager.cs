@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
-using System;
 
 #if UNITY_EDITOR
 using input = GoogleARCore.InstantPreviewInput;
@@ -10,15 +9,26 @@ using input = GoogleARCore.InstantPreviewInput;
 
 public class ARManager : MonoBehaviour
 {
+    private TrackableHit hit;
+    private TrackableHitFlags flags;
+
     public GameObject model;
+    public static GameObject modelModel;
     public GameObject skyboxCamera;
     public GameObject quad;
     public GameObject planeVisualizer;
+
+    private bool isCreate;
 
     void Awake()
     {
         skyboxCamera.SetActive(false);
         quad.SetActive(false);
+    }
+
+    void Start()
+    {
+        flags = TrackableHitFlags.FeaturePointWithSurfaceNormal | TrackableHitFlags.PlaneWithinPolygon;
     }
 
     void Update()
@@ -30,20 +40,17 @@ public class ARManager : MonoBehaviour
     {
         Touch touch = Input.GetTouch(0);
 
-        if (touch.phase == TouchPhase.Began && Input.touchCount > 0)
-        {
-            TrackableHit hit;
-            TrackableHitFlags flags = TrackableHitFlags.FeaturePointWithSurfaceNormal | TrackableHitFlags.PlaneWithinPolygon;
-
+        if (touch.phase == TouchPhase.Began && Input.touchCount > 0 && !isCreate)
+        {           
             if (Frame.Raycast(touch.position.x, touch.position.y, flags, out hit))
             {
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-                GameObject modelModel = Instantiate(model, hit.Pose.position, hit.Pose.rotation, anchor.transform);
+                isCreate = true;
+
+                Anchor anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                modelModel = Instantiate(model, hit.Pose.position, hit.Pose.rotation, anchor.transform);
 
                 skyboxCamera.SetActive(true);
                 quad.SetActive(true);
-
-                //Destroy(planeVisualizer); // 더 이상 바닥인식은 NO
             }
         }
     }
