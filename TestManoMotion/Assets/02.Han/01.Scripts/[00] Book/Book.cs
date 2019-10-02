@@ -80,7 +80,7 @@ public class Book : MonoBehaviour
     public void NextPage() => PNPage(true);     //다음 페이지
     public void PrePage() => PNPage(false);     //이전 페이지
 
-    public void OpenPortal() => worldInfo.CreatePortal(transform.position + new Vector3(0, 0, 1));
+    public void OpenPortal() => worldInfo.InToThePortalWorld(transform.position + new Vector3(0, 0, 1));
     #endregion
 
     #region Private Method : 외부에서 접근 불가능한 내부 사용 메서드들

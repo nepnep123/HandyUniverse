@@ -8,14 +8,12 @@ public class PortalWindow : MonoBehaviour
     public Material[] materials;
 
     private Transform device;
-    private GameObject device1;
 
     private bool hasCollided;
 
     private void Awake()
     {
-        device1 = GameObject.Find("ARCore Device");
-        device = device1.transform;
+        device = Camera.main.transform;
     }
 
     void Start()

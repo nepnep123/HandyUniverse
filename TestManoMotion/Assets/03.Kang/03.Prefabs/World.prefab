@@ -12055,7 +12055,7 @@ GameObject:
   - component: {fileID: 8296547431988015586}
   - component: {fileID: 8296547431988015587}
   - component: {fileID: 8296547431988015596}
-  - component: {fileID: 6417239195206233618}
+  - component: {fileID: 7136474151334636008}
   m_Layer: 0
   m_Name: PortalWindow
   m_TagString: Untagged
@@ -12137,21 +12137,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6417239195206233618
+--- !u!114 &7136474151334636008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296547431988015598}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0a9227c54ecfa642b90c30988c2c4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: cd755f09272c3854ca39b842f57debc5, type: 2}
   - {fileID: 2100000, guid: cb62a2f3f8a601349b8adedf4d160eb0, type: 2}
+  - {fileID: 2100000, guid: cd755f09272c3854ca39b842f57debc5, type: 2}
   - {fileID: 2100000, guid: a69062577ad99314e937089971b82a2a, type: 2}
 --- !u!1 &8296547432977725350
 GameObject:
