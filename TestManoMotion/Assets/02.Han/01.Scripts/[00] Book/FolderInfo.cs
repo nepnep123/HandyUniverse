@@ -13,16 +13,16 @@ public class FolderInfo
     public int curBookPlaneIndex = 0;
     public int maxBookPlaneIndex = 0;
 
-    public FolderInfo(Texture2D[] textures, string folderName)
+    public FolderInfo(List<Texture2D> textures, string folderName)
     {
         photos = new List<Texture2D>();
         this.folderName = folderName;
-        lastPhotoIndex = textures.Length - 1;
-        int total_Textures_Num = textures.Length + (4 - textures.Length % 4);
+        lastPhotoIndex = textures.Count - 1;
+        int total_Textures_Num = textures.Count + (4 - textures.Count % 4);
         maxBookPlaneIndex = (total_Textures_Num / 4) - 1;
         for (int i = 0; i < total_Textures_Num; i++)
         {
-            if (i >= textures.Length)
+            if (i >= textures.Count)
                 photos.Add(null);
             else
                 photos.Add(textures[i]);

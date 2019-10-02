@@ -35,20 +35,15 @@ public static class PhotoUtils
     /// </summary>
     /// <param name="folderName">읽어들일 파일들의 폴더 경로</param>
     /// <returns></returns>
-    static public Texture2D[] ReadTexturesInFolder(string folderName)
+    static public List<Texture2D> ReadTexturesInFolder(string folderName)
     {
         if (Directory.Exists(appPath) == false)
         {
             Debug.Log("Directory doesn't exist. Making New Folder.");
             MakeInitFolder();
         }
-        string folderPath = appPath + folderName;
-        if (Directory.Exists(folderPath) == false)
-        {
-            Debug.Log("FolderPath doesn't exist. Making New Folder.");
-            MakeFolder(folderName);
-        }
-        string[] fileNames = Directory.GetFiles(folderPath);
+
+        string[] fileNames = Directory.GetFiles(appPath + folderName);
         List<Texture2D> textures = new List<Texture2D>();
         //메타파일 제외하고 다른 파일들로 리스트 구성
         for (int i = 0; i < fileNames.Length; i++)
@@ -66,7 +61,7 @@ public static class PhotoUtils
             textures[i].LoadImage(bytes);
         }
         //구성된 텍스쳐리스트를 배열로서 반환
-        return textures.ToArray();
+        return textures;
     }
 
     static public void MakeInitFolder()
@@ -96,6 +91,7 @@ public static class PhotoUtils
 
     static public string[] GetFolders()
     {
+        if (Directory.Exists(appPath) == false) MakeInitFolder();
         return Directory.GetDirectories(appPath);
     }
 }

@@ -704,7 +704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2333064605337567491}
   - component: {fileID: 2348399491942084693}
-  - component: {fileID: 2338524854557746226}
+  - component: {fileID: 28000465364960116}
   m_Layer: 0
   m_Name: PageCenterRight
   m_TagString: Untagged
@@ -740,7 +740,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.035, z: 0.3}
   m_Center: {x: -0.0086, y: -0.0175, z: 0}
---- !u!114 &2338524854557746226
+--- !u!114 &28000465364960116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -749,10 +749,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2338524854557746227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0947e555a631224c9725d7d6773834b, type: 3}
+  m_Script: {fileID: 11500000, guid: 62afee8587c0bf9429e07648f39cb12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightLeft: 1
 --- !u!1 &2338650392144359655
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2333223591334844717}
   - component: {fileID: 2349087084104707527}
-  - component: {fileID: 2338696824217980564}
+  - component: {fileID: 4923075048746043140}
   m_Layer: 0
   m_Name: PageCenterLeft
   m_TagString: Untagged
@@ -845,7 +844,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.035, z: 0.3}
   m_Center: {x: -0.0086, y: -0.0175, z: 0}
---- !u!114 &2338696824217980564
+--- !u!114 &4923075048746043140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -854,10 +853,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2338696824217980565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0947e555a631224c9725d7d6773834b, type: 3}
+  m_Script: {fileID: 11500000, guid: 20a49fa1458d60747bf9580c0ff06da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightLeft: 1
 --- !u!1 &2338716449515725033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1033,6 @@ GameObject:
   - component: {fileID: 2551634441730812965}
   - component: {fileID: 2442497399646390415}
   - component: {fileID: 2442880846451904229}
-  - component: {fileID: 2338902503330646368}
   m_Layer: 0
   m_Name: PageRightP
   m_TagString: Untagged
@@ -1123,19 +1120,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2338902503330646368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2338902503330646369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0947e555a631224c9725d7d6773834b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RightLeft: 0
 --- !u!1 &2338916138104899333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1132,6 @@ GameObject:
   - component: {fileID: 2551564432991293395}
   - component: {fileID: 2442606890456075087}
   - component: {fileID: 2442557310538929345}
-  - component: {fileID: 2338916138104899332}
   m_Layer: 0
   m_Name: PageLeftP
   m_TagString: Untagged
@@ -1236,19 +1219,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2338916138104899332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2338916138104899333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0947e555a631224c9725d7d6773834b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RightLeft: 1
 --- !u!1 &2339009442785654063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,9 +1245,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2339009442785654063}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 2332886827670416859}
   - {fileID: 2333223591334844717}
@@ -1317,6 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b83faa06e6d246499be41f5aed08a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 702723487237355795}
   bookPages:
   - photo:
     - {fileID: 702723487084494921}

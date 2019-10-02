@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BookLeftCollision : MonoBehaviour, ICollidable
 {
-    Book book;
+    public Book book { get; set; }
     public void InitCollData(Book book)
     {
         this.book = book;
@@ -12,16 +10,6 @@ public class BookLeftCollision : MonoBehaviour, ICollidable
     
     public void ProcessCollision()
     {
-        bool isOpened = book.IsBookOpened;
-        //책이 열려있다면
-        if (isOpened == true)
-        {
-            book.PrePage();
-        }
-        //책이 닫혀있다면
-        else
-        {
-
-        }
+        
     }
 }

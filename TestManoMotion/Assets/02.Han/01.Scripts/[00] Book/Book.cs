@@ -7,6 +7,7 @@ using System.Linq;
 public class Book : MonoBehaviour
 {
     public enum BlackWhite { left = 0, right = 2 }
+    public Text title;
     //걍 하이러키뷰에서 미리 넣어놨음. 0은 왼쪽, 1은 오른쪽 즉, 총 길이는 2
     //bookPages의 0,1,2,3에 넣어주기, 0,1 그리고 2,3 에게...
     [SerializeField] RawImages[] bookPages;
@@ -15,6 +16,7 @@ public class Book : MonoBehaviour
     private Animator bookAnim;
     private Page page;
     [SerializeField] private FolderInfo folderInfo;
+    [SerializeField] private WorldInfo worldInfo;
     private bool isOpenable = true;     //페이지든 책이든 열기 가능한지
     private float bookAnimTime = 0;     //책 애니메이션 시간
     private float pageAnimTime = 0;     //페이지 애니메이션 시간
@@ -26,7 +28,7 @@ public class Book : MonoBehaviour
 
     #region Public Method : 외부에선 이 메서드에만 접근해야함
     //초기화
-    public void InitBook(FolderInfo info)
+    public void InitBook(FolderInfo info, WorldInfo worldInfo)
     {
         //필드 초기화
         bookAnim = GetComponent<Animator>();
@@ -34,7 +36,8 @@ public class Book : MonoBehaviour
         pageAnimTime = page.InitPage();
         page.OnOffPage(false);
         folderInfo = info;
-
+        this.worldInfo = worldInfo;
+        title.text = worldInfo.GetWorldName();
         var colls = GetComponentsInChildren<ICollidable>();
         foreach(ICollidable coll in colls)
         {
@@ -75,6 +78,8 @@ public class Book : MonoBehaviour
 
     public void NextPage() => PNPage(true);     //다음 페이지
     public void PrePage() => PNPage(false);     //이전 페이지
+
+    public void OpenPortal() => worldInfo.InToThePortalWorld(transform.position + new Vector3(0, 0, 1));
     #endregion
 
     #region Private Method : 외부에서 접근 불가능한 내부 사용 메서드들

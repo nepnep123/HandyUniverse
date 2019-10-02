@@ -209,6 +209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomScannerUIARCore
       objectReference: {fileID: 0}
+    - target: {fileID: 1761234430192462, guid: 5531dfb6e4ea94c938cfaabb44eee13c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224204183887343650, guid: 5531dfb6e4ea94c938cfaabb44eee13c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1147,6 +1151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: YellowMagicBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339009442785654063, guid: 091df40ce488b454c90330ae0836550d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2332980263034848529, guid: 091df40ce488b454c90330ae0836550d,
         type: 3}
@@ -2192,6 +2201,11 @@ PrefabInstance:
       propertyPath: book
       value: 
       objectReference: {fileID: 1041667129}
+    - target: {fileID: 8249646241656126070, guid: 712e005c00d955148aea2d11a05f89b5,
+        type: 3}
+      propertyPath: testinas
+      value: 
+      objectReference: {fileID: 1975581244}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712e005c00d955148aea2d11a05f89b5, type: 3}
 --- !u!1 &828118323
@@ -2854,7 +2868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209, y: -140}
+  m_AnchoredPosition: {x: -209, y: -186.1}
   m_SizeDelta: {x: 433.8, y: 46.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183562218
@@ -3245,6 +3259,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402520741}
   m_CullTransparentMesh: 0
+--- !u!1 &1519365779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8249646241656126071, guid: 712e005c00d955148aea2d11a05f89b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 800804050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1519365782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519365779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb041508e8c11ba459fd4ca09591a7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookPrefab: {fileID: 2339009442785654057, guid: 091df40ce488b454c90330ae0836550d,
+    type: 3}
 --- !u!1 &1619514303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2338696824217980565, guid: 091df40ce488b454c90330ae0836550d,
@@ -3495,7 +3529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1759795986
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4929,7 +4963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2083512465
 MonoBehaviour:
   m_ObjectHideFlags: 0
