@@ -23,7 +23,8 @@ public class Book : MonoBehaviour
 
     //원래 isBookOpened 였는데 auto 속성하니까 이렇게 됨
     public bool IsBookOpened { get; private set; } = false;
-
+    public FolderInfo FolderInfo { get => folderInfo; private set => folderInfo = value; }
+    public WorldInfo WorldInfo { get => worldInfo; private set => worldInfo = value; }
 
 
     #region Public Method : 외부에선 이 메서드에만 접근해야함
