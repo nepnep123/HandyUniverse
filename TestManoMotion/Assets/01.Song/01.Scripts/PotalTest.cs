@@ -39,15 +39,13 @@ public class PotalTest : MonoBehaviour
 	{
 		if (other.transform != device) return;
 
-		//hasCollided = true;
-		//isEnterPotal = true;
 		hasCollided = !hasCollided;
 
 		SetMaterials(hasCollided);
 
-		manov.Show_background_layer = hasCollided;
-		manov._layer_background.gameObject.SetActive(hasCollided);
-		manov._layer_background.enabled = hasCollided;
+		manov.Show_background_layer = !hasCollided;
+		manov._layer_background.gameObject.SetActive(!hasCollided);
+		manov._layer_background.enabled = !hasCollided;
 	}
 
 	void Update()

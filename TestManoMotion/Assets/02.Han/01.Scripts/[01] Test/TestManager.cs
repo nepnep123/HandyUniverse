@@ -13,7 +13,8 @@ public class TestManager : MonoBehaviour
     private void Awake()
     {
         instance = GetComponent<TestManager>();
-    }
+		book.InitBook(new FolderInfo(textures, "Proto"));
+	}
     /*
     private void LateUpdate()
     {

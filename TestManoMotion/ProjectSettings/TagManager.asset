@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ManipulationSystem
   - particle
+  - BOOK01
   layers:
   - Default
   - TransparentFX

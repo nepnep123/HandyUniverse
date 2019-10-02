@@ -15,7 +15,6 @@ RenderTexture:
   serializedVersion: 3
   m_Width: 215
   m_Height: 452
-
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthFormat: 2

@@ -72,7 +72,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StencilFilterTest: 3
+    - _StencilFilterTest: 6
     - _SunDisk: 2
     - _SunSize: 0.04
     - _SunSizeConvergence: 5
