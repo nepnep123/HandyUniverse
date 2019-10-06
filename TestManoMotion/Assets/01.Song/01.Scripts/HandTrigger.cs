@@ -20,7 +20,7 @@ public class HandTrigger : MonoBehaviour
 
 
 	void Start()
-	{
+	{ 
 	}
 
 	void Update()
