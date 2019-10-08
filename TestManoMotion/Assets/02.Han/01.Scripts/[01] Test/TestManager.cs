@@ -11,6 +11,10 @@ public class TestManager : MonoBehaviour
     public Book book;
 
     public Text testinas;
+    public Text testlin;
+    public Text testan;
+
+    public Text testels;
 
     bool isInited = false;
 
