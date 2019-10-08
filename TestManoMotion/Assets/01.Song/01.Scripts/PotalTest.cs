@@ -9,6 +9,10 @@ public class PotalTest : MonoBehaviour
 	ManoVisualization manov;
 	public Material[] materials;
 	public Transform device;
+	public GameObject POTAL01_Eagle;
+
+	//World 안에 있는 UI
+	public GameObject UITEST;
 
 	private bool hasCollided = false;
 
@@ -22,6 +26,7 @@ public class PotalTest : MonoBehaviour
 	void Start()
     {
 		SetMaterials(false);
+		UITEST.SetActive(false);
     }
 
 	void SetMaterials(bool fullRender)
@@ -35,6 +40,8 @@ public class PotalTest : MonoBehaviour
 		}
 	}
 
+	public static GameObject eagleprefab;
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.transform != device) return;
@@ -46,6 +53,11 @@ public class PotalTest : MonoBehaviour
 		manov.Show_background_layer = !hasCollided;
 		manov._layer_background.gameObject.SetActive(!hasCollided);
 		manov._layer_background.enabled = !hasCollided;
+
+		UITEST.SetActive(hasCollided);
+		eagleprefab = Instantiate(POTAL01_Eagle);
+
+		iTween.MoveTo(eagleprefab, ITweenManager.ht1);
 	}
 
 	void Update()
