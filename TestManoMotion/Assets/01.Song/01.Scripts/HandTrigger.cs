@@ -10,14 +10,15 @@ using input = GoogleARCore.InstantPreviewInput;
 public class HandTrigger : MonoBehaviour
 {
 
-	public GameObject potal;
-	public static GameObject potalPrefab; //동적으로 생성된 포탈 
+	//public GameObject potal;
+	//public static GameObject potalPrefab; //동적으로 생성된 포탈 
 	public Transform camPos;
 
 	private bool isCreate = false;
 
 	public GameObject pointVisual; //스캔 오브젝트
 
+	Book curGrabbingBook;
 
 	void Start()
 	{
@@ -25,36 +26,29 @@ public class HandTrigger : MonoBehaviour
 
 	void Update()
 	{
-
+		HandGesture();
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("BOOK01"))
+		var a = other.GetComponent<Book>();
+		if(a != null)
 		{
+			curGrabbingBook = a;
+
+			//책에 충돌하면 포탈이 열리고 책 아웃라인 생성
+			a.WorldInfo.InToThePortalWorld(camPos.position + camPos.forward * 0.8f);
 			other.transform.gameObject.GetComponent<Outline>().OutlineWidth = 15;
-
-			var a = other.GetComponent<ICollidable>();
-			if(a != null)
-				a.ProcessCollision();
-
-			if (!isCreate)
-			{
-				//포탈은 한번만 생성
-				isCreate = true;
-				//충돌 시 책앞에 포탈 생성 
-				Vector3 pos = new Vector3(other.transform.position.x, other.transform.position.y, 
-								other.transform.position.z - 0.1f);
-				potalPrefab = Instantiate(potal, pos, Quaternion.identity);
-			}
 		}
 	}
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.CompareTag("BOOK01"))
+		var a = other.GetComponent<Book>();
+		if (a != null)
 		{
 			other.transform.gameObject.GetComponent<Outline>().OutlineWidth = 0;
-		}	
+		}
+
 	}
 
 	private bool canRelease;
@@ -69,26 +63,7 @@ public class HandTrigger : MonoBehaviour
 		}
 		else if (gesture == ManoGestureTrigger.RELEASE)
 		{
-			if (canRelease)
-			{
-				//포탈 안으로 이동 
-				StartCoroutine(StartIntoPotal());
-			}
 			
-		}
-	}
-
-	public IEnumerator StartIntoPotal()
-	{
-		yield return new WaitForSeconds(2.0f);
-
-		float timer = 0f;
-		while (timer >= 2.0f)
-		{
-			potalPrefab.transform.position = Vector3.Lerp(potalPrefab.transform.position,
-											camPos.transform.position, Time.deltaTime * 2.0f);
-			timer += Time.deltaTime;
-			yield return null;
 		}
 	}
 }

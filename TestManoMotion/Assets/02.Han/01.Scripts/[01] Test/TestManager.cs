@@ -6,40 +6,49 @@ using System.IO;
 
 public class TestManager : MonoBehaviour
 {
-    static public TestManager instance;
-    public Texture2D[] textures;
-    public Book book;
+	public World[] worlds;
+	public Book bookPrefab;
+	public GameObject bookZone;
 
-    public Text testinas;
+	public static GameObject azone;
+	public static Book abook;
 
-    bool isInited = false;
+	private Transform camPos; 
+	bool isInited = false;
 
-    private void Awake()
-    {
-        //book.InitBook(new FolderInfo(textures, "Proto"));
-        instance = GetComponent<TestManager>();
-        var a = PhotoUtils.GetFolders();
-        for(int i =0; i < a.Length; i++)
-        {
-            Debug.Log(Path.GetFileName(a[i]));
-        }
-        
-    }
-    /*
-    private void LateUpdate()
-    {
-        if(!isInited)
-        {
-            string[] folders = PhotoUtils.GetFolders();
-            for(int i = 0;)
-            var a = PhotoUtils.GetFolders();
-            foreach (string b in a)
-            {
-                Debug.Log(b);
-            }
-            //book = Instantiate();
-            book.InitBook(new FolderInfo(textures, "Proto"));
-            isInited = true;
-        }
-    }*/
+	// Start is called before the first frame update
+	void Awake()
+	{
+		camPos = Camera.main.transform;
+	}
+
+	private void LateUpdate()
+	{
+		if (isInited == false)
+		{
+			CreateBook();
+			isInited = true;
+			Destroy(this);
+		}
+	}
+
+	void CreateBook()
+	{
+		int num = worlds.Length;
+		for (int i = 0; i < num; i++)
+		{
+			WorldInfo worldinfo = new WorldInfo(worlds[i]);
+			PhotoUtils.MakeFolder(worldinfo.GetWorldName());
+			List<Texture2D> textures = PhotoUtils.ReadTexturesInFolder(worldinfo.GetWorldName());
+			float randin = Random.Range(0f, 1f);
+			float randus = Random.Range(0f, 1f);
+
+			Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
+			Quaternion zonrot = Quaternion.AngleAxis(-90f, Vector3.right);
+			abook = Instantiate(bookPrefab, camPos.position + new Vector3(0, 0.05f, 0.3f), rot);
+			azone = Instantiate(bookZone, camPos.position + new Vector3(0, -0.05f, 0), zonrot) ;
+
+			abook.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()), worldinfo);
+		}
+	}
 }
