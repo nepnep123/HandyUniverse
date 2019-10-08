@@ -21,7 +21,7 @@ public class HandTrigger : MonoBehaviour
 	Book curGrabbingBook;
 
 	void Start()
-	{
+	{ 
 	}
 
 	void Update()
