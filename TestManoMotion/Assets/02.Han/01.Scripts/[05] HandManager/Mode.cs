@@ -37,23 +37,23 @@ public class TestMode : Mode
     public override void OnTriggeredRelease()
     {
         a++;
-        TestManager.instance.testinas.text = "Release" + a;
+        //TestManager.instance.testinas.text = "Release" + a;
     }
 
     public override void OnTriggeredGrab()
     {
         b++;
-        TestManager.instance.testlin.text = "Grab" + b;
+        //TestManager.instance.testlin.text = "Grab" + b;
     }
     public override void OnTriggeredPick()
     {
         c++;
-        TestManager.instance.testan.text = "Pick" + c;
+        //TestManager.instance.testan.text = "Pick" + c;
     }
     public override void OnTriggeredDrop()
     {
         d++;
-        TestManager.instance.testels.text = "Drop" + d;
+        //TestManager.instance.testels.text = "Drop" + d;
     }
 }
 
