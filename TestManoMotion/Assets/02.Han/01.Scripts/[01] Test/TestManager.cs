@@ -21,7 +21,7 @@ public class TestManager : MonoBehaviour
 	{
 		camPos = Camera.main.transform;
 	}
-
+    /*
 	private void LateUpdate()
 	{
 		if (isInited == false)
@@ -50,5 +50,5 @@ public class TestManager : MonoBehaviour
 
 			abook.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()), worldinfo);
 		}
-	}
+	}*/
 }

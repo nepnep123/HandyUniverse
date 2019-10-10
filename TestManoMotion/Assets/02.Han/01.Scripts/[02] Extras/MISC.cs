@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public delegate void VoidBoolNotier(bool booleana);
 public delegate void VoidNotier();
+public enum LR { Left, Right}
 
 [System.Serializable]
 public struct RawImages

@@ -36,7 +36,7 @@ public class BookCreator : MonoBehaviour
             float randus = Random.Range(0f, 2f);
             Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
             var a = Instantiate(bookPrefab, transform.position + new Vector3(randin, -0.5f, randus), rot);
-            a.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()), worldinfo);
+            a.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()));
         }
     }
 }

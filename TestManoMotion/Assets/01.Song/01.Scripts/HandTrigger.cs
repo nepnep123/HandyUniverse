@@ -37,7 +37,7 @@ public class HandTrigger : MonoBehaviour
 			curGrabbingBook = a;
 
 			//책에 충돌하면 포탈이 열리고 책 아웃라인 생성
-			a.WorldInfo.InToThePortalWorld(camPos.position + camPos.forward * 0.8f);
+			//a.WorldInfo.InToThePortalWorld(camPos.position + camPos.forward * 0.8f);
 			other.transform.gameObject.GetComponent<Outline>().OutlineWidth = 15;
 		}
 	}

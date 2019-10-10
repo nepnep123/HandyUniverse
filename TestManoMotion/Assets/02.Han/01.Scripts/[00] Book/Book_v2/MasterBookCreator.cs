@@ -5,13 +5,33 @@ using UnityEngine;
 public class MasterBookCreator : MonoBehaviour
 {
     public Book_v2 masterBookPrefab;
+    public Book bookPrefab;
     public PageInfo_Scriptable[] pageInfos;
 
     private void Awake()
     {
+        마스터북만들기();
+    }
+
+    private void 마스터북만들기()
+    {
         Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
-        var booker = Instantiate(masterBookPrefab, transform.position, rot);
+        var booker = Instantiate(masterBookPrefab, transform.position + new Vector3(0, 0.5f, 0), rot);
         booker.InitBook("The Worlds");
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
+    }
+    void 북만들기()
+    {
+        int num = pageInfos.Length;
+        for (int i = 0; i < num; i++)
+        {
+            PhotoUtils.MakeFolder(pageInfos[i].world.name);
+            List<Texture2D> textures = PhotoUtils.ReadTexturesInFolder(pageInfos[i].world.name);
+            float randin = Random.Range(0f, 2f);
+            float randus = Random.Range(0f, 2f);
+            Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
+            var a = Instantiate(bookPrefab, transform.position + new Vector3(randin, -0.5f, randus), rot);
+            a.InitBook(new FolderInfo(textures, pageInfos[i].world.name));
+        }
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e310840177440ba428c8095233f35968, type: 3}
   m_Name: SecondPage
   m_EditorClassIdentifier: 
+  world: {fileID: 4641550549462401124, guid: 85d995893ec7a0645898aa5dcbb0037b, type: 3}
   leftTexture: {fileID: 2800000, guid: 70057a3d3c01e5243af31895ea2978bc, type: 3}
   rightDescribe: "\uC6B0\uB9AC\uBAA8\uB450 \uD667\uD305\n\n\uC77C\uC5B4\uB098 \uC5B4\uC11C!"

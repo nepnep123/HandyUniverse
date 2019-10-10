@@ -703,6 +703,7 @@ GameObject:
   - component: {fileID: 2371309000436002238}
   - component: {fileID: 2371309000436002233}
   - component: {fileID: 2371309000436002234}
+  - component: {fileID: 2250449392719958701}
   m_Layer: 0
   m_Name: ZedMagicBook
   m_TagString: Untagged
@@ -795,6 +796,18 @@ MonoBehaviour:
   centRaw: {fileID: 8936378037799087068}
   pageInfos: []
   maxBookPlaneIndex: 0
+--- !u!114 &2250449392719958701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371309000436002232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dffde326e295846419234a19695f3754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2371312973924512278
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2377326312219449748}
   - component: {fileID: 2308781658314320066}
-  - component: {fileID: 7096943077567944477}
+  - component: {fileID: 8229828756021470877}
   m_Layer: 0
   m_Name: PageCenterRight
   m_TagString: Untagged
@@ -940,7 +953,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.035, z: 0.3}
   m_Center: {x: -0.0086, y: -0.0175, z: 0}
---- !u!114 &7096943077567944477
+--- !u!114 &8229828756021470877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -949,10 +962,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2371527549760011428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c84a2bfbdb22c4db8be0cecc48d8eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 439c29860d08d244588180a1d06fac1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mbook: 1
+  leftRight: 1
 --- !u!1 &2371578903427168382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2376781524880736698}
   - component: {fileID: 2307217446105101648}
-  - component: {fileID: 2564105885084438352}
+  - component: {fileID: 799881463246031742}
   m_Layer: 0
   m_Name: PageCenterLeft
   m_TagString: Untagged
@@ -1144,7 +1157,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.035, z: 0.3}
   m_Center: {x: -0.0086, y: -0.0175, z: 0}
---- !u!114 &2564105885084438352
+--- !u!114 &799881463246031742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1153,10 +1166,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2371699444257232386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c84a2bfbdb22c4db8be0cecc48d8eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 439c29860d08d244588180a1d06fac1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mbook: 0
+  leftRight: 0
 --- !u!1 &2371830017083440640
 GameObject:
   m_ObjectHideFlags: 0
