@@ -36,7 +36,6 @@ public class PotalTest : MonoBehaviour
 		foreach(var mat in materials)
 		{
 			mat.SetInt("_StencilFilterTest", (int)stencilTest);
-			Debug.Log(mat);
 		}
 	}
 
@@ -59,9 +58,4 @@ public class PotalTest : MonoBehaviour
 
 		iTween.MoveTo(eagleprefab, ITweenManager.ht1);
 	}
-
-	void Update()
-    {
-        
-    }
 }
