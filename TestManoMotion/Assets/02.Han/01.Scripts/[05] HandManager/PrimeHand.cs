@@ -6,6 +6,8 @@ public class PrimeHand : MonoBehaviour
 {
     public Mode mode;
     EntryMode entryMode;
+    // 예시 1
+    //MarsMode marsMode;
 
     public InteractableObject curObj;
 
@@ -16,6 +18,7 @@ public class PrimeHand : MonoBehaviour
     private void Awake()
     {
         entryMode = new EntryMode(this);
+        //marsMode = new MarsMode(this);
         mode = entryMode;
     }
 
@@ -75,6 +78,7 @@ public class PrimeHand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        var col = other.GetComponent<ICollidable>();
         var inter = other.GetComponent<InteractableObject>();
         if(inter != null)
         {

@@ -43,3 +43,17 @@ public class EntryMode : Mode
         Debug.Log("EntryMode : Grab!@!");
     }
 }
+
+// 예시 2
+//public class MarsMode : Mode
+//{
+//    public MarsMode(PrimeHand hand):base(hand)
+//    {
+//        this.hand = hand;
+//    }
+
+//    public override void OnTriggeredGrab()
+//    {
+//        GameObject.Destroy(hand.curObj);
+//    }
+//}
