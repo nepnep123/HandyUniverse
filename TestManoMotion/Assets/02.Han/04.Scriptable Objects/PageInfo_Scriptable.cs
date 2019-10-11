@@ -6,6 +6,7 @@ using UnityEngine;
 public class PageInfo_Scriptable : ScriptableObject
 {
     public World world;
+	public Transform pagePlanet;
     public Texture2D leftTexture;
     [TextArea(15, 20)]
     public string rightDescribe;
