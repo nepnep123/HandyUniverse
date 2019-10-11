@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: a91ade864acaaaa4aa127af4b0630316
+timeCreated: 1491216639
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _Suncorona: {fileID: 2800000, guid: 9efbd6d0a6249ae448d1b18acdd26f25, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

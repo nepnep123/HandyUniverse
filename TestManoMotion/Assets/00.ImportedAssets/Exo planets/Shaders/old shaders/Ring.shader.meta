@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: a005ee15cd6d5d6438afebad031da047
+timeCreated: 1490975899
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _Ringsalpha: {fileID: 2800000, guid: a534b3bf85e48d845a4ba57cd1e41a64, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

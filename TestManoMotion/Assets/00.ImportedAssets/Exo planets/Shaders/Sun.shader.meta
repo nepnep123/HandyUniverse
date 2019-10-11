@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: b72e9474f68763747a9114309b63dcd3
+timeCreated: 1491236136
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _Sun_Albedo: {fileID: 2800000, guid: fd527f070ef46b843b28d178b92373b5, type: 3}
+  - _Sunlabedo2: {fileID: 2800000, guid: fd527f070ef46b843b28d178b92373b5, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3a228e844d55cba4bbee2c88072dc043
+timeCreated: 1466958730
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _Albedo: {fileID: 2800000, guid: 72ba01dab3185214982b48accb2d9664, type: 3}
+  - _Specular: {fileID: 2800000, guid: 6a178afe4ebbc8543ae35a463a8966f4, type: 3}
+  - _Cloudstexture: {fileID: 2800000, guid: e1b95afc12b486448abe975632e539cf, type: 3}
+  - _Normalmap: {fileID: 2800000, guid: 0b5ac22ada0e4fd43ab69e9331139f3c, type: 3}
+  - _Emissive: {fileID: 2800000, guid: e761d1b5f99e4c840b58081a41de20d6, type: 3}
+  - _LookuprampSunset: {fileID: 2800000, guid: 3c94491068797e54b9d16576eeb33a8c, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

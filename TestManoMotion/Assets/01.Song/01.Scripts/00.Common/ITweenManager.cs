@@ -33,7 +33,7 @@ public class ITweenManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(5.0f);
 
-		iTween.MoveTo(PotalTest.eagleprefab, ht1);
+		iTween.MoveTo(EnterPotal.eagleprefab, ht1);
 
 	}
 }

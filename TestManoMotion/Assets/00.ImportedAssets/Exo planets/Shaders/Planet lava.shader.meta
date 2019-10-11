@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 68952a72141f2fb4f881242853439609
+timeCreated: 1510861055
+licenseType: Store
+ShaderImporter:
+  defaultTextures:
+  - _LookupSunset: {fileID: 2800000, guid: 3c94491068797e54b9d16576eeb33a8c, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

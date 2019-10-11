@@ -31,6 +31,7 @@ public class MasterBookCreator : MonoBehaviour
 
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
     }
+
     void 북만들기()
     {
         int num = pageInfos.Length;
