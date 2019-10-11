@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class TestManager_v2 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text testia;
+    public Text testiby;
+    public Text testica;
+    public Text testiden;
 
-    // Update is called once per frame
-    void Update()
+    static public TestManager_v2 instance;
+    private void Awake()
     {
-        
+        instance = GetComponent<TestManager_v2>();
     }
 }

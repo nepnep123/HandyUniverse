@@ -22,11 +22,12 @@ public class BookPageSetter : MonoBehaviour
 	//송영훈 포탈 추가 로직 코드
 
 
-    public virtual void InitBookSetter(PageInfo_Scriptable[] infos)
+    public void InitBookSetter(PageInfo_Scriptable[] infos)
     {
         book = GetComponent<Book_v2>();
         book.OnPageFlipStart += PageStartSub;
         book.OnPageFlipedEnd += PageEndSub;
+        book.OnRequestPortal += OpenPortal;
         if (infos.Length == 0) Debug.LogError("아무런 스크립터블을 받지 못하였다.");
         pageInfos = infos;
         maxBookPlaneIndex = pageInfos.Length;
@@ -40,13 +41,18 @@ public class BookPageSetter : MonoBehaviour
     {
         book.OnPageFlipStart -= PageStartSub;
         book.OnPageFlipedEnd -= PageEndSub;
+        book.OnRequestPortal -= OpenPortal;
     }
     #region 외부 접근 가능 메서드
     public void OpenPortal()
     {
-		Instantiate(pageInfos[curPlaneIndex].world, transform.position, Quaternion.identity);
-        Debug.Log(pageInfos[curPlaneIndex].world.name);
-        
+
+        //curOpenedWorld = pageInfos[curPlaneIndex].world;
+        TestManager_v2.instance.testia.text = FindObjectOfType<PrimeHand>().curObj.name;
+        TestManager_v2.instance.testiby.text = pageInfos[curPlaneIndex].world.name;
+        //여기가 인스턴트화하는 곳
+        Instantiate(pageInfos[curPlaneIndex].world, transform.position, Quaternion.identity);
+
     }
     public void ClosePortal()
     {

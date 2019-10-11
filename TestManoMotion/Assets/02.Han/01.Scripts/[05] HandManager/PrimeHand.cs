@@ -7,7 +7,7 @@ public class PrimeHand : MonoBehaviour
     public Mode mode;
     EntryMode entryMode;
 
-    public GameObject curObj;
+    public InteractableObject curObj;
 
     ManoClass preClass;
     ManoGestureContinuous preCon;
@@ -24,8 +24,9 @@ public class PrimeHand : MonoBehaviour
     {
         if(curObj != null)
         {
+            TestManager_v2.instance.testica.text = curObj.name;
             float dist = Vector3.Distance(this.transform.position, curObj.transform.position);
-            if (dist >= 2f) curObj = null;
+            if (dist >= 4f) curObj = null;
         }
         ManoClass cla = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class;
         //ManoGestureContinuous con = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_continuous;
@@ -74,17 +75,19 @@ public class PrimeHand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var col = other.GetComponent<ICollidable>();
-        if(col != null)
+        var inter = other.GetComponent<InteractableObject>();
+        if(inter != null)
         {
-            curObj = other.gameObject;
-            mode.OnHandCollideEnter(col);
+            curObj = inter;
+            curObj.ProcessCollisionEnter();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        var col = other.GetComponent<ICollidable>();
-        mode.OnHandCollideEnter(col); //null 검사 필요
+        if(curObj!=null)
+        {
+            curObj.ProcessCollisionExit();
+        }
     }
 }

@@ -14,8 +14,6 @@ public class Mode
         hand.mode = mode;
     }
 
-    public virtual void OnHandCollideEnter(ICollidable col) { }      //충돌
-    public virtual void OnHandCollideExit(ICollidable col) { }      //충돌
     public virtual void OnTriggeredGrab() { }       //그랩
     public virtual void OnTriggeredRelease() { }    //릴리즈
     public virtual void OnTriggeredPick() { }       //픽
@@ -35,16 +33,9 @@ public class EntryMode : Mode
         base.ModeChange(mode);
     }
 
-    public override void OnHandCollideEnter(ICollidable col)
-    {
-        col.ProcessCollision();
-    }
-
     public override void OnTriggeredRelease()
     {
-        Debug.Log("포탈 생성!!");
-        hand.curObj.GetComponent<ICollidable>().ProcessMethod();
-        Debug.Log("포탈생성 완료!");
+        hand.curObj.ProcessRelease();
     }
 
     public override void OnTriggeredGrab()

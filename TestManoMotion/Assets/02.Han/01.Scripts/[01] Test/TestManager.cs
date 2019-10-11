@@ -21,7 +21,7 @@ public class TestManager : MonoBehaviour
 	{
 		camPos = Camera.main.transform;
 	}
-
+    /*
 	private void LateUpdate()
 	{
 		if (Input.GetKeyDown(KeyCode.Z))
@@ -54,5 +54,5 @@ public class TestManager : MonoBehaviour
 
 			abook.InitBook(new FolderInfo(textures, worldinfo.GetWorldName()), worldinfo);
 		}
-	}
+	}*/
 }

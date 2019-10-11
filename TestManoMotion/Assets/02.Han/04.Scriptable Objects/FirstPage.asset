@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FirstPage
   m_EditorClassIdentifier: 
   world: {fileID: -7152257618237809237, guid: f30b118b4bbe0bc4b8a82b8434590fa4, type: 3}
+
   leftTexture: {fileID: 2800000, guid: 1bce927fb7fde294a8040c4184d2e7b0, type: 3}
   rightDescribe: 'FuckingFucking
 
