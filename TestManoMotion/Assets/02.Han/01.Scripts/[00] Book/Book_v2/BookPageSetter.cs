@@ -16,7 +16,6 @@ public class BookPageSetter : MonoBehaviour
     public PageInfo_Scriptable[] pageInfos;
     public int maxBookPlaneIndex = 0;
 
-    int curPlaneIndex = 0;
     World curOpenedWorld;
     
 	//송영훈 포탈 추가 로직 코드
@@ -49,9 +48,12 @@ public class BookPageSetter : MonoBehaviour
 
         //curOpenedWorld = pageInfos[curPlaneIndex].world;
         TestManager_v2.instance.testia.text = FindObjectOfType<PrimeHand>().curObj.name;
-        TestManager_v2.instance.testiby.text = pageInfos[curPlaneIndex].world.name;
+        TestManager_v2.instance.testiby.text = pageInfos[book.curPlaneIndex].world.name;
         //여기가 인스턴트화하는 곳
-        Instantiate(pageInfos[curPlaneIndex].world, transform.position, Quaternion.identity);
+        Instantiate(pageInfos[book.curPlaneIndex].world, transform.position, Quaternion.identity);
+		
+		//송영훈
+		var a = Instantiate(pageInfos[book.curPlaneIndex].pagePlanet, raw.transform.position + Vector3.up, Quaternion.identity);
 
     }
     public void ClosePortal()
@@ -84,11 +86,13 @@ public class BookPageSetter : MonoBehaviour
 
     void SetNextingPage(int curIndex)
     {
-        //현재플레인의 텍스트, 다음플레인의 텍스쳐//다음플레인의 텍스트
+		
+
+		//현재플레인의 텍스트, 다음플레인의 텍스쳐//다음플레인의 텍스트
         centText.text = pageInfos[curIndex-1].rightDescribe;//현재플레인의 텍스트
         centRaw.texture = pageInfos[curIndex].leftTexture;//다음플레인의 텍스쳐
         text.text = pageInfos[curIndex].rightDescribe;
-    }
+	}
     void SetPreingPage(int curIndex)
     {
         centText.text = pageInfos[curIndex].rightDescribe;//이전플레인의 텍스트

@@ -1,0 +1,32 @@
+Thanks for purchasing the Exo-planet pack !
+
+Here are few notes concerning the asset :
+- The shader is fully customizable (for the planet + the atmosphere) If your scene is a close up one or taken from far away, I strongly suggest you to adapt the settings to achieve the best visual result.
+
+- In addition to the original 3D model, there is a low poly and high poly sphere at your disposal.
+
+- For each planet you have access to :  
+				- 2 Different night cities 
+				- 3 different clouds	
+				- 20 different set of textures
+
+- The size of the planet is by default pretty big, but feel free to downsize them.
+
+- By default , all planets are rotating, feel free to desactivate the animator component.
+
+- By default, the max size of textures is set to 2048px, feel free to set them to 4096 if you need a close up.
+
+
+Changelogs 
+V2:
+- Planets now support point lights 
+- Clouds are occluding cities
+- Can modify the atmosphere to be circular or not
+- Added an ambiant value if you need your planet to match the sky color
+- Shaders are now console and mobile ready
+
+V3:
+- 4 new hi res Planets
+- Improved shader
+- Additional shader without any reflection (named "Custom/No Reflections" ) In case if you are using scene cubemaps.
+- Weight of texture files has been significantly reduced (Might take some time on import tho)
