@@ -178,9 +178,9 @@ public class GizmoManager : MonoBehaviour
         DisplayManoclass(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
         DisplayTriggerGesture(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
         DisplayContinuousGesture(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
-        DisplayHandState(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
+        //DisplayHandState(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
         DisplayDepth(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
-        DisplayFlags(ManomotionManager.Instance.Hand_infos[0].hand_info.warning);
+        //DisplayFlags(ManomotionManager.Instance.Hand_infos[0].hand_info.warning);
 
     }
 

@@ -16,7 +16,7 @@ public class Book : MonoBehaviour
     private Animator bookAnim;
     private Page page;
     [SerializeField] private FolderInfo folderInfo;
-    [SerializeField] private WorldInfo worldInfo;
+    //[SerializeField] private WorldInfo worldInfo;
     private bool isOpenable = true;     //페이지든 책이든 열기 가능한지
     private float bookAnimTime = 0;     //책 애니메이션 시간
     private float pageAnimTime = 0;     //페이지 애니메이션 시간
@@ -24,12 +24,12 @@ public class Book : MonoBehaviour
     //원래 isBookOpened 였는데 auto 속성하니까 이렇게 됨
     public bool IsBookOpened { get; private set; } = false;
     public FolderInfo FolderInfo { get => folderInfo; private set => folderInfo = value; }
-    public WorldInfo WorldInfo { get => worldInfo; private set => worldInfo = value; }
+    //public WorldInfo WorldInfo { get => worldInfo; private set => worldInfo = value; }
 
 
     #region Public Method : 외부에선 이 메서드에만 접근해야함
     //초기화
-    public void InitBook(FolderInfo info, WorldInfo worldInfo)
+    public void InitBook(FolderInfo info)
     {
         //필드 초기화
         bookAnim = GetComponent<Animator>();
@@ -37,12 +37,11 @@ public class Book : MonoBehaviour
         pageAnimTime = page.InitPage();
         page.OnOffPage(false);
         folderInfo = info;
-        this.worldInfo = worldInfo;
-        title.text = worldInfo.GetWorldName();
-        var colls = GetComponentsInChildren<ICollidable>();
-        foreach(ICollidable coll in colls)
+        title.text = info.folderName;
+        var objs = GetComponentsInChildren<InteractableObject>();
+        foreach(InteractableObject obj in objs)
         {
-            coll.InitCollData(this);
+            obj.ProcessInit(this);
         }
 
         //책 애니메이션 클립 길이 찾기
@@ -80,7 +79,6 @@ public class Book : MonoBehaviour
     public void NextPage() => PNPage(true);     //다음 페이지
     public void PrePage() => PNPage(false);     //이전 페이지
 
-    public void OpenPortal() => worldInfo.InToThePortalWorld(transform.position + new Vector3(0, 0, 1));
     #endregion
 
     #region Private Method : 외부에서 접근 불가능한 내부 사용 메서드들

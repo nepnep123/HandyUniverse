@@ -8,6 +8,7 @@ public class BookHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Vector3.Distance(curBook.transform.position, this.transform.position) > 3f)
         {
             curBook.CloseBook();
@@ -29,6 +30,7 @@ public class BookHandler : MonoBehaviour
             curBook.transform.parent = transform;
             curBook.GetComponent<BookController>().isPicked = true;
         }
+        */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +38,7 @@ public class BookHandler : MonoBehaviour
         var a = other.GetComponent<ICollidable>();
         if (a != null)
         {
-            curBook = a.book;
+            //curBook = a.book;
             a.ProcessCollision();
         }
     }
