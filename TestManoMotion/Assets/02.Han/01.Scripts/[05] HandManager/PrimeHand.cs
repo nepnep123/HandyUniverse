@@ -5,7 +5,6 @@ using UnityEngine;
 public class PrimeHand : MonoBehaviour
 {
     public Mode mode;
-    TestMode testMode;
     EntryMode entryMode;
 
     public GameObject curObj;
@@ -17,7 +16,6 @@ public class PrimeHand : MonoBehaviour
     private void Awake()
     {
         entryMode = new EntryMode(this);
-        testMode = new TestMode(this);
         mode = entryMode;
     }
 

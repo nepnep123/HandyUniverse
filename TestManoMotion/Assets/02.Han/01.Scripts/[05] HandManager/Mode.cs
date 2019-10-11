@@ -23,40 +23,6 @@ public class Mode
     public virtual void OnTriggeredClick() { }      //클릭
 }
 
-public class TestMode : Mode
-{
-    int a = 0;
-    int b = 0;
-    int c = 0;
-    int d = 0;
-    public TestMode(PrimeHand hand) : base(hand)
-    {
-        this.hand = hand;
-    }
-
-    public override void OnTriggeredRelease()
-    {
-        a++;
-        //TestManager.instance.testinas.text = "Release" + a;
-    }
-
-    public override void OnTriggeredGrab()
-    {
-        b++;
-        //TestManager.instance.testlin.text = "Grab" + b;
-    }
-    public override void OnTriggeredPick()
-    {
-        c++;
-        //TestManager.instance.testan.text = "Pick" + c;
-    }
-    public override void OnTriggeredDrop()
-    {
-        d++;
-        //TestManager.instance.testels.text = "Drop" + d;
-    }
-}
-
 public class EntryMode : Mode
 {
     public EntryMode(PrimeHand hand):base(hand)

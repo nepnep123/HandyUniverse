@@ -18,7 +18,9 @@ public class BookPageSetter : MonoBehaviour
 
     int curPlaneIndex = 0;
     World curOpenedWorld;
-    // Start is called before the first frame update
+    
+	//송영훈 포탈 추가 로직 코드
+
 
     public virtual void InitBookSetter(PageInfo_Scriptable[] infos)
     {
@@ -42,14 +44,15 @@ public class BookPageSetter : MonoBehaviour
     #region 외부 접근 가능 메서드
     public void OpenPortal()
     {
-        //영훈씨가 포탈을 instantiate하세요
+		Instantiate(pageInfos[curPlaneIndex].world, transform.position, Quaternion.identity);
         Debug.Log(pageInfos[curPlaneIndex].world.name);
-        //curOpenedWorld = pageInfos[curPlaneIndex].world;
+        
     }
     public void ClosePortal()
     {
 
     }
+
     #endregion
 
     #region 내부사용 메서드

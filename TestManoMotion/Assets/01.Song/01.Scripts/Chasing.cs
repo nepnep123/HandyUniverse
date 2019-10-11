@@ -43,7 +43,7 @@ public class Chasing : MonoBehaviour
 		}
 		
 		potal.SetActive(false);
-		TestManager.azone.SetActive(false);
-		TestManager.abook.gameObject.SetActive(false);
+		GameManager.instance.masterBook.gameObject.SetActive(false);
+		GameManager.instance.bookBottom.gameObject.SetActive(false);
 	}
 }

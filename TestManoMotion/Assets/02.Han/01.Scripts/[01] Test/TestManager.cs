@@ -24,12 +24,16 @@ public class TestManager : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		if (isInited == false)
+		if (Input.GetKeyDown(KeyCode.Z))
 		{
-			CreateBook();
-			isInited = true;
-			Destroy(this);
+			FindObjectOfType<PrimeHand>().mode.OnTriggeredRelease();
 		}
+		//if (isInited == false)
+		//{
+		//	CreateBook();
+		//	isInited = true;
+		//	Destroy(this);
+		//}
 	}
 
 	void CreateBook()
