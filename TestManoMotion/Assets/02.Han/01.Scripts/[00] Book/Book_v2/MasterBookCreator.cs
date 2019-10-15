@@ -13,10 +13,10 @@ public class MasterBookCreator : MonoBehaviour
 
     private void Start()
     {
-        마스터북만들기();
+        CreateMasterBook();
     }
 
-    private void 마스터북만들기()
+    private void CreateMasterBook()
     {
         Quaternion rot = Quaternion.AngleAxis(-30f, Vector3.right);
 
@@ -32,7 +32,7 @@ public class MasterBookCreator : MonoBehaviour
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
     }
 
-    void 북만들기()
+    void CreateBook()
     {
         int num = pageInfos.Length;
         for (int i = 0; i < num; i++)

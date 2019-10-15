@@ -27,7 +27,7 @@ public class PrimeHand : MonoBehaviour
     {
         if(curObj != null)
         {
-            TestManager_v2.instance.testica.text = curObj.name;
+            //TestManager_v2.instance.testica.text = curObj.name;
             float dist = Vector3.Distance(this.transform.position, curObj.transform.position);
             if (dist >= 4f) curObj = null;
         }
