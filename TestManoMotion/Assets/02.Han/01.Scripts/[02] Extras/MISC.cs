@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// void : 아무것도 반환하지 않아.
+// delegate 정의 순서 1번 째 : 
 public delegate void VoidBoolNotier(bool booleana);
 public delegate void VoidNotier();
 public enum LR { Left, Right}
