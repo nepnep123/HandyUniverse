@@ -8,6 +8,9 @@ TagManager:
   - particle
   - BOOK01
   - POTAL01_EVENT
+  - Enemy
+  - Coin
+  - Fire
   layers:
   - Default
   - TransparentFX
