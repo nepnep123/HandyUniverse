@@ -5,12 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-
-    path: Assets/03.Kang/01.Scenes/KangMain.unity
-    guid: 70917ad6ac5b4464385802dd0782e4fb
-
-    path: Assets/02.Han/00.Scenes/HanMain.unity
-    guid: 9adaad1c0c7254d4c81cd564acc16126
-
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
