@@ -11,4 +11,5 @@ public abstract class InteractableObject : MonoBehaviour
     public virtual void ProcessDrop() { }
     public virtual void ProcessGrab() { }
     public virtual void ProcessRelease() { }
+	public virtual void ProcessClick() { }
 }

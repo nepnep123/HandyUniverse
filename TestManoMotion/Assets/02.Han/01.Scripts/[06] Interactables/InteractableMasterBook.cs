@@ -13,9 +13,4 @@ public class InteractableMasterBook : InteractableObject
             this.book = book as Book_v2;
         isInit = true;
     }
-
-    public override void ProcessRelease()
-    {
-        book.OpenPortal();
-    }
 }
