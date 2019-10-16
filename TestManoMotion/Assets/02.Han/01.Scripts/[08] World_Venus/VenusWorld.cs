@@ -5,8 +5,14 @@ using UnityEngine;
 public class VenusWorld : World
 {
     public Color venusFog = new Color(0.854f, 0.694f, 0.004f);
+    VenusSfx sfxs;
     // Start is called before the first frame update
     void Start()
+    {
+        SetVenusFog();
+    }
+
+    private void SetVenusFog()
     {
         RenderSettings.fog = true;
         RenderSettings.fogColor = venusFog;
