@@ -5,11 +5,24 @@ using UnityEngine;
 public class VenusWorld : World
 {
     public Color venusFog = new Color(0.854f, 0.694f, 0.004f);
-    VenusSfx sfxs;
+    VenusSfx venusSounds;
     // Start is called before the first frame update
-    void Start()
+
+    bool isInit = false;
+
+    private void Update()
     {
+        if (isInit == true) return;
+        InitWorld();
+        isInit = true;
+    }
+
+    public void InitWorld()
+    {
+        BackGroundOff();
         SetVenusFog();
+        venusSounds = GetComponentInChildren<VenusSfx>();
+        venusSounds.InitVenusSounds();
     }
 
     private void SetVenusFog()
@@ -19,14 +32,6 @@ public class VenusWorld : World
         RenderSettings.fogDensity = 0.4f;
     }
 
-    bool isInit = false;
-
-    private void Update()
-    {
-        if (isInit == true) return;
-        BackGroundOff();
-        isInit = true;
-    }
     void BackGroundOff()
     {
         var manov = FindObjectOfType<ManoVisualization>();

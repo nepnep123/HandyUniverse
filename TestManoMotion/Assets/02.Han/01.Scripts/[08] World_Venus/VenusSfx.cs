@@ -5,7 +5,7 @@ using UnityEngine;
 public class VenusSfx : MonoBehaviour
 {
     AudioSource audi;
-
+    public VenusSound_Scriptable sfxPack;
     private void OnEnable()
     {
         InitVenusSounds();
