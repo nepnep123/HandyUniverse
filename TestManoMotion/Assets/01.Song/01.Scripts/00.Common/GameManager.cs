@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
 
 	public Book_v2 masterBook;
-	public GameObject bookBottom;
 
 	public PrimeHand hand;
 	public ManoVisualization mano;
