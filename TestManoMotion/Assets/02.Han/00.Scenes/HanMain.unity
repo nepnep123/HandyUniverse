@@ -1008,15 +1008,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4670513389593398, guid: 3f8f21f2706bd4ef79923287bd11cd21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.929934
+      value: -0.198
       objectReference: {fileID: 0}
     - target: {fileID: 4670513389593398, guid: 3f8f21f2706bd4ef79923287bd11cd21, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9705324
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 4670513389593398, guid: 3f8f21f2706bd4ef79923287bd11cd21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.5718
+      value: -0.204
       objectReference: {fileID: 0}
     - target: {fileID: 4670513389593398, guid: 3f8f21f2706bd4ef79923287bd11cd21, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2196,7 +2196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766520696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.65, y: 0, z: -20.06}
+  m_LocalPosition: {x: -14.65, y: -1.09, z: -20.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1244786344}
@@ -3560,11 +3560,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda91e8fe63195944bc5a08bb72322a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testia: {fileID: 0}
-  testiby: {fileID: 0}
-  testica: {fileID: 0}
-  testiden: {fileID: 0}
+  testia: {fileID: 1975581244}
+  testiby: {fileID: 1183562218}
+  testica: {fileID: 1984683847}
+  testiden: {fileID: 48044345}
   venus: {fileID: 1551646403}
+--- !u!114 &1519365782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519365779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c401eaa389486469f6521a4781690d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camPos: {fileID: 0}
+  masterBook: {fileID: 0}
+  hand: {fileID: 0}
+  mano: {fileID: 0}
+  fadeCanvas: {fileID: 0}
 --- !u!114 &1551646403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3622,6 +3639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e87741c0ac63cb409384bf64270bb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxPack: {fileID: 0}
 --- !u!1 &1667743176
 GameObject:
   m_ObjectHideFlags: 0

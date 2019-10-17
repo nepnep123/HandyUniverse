@@ -125,8 +125,7 @@ public class BookPageSetter : MonoBehaviour
 		{
             text.text = pageInfos[book.curPlaneIndex].rightDescribe;
 		}
-        //주석처리됨
-		//pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(true);
+		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(true);
 	}
 
     void SetNextingPage(int curIndex)
