@@ -36,19 +36,23 @@ public class EntryMode : Mode
 
     public override void OnTriggeredGrab()
     {
-        hand.curObj.ProcessGrab();
-    }
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
+	}
 	public override void OnTriggeredPick()
 	{
-        hand.curObj.ProcessPick();
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
 	}
 	public override void OnTriggeredDrop()
 	{
-        hand.curObj.ProcessDrop();
+		if (hand.curObj != null)
+			hand.curObj.ProcessDrop();
 	}
 	public override void OnTriggeredRelease()
 	{
-        hand.curObj.ProcessRelease();
+		if (hand.curObj != null)
+			hand.curObj.ProcessRelease();
 	}
 	public override void OnTriggeredClick()
 	{
