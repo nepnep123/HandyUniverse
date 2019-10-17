@@ -134,16 +134,12 @@ public class BookPageSetter : MonoBehaviour
 		centText.text = pageInfos[curIndex-1].rightDescribe;//현재플레인의 텍스트
         centRaw.texture = pageInfos[curIndex].leftTexture;//다음플레인의 텍스쳐
         text.text = pageInfos[curIndex].rightDescribe;
-        Debug.Log("이전페이지의 centText 설정 됨 : " + centText.name);
-        Debug.Log("다음페이지의 texture 설정 됨 : " + centRaw.texture);
     }
     void SetPreingPage(int curIndex)
     {
 		centText.text = pageInfos[curIndex].rightDescribe;//이전플레인의 텍스트
         centRaw.texture = pageInfos[curIndex+1].leftTexture;//다음플레인의 텍스쳐
         raw.texture = pageInfos[curIndex].leftTexture;
-        Debug.Log("이전페이지의 centText 설정 됨 : " + centText.name);
-        Debug.Log("다음페이지의 texture 설정 됨 : " + centRaw.texture);
     }
 	#endregion
 
