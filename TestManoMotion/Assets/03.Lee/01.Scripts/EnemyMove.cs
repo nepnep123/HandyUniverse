@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    public GameObject player;
+    public ParticleSystem enemyExplosionParticle;
+    private GameObject player;
 
     private float speed = 1f;
 
@@ -13,8 +14,6 @@ public class EnemyMove : MonoBehaviour
     public bool playerPowerUp;
 
     private WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
-
-    //public Transform exp;
 
     private void Awake()
     {
@@ -35,7 +34,7 @@ public class EnemyMove : MonoBehaviour
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
 
-        if(playerPowerUp)
+        if (playerPowerUp)
         {
             Vector3 reverseDir = player.transform.position - transform.position;
             transform.position += -reverseDir.normalized * Time.deltaTime * speed;
@@ -53,7 +52,6 @@ public class EnemyMove : MonoBehaviour
             }
         }
     }
-
 
     IEnumerator GrowingScale1()
     {
@@ -86,5 +84,17 @@ public class EnemyMove : MonoBehaviour
         yield return waitForSeconds;
 
         growingScaleIsDone = true;
+    }
+
+    // 플레이어의 파티클이 닿았을 때 : 제거되고 자기의 색깔과 동일한 파티클을 뿜는다
+    private void OnParticleCollision(GameObject other)
+    {
+        Destroy(gameObject);
+        var effect = Instantiate(enemyExplosionParticle, transform.position, Quaternion.identity);
+
+        ParticleSystem.MainModule particleSetting = effect.GetComponent<ParticleSystem>().main;
+        particleSetting.startColor = transform.GetComponent<MeshRenderer>().material.color;
+
+        Destroy(effect, 1.2f);
     }
 }

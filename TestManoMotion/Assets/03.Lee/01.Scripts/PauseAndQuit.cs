@@ -2,7 +2,7 @@
 
 public class PauseAndQuit : MonoBehaviour
 {
-    public GameObject panelPause;
+    private GameObject panelPause;
 
     public static bool gameIsPaused;
 

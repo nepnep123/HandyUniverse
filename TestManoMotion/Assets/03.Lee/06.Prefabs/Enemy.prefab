@@ -106,7 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afec8622ee97aa40bc1e400b5698a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  enemyExplosionParticle: {fileID: 2542319696599747250, guid: 14cdb5530cd351642a43c45b07cb3a24,
+    type: 3}
+  playerPowerUp: 0
 --- !u!54 &-4178681203799478494
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance = null;
 
-    public Text textScore;
-    private int coinCount = 0;
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(0.005f);
+    private Text textScore;
+
+    private int preCoin = 0;
+    private int coin = 0;
 
     private void Awake()
     {
@@ -20,20 +24,22 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         textScore = GameObject.Find("TextScore").GetComponent<Text>();
-    }
-
-    private void Update()
-    {
-        SetScore();
-    }
-
-    private void SetScore()
-    {
-        textScore.text = coinCount.ToString("3000");
+        textScore.text = "3000";
     }
 
     public void AddScore()
     {
-        coinCount++;
+        coin += 100;
+        StartCoroutine(CoinUp(coin));
+       
+    }
+    IEnumerator CoinUp(int coin)
+    {
+        for (int i = preCoin; i <= coin; i++)
+        {
+            yield return waitForSeconds;
+            textScore.text = i.ToString();
+        }
+        preCoin = coin;
     }
 }
