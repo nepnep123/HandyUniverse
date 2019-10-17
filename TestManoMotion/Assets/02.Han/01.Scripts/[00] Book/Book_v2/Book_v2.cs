@@ -83,7 +83,7 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     {
         if (isOpenable == false) return;
         if (IsBookOpened == false) return;
-        if (isPlanetGrowing == false) return;
+        if (isPlanetGrowing != false) return;
         if (booleana)
         {
             if (curPlaneIndex == maxBookPlaneIndex) return;

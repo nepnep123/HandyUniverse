@@ -1013,10 +1013,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 735851788180523378, guid: 5258f7443d9ec9243887432396f877d6,
         type: 3}
+      propertyPath: pageInfos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 735851788180523378, guid: 5258f7443d9ec9243887432396f877d6,
+        type: 3}
       propertyPath: masterBookPrefab
       value: 
       objectReference: {fileID: 9012839826028636122, guid: 22d8ab0010a9424499a4e4643e320158,
         type: 3}
+    - target: {fileID: 735851788180523378, guid: 5258f7443d9ec9243887432396f877d6,
+        type: 3}
+      propertyPath: pageInfos.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c8facd8ff00d40a4d8db465ef5c1f93d,
+        type: 2}
+    - target: {fileID: 735851788180523378, guid: 5258f7443d9ec9243887432396f877d6,
+        type: 3}
+      propertyPath: pageInfos.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c4d3a39d51b68da46815eaedda75fd0f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5258f7443d9ec9243887432396f877d6, type: 3}
 --- !u!1 &440271550

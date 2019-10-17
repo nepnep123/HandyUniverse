@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 344348fd543210b43922e5c2151f86c8, type: 3}
-  m_Name: SecondPage
+  m_Name: FirstPage
   m_EditorClassIdentifier: 
-  world: {fileID: 7276257918252059745, guid: 9e4f8401f5145274998cd206f3d0f542, type: 3}
-  pagePlanet: {fileID: 7778943766906740001, guid: 93a99c5bf1682a64699de2c7c3c2dfed,
+  world: {fileID: 4658456381699977777, guid: 15e1aab035118574c856ab99adabc8a1, type: 3}
+  pagePlanet: {fileID: 8749345069087339628, guid: b83ace2aa8101204bbff9fe8e2d8ebe4,
     type: 3}
-  leftTexture: {fileID: 2800000, guid: b9759b823edaa94499a7535c11bb5556, type: 3}
-  rightDescribe: "\uB450\uBC88\uC9F8 \uD398\uC774\uC9C0$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  leftTexture: {fileID: 2800000, guid: 1bce927fb7fde294a8040c4184d2e7b0, type: 3}
+  rightDescribe: "\uCCAB\uBC88\uC9F8 \uD398\uC774\uC9C0@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
