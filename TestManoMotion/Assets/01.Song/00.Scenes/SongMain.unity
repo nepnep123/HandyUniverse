@@ -3770,7 +3770,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camPos: {fileID: 0}
   masterBook: {fileID: 0}
-  bookBottom: {fileID: 0}
   hand: {fileID: 0}
   mano: {fileID: 0}
   fadeCanvas: {fileID: 0}

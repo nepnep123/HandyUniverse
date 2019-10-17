@@ -27,6 +27,34 @@ public class InteractablePlanet : InteractableObject
 		StartCoroutine(GrowPlanet());
 	}
 
+	public override void ProcessPick()
+	{
+		transform.SetParent(GameManager.instance.hand.transform);
+	}
+	public override void ProcessGrab()
+	{
+		transform.SetParent(GameManager.instance.hand.transform);
+	}
+	public override void ProcessDrop()
+	{
+		transform.SetParent(null);
+	}
+	public override void ProcessRelease()
+	{
+		transform.SetParent(null);
+	}
+
+	//충돌시 아웃라인 처리 
+	public override void ProcessCollisionEnter()
+	{
+		GetComponent<Outline>().OutlineWidth = 10;
+	}
+
+	private void OnDisable()
+	{
+		GetComponent<Outline>().OutlineWidth = 0;
+	}
+
 	IEnumerator GrowPlanet()
 	{
 		Vector3 targetPos = GameManager.instance.camPos.position + new Vector3(0.1f, -0.15f, 0.005f);

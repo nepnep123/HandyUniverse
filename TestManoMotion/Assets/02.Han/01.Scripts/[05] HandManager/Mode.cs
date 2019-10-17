@@ -36,19 +36,23 @@ public class EntryMode : Mode
 
     public override void OnTriggeredGrab()
     {
-		hand.curObj.transform.SetParent(hand.transform);
-    }
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
+	}
 	public override void OnTriggeredPick()
 	{
-		hand.curObj.transform.SetParent(hand.transform);
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
 	}
 	public override void OnTriggeredDrop()
 	{
-		hand.curObj.transform.SetParent(null);
+		if (hand.curObj != null)
+			hand.curObj.ProcessDrop();
 	}
 	public override void OnTriggeredRelease()
 	{
-		hand.curObj.transform.SetParent(null);
+		if (hand.curObj != null)
+			hand.curObj.ProcessRelease();
 	}
 	public override void OnTriggeredClick()
 	{
