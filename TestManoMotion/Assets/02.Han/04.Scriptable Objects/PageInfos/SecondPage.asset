@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e310840177440ba428c8095233f35968, type: 3}
   m_Name: SecondPage
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   world: {fileID: 4658456381699977777, guid: 15e1aab035118574c856ab99adabc8a1, type: 3}
   pagePlanet: {fileID: 8749345069087339628, guid: b83ace2aa8101204bbff9fe8e2d8ebe4,
     type: 3}

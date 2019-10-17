@@ -13,12 +13,12 @@ public class InteractablePlanet : InteractableObject
 			this.book = book as Book_v2;
 		isInit = true;
 	}
-
+    /*
 	//TEST
 	private void OnEnable()
 	{
 		StartCoroutine(GrowPlanet());
-	}
+	}*/
 
 	//클릭했을때 페이지 행성으로 이동. 
 	public override void ProcessClick()
