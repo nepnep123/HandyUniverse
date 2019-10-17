@@ -39,7 +39,8 @@ public class InteractablePlanet : InteractableObject
     }
     public override void ProcessClick()
 	{
-		GameManager.instance.hand.curObj.transform.SetParent(null);
+        //GameManager.instance.hand.curObj.transform.SetParent(null);
+        transform.SetParent(null);
         if(book.isPlanetGrowing == false)
         {
             book.isPlanetGrowing = true;

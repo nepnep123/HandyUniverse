@@ -83,6 +83,7 @@ public class BookPageSetter : MonoBehaviour
 	#region 외부 접근 가능 메서드
 	public void OpenPortal()
 	{
+        Debug.Log("Portal Open!");
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
 		//백그라운드 off
 		GameManager.instance.BackGroundOff(false);

@@ -25,4 +25,11 @@ public class TestManager_v2 : MonoBehaviour
         if (isInit == true) return;
         venus.gameObject.SetActive(true);
     }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            GameManager.instance.masterBook.OpenPortal();
+        }
+    }
 }

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344348fd543210b43922e5c2151f86c8, type: 3}
+  m_Script: {fileID: 11500000, guid: e310840177440ba428c8095233f35968, type: 3}
   m_Name: SecondPage
   m_EditorClassIdentifier: 
-  world: {fileID: 7276257918252059745, guid: 9e4f8401f5145274998cd206f3d0f542, type: 3}
-  pagePlanet: {fileID: 7778943766906740001, guid: 93a99c5bf1682a64699de2c7c3c2dfed,
+  world: {fileID: 7276257918252059745, guid: 77702eb43cf048d41903c76be3a8b541, type: 3}
+  pagePlanet: {fileID: 7778943766906740001, guid: 13632e7e0ec1b9546a094ac8f0bf4cc2,
     type: 3}
   leftTexture: {fileID: 2800000, guid: b9759b823edaa94499a7535c11bb5556, type: 3}
-  rightDescribe: "\uB450\uBC88\uC9F8 \uD398\uC774\uC9C0$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  rightDescribe: "\uC138\uC77C\uB7EC \uBE44\uB108\uC2A4! \uC0AC\uB791\uC758 \uD798\uC73C\uB85C
+    \uB110\n\uC6A9\uC11C\uD558\uACA0\uB2F9!"

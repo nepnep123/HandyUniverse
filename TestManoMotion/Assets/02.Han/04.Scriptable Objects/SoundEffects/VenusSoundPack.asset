@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66dc8c6886b1054b903cc26b27e0ac0, type: 3}
+  m_Name: VenusSoundPack
+  m_EditorClassIdentifier: 
+  venusWind: {fileID: 8300000, guid: bac03892d8476fb4aa1c28d5371f3377, type: 3}
+  venusFiring: {fileID: 8300000, guid: b30d47887a5ff1e4cb2f91cac169018f, type: 3}

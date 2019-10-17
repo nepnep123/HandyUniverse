@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7639925149642079973}
   - component: {fileID: 7774380771842842684}
   - component: {fileID: 1891007325342085105}
-  - component: {fileID: 6116539919247056698}
+  - component: {fileID: 4871149236508520081}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInit: 0
---- !u!114 &6116539919247056698
+--- !u!114 &4871149236508520081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7773924330212193523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: f73b8c913a9fb6f47bea1b5347c6eebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0

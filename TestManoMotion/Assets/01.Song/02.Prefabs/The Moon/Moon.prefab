@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8684314102002628924}
   - component: {fileID: 6019885306885528729}
   - component: {fileID: 5234432414653466344}
-  - component: {fileID: 5457340794958448868}
+  - component: {fileID: 5266981743520425757}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Untagged
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInit: 0
---- !u!114 &5457340794958448868
+--- !u!114 &5266981743520425757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8746812918773497468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: f73b8c913a9fb6f47bea1b5347c6eebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
