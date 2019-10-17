@@ -56,7 +56,8 @@ public class EntryMode : Mode
 	}
 	public override void OnTriggeredClick()
 	{
-		hand.curObj.ProcessClick();
+        if (hand.curObj != null)
+            hand.curObj.ProcessClick();
 	}
 }
 

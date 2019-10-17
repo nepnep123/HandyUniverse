@@ -20,28 +20,31 @@ public class InteractablePlanet : InteractableObject
 		StartCoroutine(GrowPlanet());
 	}*/
 
-	//클릭했을때 페이지 행성으로 이동. 
-	public override void ProcessClick()
+    //클릭했을때 페이지 행성으로 이동. 
+    public override void ProcessPick()
+    {
+        transform.SetParent(GameManager.instance.hand.transform);
+    }
+    public override void ProcessGrab()
+    {
+        transform.SetParent(GameManager.instance.hand.transform);
+    }
+    public override void ProcessRelease()
+    {
+        transform.SetParent(null);
+    }
+    public override void ProcessDrop()
+    {
+        transform.SetParent(null);
+    }
+    public override void ProcessClick()
 	{
 		GameManager.instance.hand.curObj.transform.SetParent(null);
-		StartCoroutine(GrowPlanet());
-	}
-
-	public override void ProcessPick()
-	{
-		transform.SetParent(GameManager.instance.hand.transform);
-	}
-	public override void ProcessGrab()
-	{
-		transform.SetParent(GameManager.instance.hand.transform);
-	}
-	public override void ProcessDrop()
-	{
-		transform.SetParent(null);
-	}
-	public override void ProcessRelease()
-	{
-		transform.SetParent(null);
+        if(book.isPlanetGrowing == false)
+        {
+            book.isPlanetGrowing = true;
+            StartCoroutine(GrowPlanet());
+        }
 	}
 
 	//충돌시 아웃라인 처리 
@@ -71,6 +74,7 @@ public class InteractablePlanet : InteractableObject
 		GameManager.instance.fadeCanvas.FadeOut();
 
 		yield return new WaitForSeconds(3.0f);
+        book.isPlanetGrowing = false;
 		book.OpenPortal();
 	}
 }
