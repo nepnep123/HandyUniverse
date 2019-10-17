@@ -23,6 +23,7 @@ public class Mode
 
 public class EntryMode : Mode
 {
+	
     public EntryMode(PrimeHand hand):base(hand)
     {
         this.hand = hand;
@@ -33,15 +34,31 @@ public class EntryMode : Mode
         base.ModeChange(mode);
     }
 
-    public override void OnTriggeredRelease()
-    {
-        hand.curObj.ProcessRelease();
-    }
-
     public override void OnTriggeredGrab()
     {
-        Debug.Log("EntryMode : Grab!@!");
-    }
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
+	}
+	public override void OnTriggeredPick()
+	{
+		if (hand.curObj != null)
+			hand.curObj.ProcessPick();
+	}
+	public override void OnTriggeredDrop()
+	{
+		if (hand.curObj != null)
+			hand.curObj.ProcessDrop();
+	}
+	public override void OnTriggeredRelease()
+	{
+		if (hand.curObj != null)
+			hand.curObj.ProcessRelease();
+	}
+	public override void OnTriggeredClick()
+	{
+        if (hand.curObj != null)
+            hand.curObj.ProcessClick();
+	}
 }
 
 // 예시 2

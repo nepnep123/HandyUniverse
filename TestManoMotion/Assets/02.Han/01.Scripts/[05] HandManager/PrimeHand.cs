@@ -72,22 +72,31 @@ public class PrimeHand : MonoBehaviour
                         preTri = ManoGestureTrigger.DROP;
                     }
                 }
-                break;
+				if (tri == ManoGestureTrigger.CLICK)
+				{ 
+					if (preTri != ManoGestureTrigger.CLICK)
+					{
+						mode.OnTriggeredClick();
+						preTri = ManoGestureTrigger.CLICK;
+					}
+				}
+				break;
+
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var col = other.GetComponent<ICollidable>();
-        var inter = other.GetComponent<InteractableObject>();
+		var inter = other.GetComponent<InteractableObject>();
         if(inter != null)
         {
             curObj = inter;
             curObj.ProcessCollisionEnter();
         }
-    }
+	}
 
-    private void OnTriggerExit(Collider other)
+
+	private void OnTriggerExit(Collider other)
     {
         if(curObj!=null)
         {

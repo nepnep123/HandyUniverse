@@ -21,6 +21,7 @@ public class TestManager_v2 : MonoBehaviour
     bool isInit = false;
     private void LateUpdate()
     {
+        TestManager_v2.instance.testia.text = GameManager.instance.hand.curObj.name;
         if (isInit == true) return;
         venus.gameObject.SetActive(true);
     }

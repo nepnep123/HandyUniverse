@@ -5,13 +5,11 @@ using UnityEngine;
 public class BookController : MonoBehaviour
 {
     Book book;
-    BookHandler bookhand;
     public bool isPicked = false;
     // Start is called before the first frame update
     void Awake()
     {
         book = GetComponent<Book>();
-        bookhand = FindObjectOfType<BookHandler>();
     }
 
     // Update is called once per frame

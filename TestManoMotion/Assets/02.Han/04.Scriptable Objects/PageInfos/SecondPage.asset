@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344348fd543210b43922e5c2151f86c8, type: 3}
+  m_Name: SecondPage
+  m_EditorClassIdentifier: 
+  world: {fileID: 7276257918252059745, guid: 9e4f8401f5145274998cd206f3d0f542, type: 3}
+  pagePlanet: {fileID: 7778943766906740001, guid: 93a99c5bf1682a64699de2c7c3c2dfed,
+    type: 3}
+  leftTexture: {fileID: 2800000, guid: b9759b823edaa94499a7535c11bb5556, type: 3}
+  rightDescribe: "\uB450\uBC88\uC9F8 \uD398\uC774\uC9C0$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"

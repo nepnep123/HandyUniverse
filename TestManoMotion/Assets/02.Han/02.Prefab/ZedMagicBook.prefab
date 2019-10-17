@@ -726,6 +726,7 @@ Transform:
   - {fileID: 2376781524880736698}
   - {fileID: 2377326312219449748}
   - {fileID: 2376989824865014128}
+  - {fileID: 3480627473247786104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -33.069, y: 0, z: 0}
@@ -796,6 +797,8 @@ MonoBehaviour:
   centRaw: {fileID: 8936378037799087068}
   pageInfos: []
   maxBookPlaneIndex: 0
+  pagePlanets_pre: []
+  world_pre: []
 --- !u!114 &2250449392719958701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffde326e295846419234a19695f3754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInit: 0
 --- !u!1 &2371312973924512278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1026,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1451,3 +1455,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8937347646570089945}
   m_CullTransparentMesh: 0
+--- !u!1 &8958158126495083256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3480627473247786104}
+  m_Layer: 0
+  m_Name: PlanetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3480627473247786104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958158126495083256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.132, y: 0.1158, z: 0.1491}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2377101784601189766}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179492133088317032}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 37.83}
-  m_LocalScale: {x: 2.6187184, y: 10, z: 7.6}
+  m_LocalPosition: {x: 0, y: 10, z: 22.5}
+  m_LocalScale: {x: 2.6187184, y: 10, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1179492133643514226}
   m_RootOrder: 1
@@ -104,8 +104,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179492133269146308}
   m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
-  m_LocalPosition: {x: 75, y: 10, z: 37.83}
-  m_LocalScale: {x: 2.6187184, y: 10, z: 7.5892572}
+  m_LocalPosition: {x: 45, y: 10, z: 22.5}
+  m_LocalScale: {x: 2.6187184, y: 10, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1179492133643514226}
   m_RootOrder: 2
@@ -182,8 +182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179492133290121725}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 37.5, y: 10, z: 75}
-  m_LocalScale: {x: 2.6187174, y: 10, z: 7.6}
+  m_LocalPosition: {x: 22.5, y: 10, z: 45}
+  m_LocalScale: {x: 2.6187174, y: 10, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1179492133643514226}
   m_RootOrder: 3
@@ -296,8 +296,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179492133709521251}
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 37.5, y: 23, z: 37.5}
-  m_LocalScale: {x: 7.5, y: 1, z: 7.5}
+  m_LocalPosition: {x: 22.5, y: 23, z: 22.5}
+  m_LocalScale: {x: 4.5, y: 1, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1179492133643514226}
   m_RootOrder: 4
@@ -374,8 +374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179492134250773590}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 37.5, y: 10, z: 0}
-  m_LocalScale: {x: 2.6187174, y: 10, z: 7.6}
+  m_LocalPosition: {x: 22.5, y: 10, z: 0}
+  m_LocalScale: {x: 2.6187174, y: 10, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1179492133643514226}
   m_RootOrder: 0
@@ -456,7 +456,6 @@ Transform:
   m_Children:
   - {fileID: 1179492133643514226}
   - {fileID: 7969360323116316854}
-  - {fileID: 399048069442224352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -473,36 +472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   venusFog: {r: 0.854, g: 0.694, b: 0.004, a: 1}
---- !u!1 &6245557852527486440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 399048069442224352}
-  m_Layer: 0
-  m_Name: StartingPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &399048069442224352
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6245557852527486440}
-  m_LocalRotation: {x: 0.034528904, y: 0.62893957, z: -0.029329903, w: 0.77613306}
-  m_LocalPosition: {x: 25.94, y: 0.632, z: 30.674}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8738832596674501520}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1179492135011990228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +539,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9001452009611170142, guid: 593e9c67340ac5d48ae27e1b5b83d76f,
+        type: 3}
+      propertyPath: m_EnableTreeColliders
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9065454695526487228, guid: 593e9c67340ac5d48ae27e1b5b83d76f,
         type: 3}
       propertyPath: m_DetailObjectDistance
@@ -610,11 +584,6 @@ PrefabInstance:
       propertyPath: m_BakeLightProbesForTrees
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9001452009611170142, guid: 593e9c67340ac5d48ae27e1b5b83d76f,
-        type: 3}
-      propertyPath: m_EnableTreeColliders
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 593e9c67340ac5d48ae27e1b5b83d76f, type: 3}
 --- !u!4 &7969360323116316854 stripped
@@ -638,7 +607,7 @@ PrefabInstance:
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.2
+      value: 20.8
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
@@ -648,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.2
+      value: 16.6
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
@@ -693,17 +662,17 @@ PrefabInstance:
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.25
+      value: 0.5265861
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.25
+      value: 1.2625
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.25
+      value: 0.47950032
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333282142904, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
@@ -728,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 7523287333282142904, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 2000
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333282142904, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}

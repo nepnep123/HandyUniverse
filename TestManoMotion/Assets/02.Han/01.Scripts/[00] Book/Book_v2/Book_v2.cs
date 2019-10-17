@@ -18,7 +18,8 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     public int maxBookPlaneIndex = 0;
 
 
-    //델리게이트 이벤트, 책을 넘길때 발생
+	//델리게이트 이벤트, 책을 넘길때 발생
+	public event VoidNotier OnBookOpened;
     public event VoidBoolNotier OnPageFlipStart;
     public event VoidBoolNotier OnPageFlipedEnd;
     public event VoidNotier OnRequestPortal;
@@ -30,6 +31,7 @@ public class Book_v2 : MonoBehaviour//InteractableBook
 
     //원래 isBookOpened 였는데 auto 속성하니까 이렇게 됨
     public bool IsBookOpened { get; private set; } = false;
+    public bool isPlanetGrowing = false;
     // Start is called before the first frame update
 
     #region 외부접근 가능 메서드
@@ -81,6 +83,7 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     {
         if (isOpenable == false) return;
         if (IsBookOpened == false) return;
+        if (isPlanetGrowing != false) return;
         if (booleana)
         {
             if (curPlaneIndex == maxBookPlaneIndex) return;
@@ -106,7 +109,9 @@ public class Book_v2 : MonoBehaviour//InteractableBook
             curTime += Time.deltaTime;
             yield return null;
         }
-        isOpenable = true;
+		//BookPageSetter가 구독하고 있다. 
+		OnBookOpened?.Invoke();
+		isOpenable = true;
         IsBookOpened = booleana;
     }
     IEnumerator CheckPageTime(bool booleana)

@@ -5,29 +5,52 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
+	public Transform camPos;
 
 
 	public Book_v2 masterBook;
-	public GameObject bookBottom;
 
-
+	public PrimeHand hand;
+	public ManoVisualization mano;
+	public FadeChange fadeCanvas;
 	
 	private void Awake()
 	{
+		hand = FindObjectOfType<PrimeHand>();
+		mano = FindObjectOfType<ManoVisualization>();
+		fadeCanvas = FindObjectOfType<FadeChange>();
+
 		if (instance == null) instance = GetComponent<GameManager>();
 
 		else Destroy(this);
+
+		camPos = Camera.main.transform;
+	}
+	
+	public void BackGroundOn(bool temp)
+	{
+		GameManager.instance.mano.Show_background_layer = temp;
+		GameManager.instance.mano._layer_background.gameObject.SetActive(temp);
+		GameManager.instance.mano._layer_background.enabled = temp;
 	}
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
+	//World 나가는 메소드
+	public IEnumerator ExitWorld()
+	{
+		fadeCanvas.FadeOut();
+		masterBook.gameObject.SetActive(true);
+		BackGroundOn(true);
+		yield return new WaitForSeconds(3.0f);
+		fadeCanvas.FadeIn();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	//World 들어가는 메소드
+	public IEnumerator EnterWorld()
+	{
+		fadeCanvas.FadeOut();
+		masterBook.gameObject.SetActive(false);
+		BackGroundOn(false);
+		yield return new WaitForSeconds(3.0f);
+		fadeCanvas.FadeIn();
+	}
 }
