@@ -13,15 +13,15 @@ public class InteractablePlanet : InteractableObject
 			this.book = book as Book_v2;
 		isInit = true;
 	}
-    /*
+
 	//TEST
 	private void OnEnable()
 	{
 		StartCoroutine(GrowPlanet());
-	}*/
+	}
 
-    //클릭했을때 페이지 행성으로 이동. 
-    public override void ProcessPick()
+	//클릭했을때 페이지 행성으로 이동. 
+	public override void ProcessPick()
     {
         transform.SetParent(GameManager.instance.hand.transform);
     }
@@ -72,9 +72,6 @@ public class InteractablePlanet : InteractableObject
 			transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 0.2f);
 			yield return null;
 		}
-		GameManager.instance.fadeCanvas.FadeOut();
-
-		yield return new WaitForSeconds(3.0f);
         book.isPlanetGrowing = false;
 		book.OpenPortal();
 	}

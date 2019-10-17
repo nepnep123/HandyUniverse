@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 public class MoonUICtrl : MonoBehaviour
 {
-
 	private void Start()
 	{
-		StartCoroutine(UIManager.instance.ShowInfoUI("씨발러마"));
+		//GameManager.instance.masterBook.OnRequestPortal
 	}
-
-
 }

@@ -2,5 +2,5 @@
 
 public abstract class PlayerToSkill : MonoBehaviour
 {
-    public virtual void OnCollision() { }
+    public virtual void ProcessCollision() { }
 }

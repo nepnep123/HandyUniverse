@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SkillCoin : PlayerToSkill
 {
-    public override void OnCollision()
+    public override void ProcessCollision()
     {
+        Debug.Log("SkillCoin");
         ScoreManager.instance.AddScore();
         Destroy(gameObject);
     }
