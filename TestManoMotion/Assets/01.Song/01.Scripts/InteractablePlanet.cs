@@ -15,10 +15,11 @@ public class InteractablePlanet : InteractableObject
 	}
 
 	//TEST
+    /*
 	private void OnEnable()
 	{
 		StartCoroutine(GrowPlanet());
-	}
+	}*/
 
 	//클릭했을때 페이지 행성으로 이동. 
 	public override void ProcessPick()
@@ -43,6 +44,7 @@ public class InteractablePlanet : InteractableObject
         transform.SetParent(null);
         if(book.isPlanetGrowing == false)
         {
+            Debug.Log("프로세스 클릭, 플래닛 그로우 시작");
             book.isPlanetGrowing = true;
             StartCoroutine(GrowPlanet());
         }
@@ -66,6 +68,7 @@ public class InteractablePlanet : InteractableObject
 
 		while (dis >= 0.2f)
 		{
+            Debug.Log("행성 성장중..");
 			dis = Vector3.Distance(transform.position, targetPos);
 
 			//Lerp 특성상 0으로 정확하게 맞춰지진 않는다. 

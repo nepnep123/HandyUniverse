@@ -83,11 +83,11 @@ public class BookPageSetter : MonoBehaviour
 	#region 외부 접근 가능 메서드
 	public void OpenPortal()
 	{
+        Debug.Log("Portal Opened...");
 		//백그라운드 끄고 / 마스터북 끄고 / 페이드 아웃 - 페이드 인 
-		GameManager.instance.StartCoroutine("EnterWorld");
+		GameManager.instance.StartCoroutine(GameManager.instance.EnterWorld());
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
-
 	}
 
     public void ClosePortal()
