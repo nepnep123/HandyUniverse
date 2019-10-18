@@ -34,7 +34,7 @@ public class InteractableMasterBookLR : InteractableObject
 
     public override void ProcessRelease()
     {
-        book.OpenPortal();
+        //book.OpenPortal();
     }
     #endregion
 }

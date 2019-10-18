@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2142842559853202504}
   - component: {fileID: 7276257918252059745}
   m_Layer: 0
-  m_Name: The Venus
+  m_Name: The Venus World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e87741c0ac63cb409384bf64270bb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxPack: {fileID: 0}
+  sfxPack: {fileID: 11400000, guid: 6cee5d7d7ae6f9d4983f01eaf8c00ead, type: 2}
 --- !u!1 &8404864651349763753
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ PrefabInstance:
     - target: {fileID: 1244665463302001749, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.46
+      value: 24.19
       objectReference: {fileID: 0}
     - target: {fileID: 1244665463302001749, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
         type: 3}
@@ -702,7 +702,7 @@ PrefabInstance:
     - target: {fileID: 1244665463302001749, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.28
+      value: 25.08
       objectReference: {fileID: 0}
     - target: {fileID: 1244665463302001749, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
         type: 3}
@@ -743,6 +743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439506222527180093, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1244665463321505757, guid: 7fda7e94d3eac814cb5191e15c9a6e62,
         type: 3}
@@ -952,22 +957,22 @@ PrefabInstance:
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.48763418
+      value: 0.30226493
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.66445667
+      value: 0.4118701
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333262745592, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.25
+      value: 0.774825
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333282142904, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7523287333282142904, guid: 57a3a278d0eb0b749ae5f7bca535eb7a,
         type: 3}
