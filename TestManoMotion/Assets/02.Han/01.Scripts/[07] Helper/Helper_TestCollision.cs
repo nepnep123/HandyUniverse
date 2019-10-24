@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class Helper_TestCollision : MonoBehaviour
 {
+    public InteractableObject curObj;
+
     private void OnTriggerEnter(Collider other)
     {
         var a = other.GetComponent<InteractableObject>();
         if(a != null)
         {
-            a.ProcessCollisionEnter();
+            curObj = a;
+            curObj.ProcessCollisionEnter();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (curObj != null)
+        {
+            curObj.ProcessCollisionExit();
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        var a = other.GetComponent<InteractableObject>();
-        if (a != null)
+        if(Input.GetKeyDown(KeyCode.Q))
         {
-            a.ProcessCollisionExit();
+            curObj.ProcessPick();
+        }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            curObj.ProcessRelease();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            FindObjectOfType<InteractableDrone>().ReturnBack();
         }
     }
 }

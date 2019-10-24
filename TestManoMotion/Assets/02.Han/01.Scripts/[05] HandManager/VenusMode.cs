@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VenusMode : MonoBehaviour
+public class VenusMode : Mode
 {
-    // Start is called before the first frame update
-    void Start()
+    InteractableDrone drone;
+    public VenusMode(PrimeHand hand) : base(hand)
     {
-        
+        this.hand = hand;
+        drone = GameObject.FindObjectOfType<InteractableDrone>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //public override void OnTriggeredGrab() => hand.curObj.ProcessGrab();
+    public override void OnTriggeredPick()
     {
-        
+        if (hand.curObj != null)
+            hand.curObj.ProcessPick();
     }
+
+    public override void OnTriggeredRelease() => drone.ReturnBack();
 }

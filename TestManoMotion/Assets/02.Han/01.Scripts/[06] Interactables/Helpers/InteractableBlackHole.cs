@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableBlackHole : InteractableObject
+public class InteractableBlackHole : InteractableTrinity
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void ProcessGrab()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //transform.Rotate(Vector3.up, 20f * Time.deltaTime, Space.World);
+        //Todo: 행성 밖으로...
     }
 }
