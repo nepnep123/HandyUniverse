@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class VenusWorld : World
 {
-    public Color venusFog = new Color(0.854f, 0.694f, 0.004f);
     VenusSfx venusSounds;
+    public Color venusFog = new Color(0.854f, 0.694f, 0.004f);
+    public Helper helper;
     // Start is called before the first frame update
 
     bool isInit = false;
@@ -19,10 +20,21 @@ public class VenusWorld : World
 
     public void InitWorld()
     {
-        BackGroundOff();
+        var a = GetComponentsInChildren<InteractableObject>(true);
+        foreach(InteractableObject aa in a)
+        {
+            aa.ProcessInit(helper);
+        }
         SetVenusFog();
         venusSounds = GetComponentInChildren<VenusSfx>();
         venusSounds.InitVenusSounds();
+        //Todo 테스트용
+#if !UNITY_EDITOR
+        GameManager.instance.hand.mode = new VenusMode(GameManager.instance.hand);
+        BackGroundOff();
+#endif
+        PhotoUtils.MakeFolder("Venus_Lakshmi");
+        PhotoUtils.MakeFolder("Venus_Maxwell");
     }
 
     private void SetVenusFog()

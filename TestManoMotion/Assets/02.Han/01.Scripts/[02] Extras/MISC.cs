@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public delegate void VoidBoolNotier(bool booleana);
 public delegate void VoidNotier();
 public enum LR { Left, Right}
+public enum VenusPos { Lakshmi, Maxwell, Venus}
 
 [System.Serializable]
 public struct RawImages
