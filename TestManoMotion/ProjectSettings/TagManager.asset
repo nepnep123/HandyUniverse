@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Coin
   - Fire
+  - Planet
   layers:
   - Default
   - TransparentFX

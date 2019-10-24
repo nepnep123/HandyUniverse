@@ -13,14 +13,19 @@ public class GameManager : MonoBehaviour
 	public PrimeHand hand;
 	public ManoVisualization mano;
 	public FadeChange fadeCanvas;
-	
-	private void Awake()
+    // 강원 테스트
+    public GizmoManager gizmoManager;
+
+    private void Awake()
 	{
 		hand = FindObjectOfType<PrimeHand>();
 		mano = FindObjectOfType<ManoVisualization>();
 		fadeCanvas = FindObjectOfType<FadeChange>();
+        // 강원 테스트
+        gizmoManager = FindObjectOfType<GizmoManager>();
 
-		if (instance == null) instance = GetComponent<GameManager>();
+
+        if (instance == null) instance = GetComponent<GameManager>();
 
 		else Destroy(this);
 
