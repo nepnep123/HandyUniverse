@@ -43,6 +43,8 @@ public class InteractableMap : InteractableTrinity
     {
         IndexesOnOff(true);
         helper.drone.releaseStack.Push(IndexesOff);
+        if (helper.drone.releaseStack.Count > 1)
+            helper.drone.RequestClose();
     }
     #endregion
 
@@ -56,8 +58,6 @@ public class InteractableMap : InteractableTrinity
         {
             indexes[i].gameObject.SetActive(booleana);
         }
-        if (booleana) helper.isAbleToLook = false;
-        else helper.isAbleToLook = true;
     }
 
     //아웃라인 끄기

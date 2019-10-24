@@ -73,21 +73,26 @@ public class Helper : MonoBehaviour
     IEnumerator SpreadObjs(bool booleana)
     {
         if(booleana)
+        {
             Activer(true);
+            isAbleToLook = false;
+        }
         float timer = 0;
         while (timer < 0.75f)
         {
             timer += Time.deltaTime;
+            //자식 인터렉츠의 숫자만큼 퍼지기 실행
             for(int i = 0; i < interacts.Length; i++)
             {
                 Vector3 localPos = interacts[i].transform.localPosition;
-                Vector3 firstPos = new Vector3(0.6f, 0.2f, 0);
-                Quaternion anxis = Quaternion.AngleAxis(40f * i+1, Vector3.forward);
+                Vector3 firstPos = new Vector3(1f, 0.2f, 0.4f);
+                Quaternion anxis = Quaternion.AngleAxis(45f * i+1, Vector3.forward);
                 Vector3 targetPos = booleana ? anxis * firstPos : Vector3.zero;
+                targetPos.y = 0.2f;
                 Vector3 lerped = Vector3.Lerp(localPos, targetPos, Time.deltaTime * 0.8f);
                 interacts[i].transform.localPosition = lerped;
             }
-            yield return null;
+                yield return null;
         }
         if(booleana == false)
         {
@@ -96,6 +101,7 @@ public class Helper : MonoBehaviour
                 interacts[i].transform.localPosition = Vector3.zero;
             }
             Activer(false);
+            isAbleToLook = true;
         }
     }
 
