@@ -42,6 +42,20 @@ public class GameManager : MonoBehaviour
 		GameManager.instance.mano._layer_background.enabled = temp;
 	}
 
+	public void Exit()
+	{
+		GameManager.instance.hand.mode.ModeChange(GameManager.instance.hand.entryMode);
+		fadeCanvas.FadeOut();
+		BackGroundOn(true);
+		
+		//////////////////////////작업 필요..
+
+		camPos.position = mainPos.position;
+		camPos.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+		fadeCanvas.FadeIn();
+	}
+
+
 	//World 나가는 메소드
 	public IEnumerator ExitWorld()
 	{
@@ -49,8 +63,10 @@ public class GameManager : MonoBehaviour
 		GameManager.instance.hand.mode.ModeChange(GameManager.instance.hand.entryMode);
 
 		fadeCanvas.FadeOut();
-		masterBook.gameObject.SetActive(true);
+		//masterBook.gameObject.SetActive(true);
 		BackGroundOn(true);
+		//마스터북 다시 닫기 
+		GameManager.instance.masterBook.CloseBook();
 		yield return new WaitForSeconds(3.0f);
 		
 		//밖으로 나왔을때 transform 초기화 

@@ -17,6 +17,9 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     public int curPlaneIndex = 0;
     public int maxBookPlaneIndex = 0;
 
+	//책이 열렸을때 생기는 이펙트
+	public GameObject bookOpenEffect;
+
 
 	//델리게이트 이벤트, 책을 넘길때 발생
 	public event VoidNotier OnBookOpened;
@@ -39,6 +42,8 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     #region 외부접근 가능 메서드
     public void InitBook(string name)
     {
+		bookOpenEffect.SetActive(false);
+
         //이 책 초기화
         bookAnim = GetComponent<Animator>();
         page = GetComponentInChildren<Page>(true);
@@ -80,7 +85,8 @@ public class Book_v2 : MonoBehaviour//InteractableBook
         if (booleana == IsBookOpened) return;
         StopAllCoroutines();
         bookAnim.SetBool("OpenBook", booleana);
-        if (booleana == false) { page.OnOffPage(false); }
+		//책이 닫혔을때 이펙트는 사라진다. 
+        if (booleana == false) { page.OnOffPage(false); bookOpenEffect.SetActive(false); }
         isOpenable = false;
         StartCoroutine(CheckBookTime(booleana));
     }

@@ -111,7 +111,7 @@ public class MoonWorld : World
 	//나가는 포탈 생성
 	public void AbleExitPotal()
 	{
-		Vector3 ablePos = campos.position + new Vector3(0, 0, 0.5f);
+		Vector3 ablePos = campos.localPosition + new Vector3(0, 0, -2f);
 
 		potalPrefab = Instantiate(exitPotal, ablePos, Quaternion.identity);
 	}

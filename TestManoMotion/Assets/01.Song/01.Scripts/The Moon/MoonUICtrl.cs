@@ -99,7 +99,7 @@ public class MoonUICtrl : MonoBehaviour
 		myInfo.SetActive(false);
 		msg = "미션 클리어 !!!" + "\n" + "\n"
 			+ "당신은 달행성에 미션을 완수 하였습니다. " + "\n"
-			+ "GRAB 제스처를 사용해 행성을 탈출합니다. ";
+			+ "3초 뒤에 GRAB 제스처를 사용해 행성을 탈출합니다. ";
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 		//문 모드이면 모든 퀘스트가 끝나고 Grab제스처로 포탈을 생성한다. 

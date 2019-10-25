@@ -14,6 +14,8 @@ public class BookPageSetter : MonoBehaviour
     public Text centText;
     public RawImage centRaw;
 
+
+
     public PageInfo_Scriptable[] pageInfos;
     public int maxBookPlaneIndex = 0;
 
@@ -26,6 +28,7 @@ public class BookPageSetter : MonoBehaviour
 	//책안에 있는 행성 및 맵 생성 후 True 반환
 	bool isSetting = false;
 	Transform planetPos;
+
 
 	public void InitBookSetter(PageInfo_Scriptable[] infos)
     {
@@ -68,7 +71,7 @@ public class BookPageSetter : MonoBehaviour
 				Debug.Log("pageplanet = " + pagePlanets_pre[i]);
 				Debug.Log("world_pre = " + world_pre[i]);
 			}
-			EnableAllPage();
+			DisableAllPage();
 			isSetting = true;
 		}
 	}
@@ -79,6 +82,8 @@ public class BookPageSetter : MonoBehaviour
         book.OnRequestPortal -= OpenPortal;
 		book.OnBookOpened -= BookOpenedSub;
 		book.OnRequestClosePortal -= ExitWorldCtrl;
+
+		book.bookOpenEffect.SetActive(false);
 	}
 
 
@@ -93,12 +98,12 @@ public class BookPageSetter : MonoBehaviour
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
 	}
 
+	//Book_v2::ClosePortal()
     public void ExitWorldCtrl()
     {
+		book.gameObject.SetActive(true);
+		DisableAllPage();
 		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
-		Debug.Log("Exit World");
-		world_pre[book.curPlaneIndex].gameObject.SetActive(false);
-		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(true);
 	}
 
     #endregion
@@ -115,7 +120,7 @@ public class BookPageSetter : MonoBehaviour
         {
             SetPreingPage(book.curPlaneIndex);
 		}
-		EnableAllPage();
+		DisableAllPage();
 	}
 
     protected virtual void PageEndSub(bool booleana)
@@ -146,20 +151,25 @@ public class BookPageSetter : MonoBehaviour
         raw.texture = pageInfos[curIndex].leftTexture;
     }
 	#endregion
-
+	
 	//송영훈
 	void BookOpenedSub()
 	{
 		//해당 페이지 행성 생성
 		pagePlanets_pre[0].gameObject.SetActive(true);
+		//UIManager에서 책을 열었을때 주변 효과를 생성 시킨다. 
+		book.bookOpenEffect.SetActive(true);
 	}
 
-	void EnableAllPage()
+
+
+	void DisableAllPage()
 	{
 		for (int i = 0; i < pageInfos.Length; i++)
 		{
 			pagePlanets_pre[i].gameObject.SetActive(false);
 			world_pre[i].gameObject.SetActive(false);
 		}
+		book.bookOpenEffect.SetActive(false);
 	}
 }

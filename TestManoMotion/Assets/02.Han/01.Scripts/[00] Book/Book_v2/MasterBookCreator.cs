@@ -7,6 +7,7 @@ public class MasterBookCreator : MonoBehaviour
     public Book_v2 masterBookPrefab;
 
     public Book bookPrefab;
+	
     public PageInfo_Scriptable[] pageInfos;
 
     private void Start()
@@ -30,6 +31,7 @@ public class MasterBookCreator : MonoBehaviour
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
     }
 
+	//사용 X
     void CreateBook()
     {
         int num = pageInfos.Length;

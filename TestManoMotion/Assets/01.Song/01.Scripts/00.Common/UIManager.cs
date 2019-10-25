@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 		else Destroy(this);
 
 		anim = background.GetComponent<Animator>();
+
 	}
 
 	public IEnumerator ShowMissionUI(string content)
@@ -28,7 +29,8 @@ public class UIManager : MonoBehaviour
 		anim.SetBool("IsShowMission", true);
 		yield return new WaitForSeconds(5.0f);
 		anim.SetBool("IsShowMission", false);
-		//UI를 보고나서 행동할수 있다. 
+		//UI를 보고나서 3초 뒤에 제스처로 이동한다.
+		yield return new WaitForSeconds(3.0f);
 		canMove = true;
 	}
 
