@@ -14,13 +14,6 @@ public class InteractablePlanet : InteractableObject
 		isInit = true;
 	}
 
-	//TEST
-    /*
-	private void OnEnable()
-	{
-		StartCoroutine(GrowPlanet());
-	}*/
-
 	//클릭했을때 페이지 행성으로 이동. 
 	public override void ProcessPick()
     {
@@ -55,6 +48,10 @@ public class InteractablePlanet : InteractableObject
 	{
 		GetComponent<Outline>().OutlineWidth = 10;
 	}
+	public override void ProcessCollisionExit()
+	{
+		//GetComponent<Outline>().OutlineWidth = 0;
+	}
 
 	private void OnDisable()
 	{
@@ -68,7 +65,7 @@ public class InteractablePlanet : InteractableObject
 
 		while (dis >= 0.2f)
 		{
-            Debug.Log("행성 성장중..");
+            
 			dis = Vector3.Distance(transform.position, targetPos);
 
 			//Lerp 특성상 0으로 정확하게 맞춰지진 않는다. 

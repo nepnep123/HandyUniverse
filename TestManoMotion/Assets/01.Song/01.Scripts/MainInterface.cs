@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
-    
+    public virtual void InitWorld()
+	{
+
+	}
 }
 
 public class WorldInfo
@@ -16,17 +19,5 @@ public class WorldInfo
     {
         this.world = _world;
     }
-
-
-    public void InToThePortalWorld(Vector3 pos)
-    {
-		if (!isPortalOpened)
-		{
-			var a = GameObject.Instantiate(world, pos, Quaternion.identity);
-			isPortalOpened = true;
-
-		}
-    }
-
     public string GetWorldName() { return world.name; }
 }

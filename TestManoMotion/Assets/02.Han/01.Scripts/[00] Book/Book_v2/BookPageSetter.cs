@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BookPageSetter : MonoBehaviour
 {
     protected Book_v2 book;
+	protected GameManager gameMgr;
 
     public RawImage raw;
     public Text text;
@@ -22,7 +23,6 @@ public class BookPageSetter : MonoBehaviour
 	public Transform[] pagePlanets_pre;
 	public World[] world_pre;
 
-	//송영훈
 	//책안에 있는 행성 및 맵 생성 후 True 반환
 	bool isSetting = false;
 	Transform planetPos;
@@ -34,6 +34,8 @@ public class BookPageSetter : MonoBehaviour
         book.OnPageFlipedEnd += PageEndSub;
         book.OnRequestPortal += OpenPortal;
 		book.OnBookOpened += BookOpenedSub;
+		book.OnRequestClosePortal += ExitWorldCtrl;
+
 
 		if (infos.Length == 0) Debug.LogError("아무런 스크립터블을 받지 못하였다.");
         pageInfos = infos;
@@ -70,13 +72,13 @@ public class BookPageSetter : MonoBehaviour
 			isSetting = true;
 		}
 	}
-
-    private void OnDisable()
+	private void OnDestroy()
     {
         book.OnPageFlipStart -= PageStartSub;
         book.OnPageFlipedEnd -= PageEndSub;
         book.OnRequestPortal -= OpenPortal;
 		book.OnBookOpened -= BookOpenedSub;
+		book.OnRequestClosePortal -= ExitWorldCtrl;
 	}
 
 
@@ -87,13 +89,17 @@ public class BookPageSetter : MonoBehaviour
 		//백그라운드 끄고 / 마스터북 끄고 / 페이드 아웃 - 페이드 인 
 		GameManager.instance.StartCoroutine(GameManager.instance.EnterWorld());
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
+		world_pre[book.curPlaneIndex].InitWorld();
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
 	}
 
-    public void ClosePortal()
+    public void ExitWorldCtrl()
     {
-
-    }
+		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
+		Debug.Log("Exit World");
+		world_pre[book.curPlaneIndex].gameObject.SetActive(false);
+		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(true);
+	}
 
     #endregion
 

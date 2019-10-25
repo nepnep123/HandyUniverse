@@ -43,12 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1425bd7c4e26c4a92293656b3b303f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterBookPrefab: {fileID: 2371309000436002238, guid: 46da2b8870404f749b0f3f30f778cac2,
+  masterBookPrefab: {fileID: 9012839826028636122, guid: 22d8ab0010a9424499a4e4643e320158,
     type: 3}
-  bookBottom: {fileID: 5328116427249769610, guid: 9f88e802f497eb94b80422b0ec5bcc8c,
-    type: 3}
+  bookPrefab: {fileID: 0}
   pageInfos:
   - {fileID: 11400000, guid: 1278a37de149d45419743c68d9e8b105, type: 2}
   - {fileID: 11400000, guid: 64b0926de768eb94782fc50119e7e96f, type: 2}
-  - {fileID: 11400000, guid: 711bdb0b1cec6e943883736394343bf7, type: 2}
-  - {fileID: 11400000, guid: ea5b5367177bf594b989ac87bc2cb244, type: 2}

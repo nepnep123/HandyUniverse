@@ -7,24 +7,29 @@ public class UIManager : MonoBehaviour
 {
 	public static UIManager instance;
 
-	public GameObject UIInfo_img;
-	public Text content_txt;
+	public Image background;
+	public Text mission_txt;
+
+	private Animator anim;
+	public bool canMove = false;
 
 	private void Awake()
 	{
 		if (instance == null) instance = GetComponent<UIManager>();
 		else Destroy(this);
+
+		anim = background.GetComponent<Animator>();
 	}
 
-	public IEnumerator ShowInfoUI(string content)
+	public IEnumerator ShowMissionUI(string content)
 	{
+		mission_txt.text = content;
 
-		content_txt.text = content;
-
-		//왼쪽 바 나오고 들어감
-		iTween.MoveTo(UIInfo_img, iTween.Hash("x", 25, "time", 3.0f, "easetype", iTween.EaseType.easeOutQuad));
+		anim.SetBool("IsShowMission", true);
 		yield return new WaitForSeconds(5.0f);
-		iTween.MoveTo(UIInfo_img, iTween.Hash("x", -500, "time", 3.0f, "easetype", iTween.EaseType.easeOutQuad));
+		anim.SetBool("IsShowMission", false);
+		//UI를 보고나서 행동할수 있다. 
+		canMove = true;
 	}
 
 }
