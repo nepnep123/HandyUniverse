@@ -41,10 +41,10 @@ public class InteractableMap : InteractableTrinity
     //인덱스를 열기
     public override void ProcessPick()
     {
+        if (helper.drone.releaseStack.Count > 1)
+            helper.drone.ReturnBack();
         IndexesOnOff(true);
         helper.drone.releaseStack.Push(IndexesOff);
-        if (helper.drone.releaseStack.Count > 1)
-            helper.drone.RequestClose();
     }
     #endregion
 

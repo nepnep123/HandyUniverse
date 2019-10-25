@@ -32,5 +32,8 @@ public class InteractableTrinity : InteractableObject
         childicle.gameObject.SetActive(booleana);
     }
 
-    public virtual void CloseObjs() { }
+    public virtual void CloseObjs() {
+        if (helper.drone.releaseStack.Count > 1)
+            helper.drone.ReturnBack();
+    }
 }
