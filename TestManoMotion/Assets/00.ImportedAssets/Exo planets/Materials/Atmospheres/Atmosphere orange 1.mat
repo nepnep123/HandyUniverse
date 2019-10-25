@@ -58,11 +58,11 @@ Material:
     m_Floats:
     - _: 13.39
     - _ASEOutlineWidth: 0
-    - _AtmosphereSharpness: 0.236
-    - _Atmospherecircle: 0.215
+    - _AtmosphereSharpness: 0.111
+    - _Atmospherecircle: 1
     - _Atmosphereintensity: 1.5
     - _Atmospherepower: 6.94
-    - _Atmospheresize: 2.75
+    - _Atmospheresize: 6.19
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -81,7 +81,7 @@ Material:
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _AtmosphereColor: {r: 0.472, g: 0.37079826, b: 0.31010404, a: 1}
-    - _Atmospherecolor: {r: 1, g: 0.49353603, b: 0.21600002, a: 0}
+    - _Atmospherecolor: {r: 1, g: 0.355, b: 0, a: 0}
     - _Color: {r: 0.353, g: 0.54486895, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

@@ -90,6 +90,7 @@ public class PrimeHand : MonoBehaviour
 		var inter = other.GetComponent<InteractableObject>();
         if(inter != null)
         {
+
 			if (curObj != null) curObj.ProcessCollisionExit();
 			curObj = inter;
             curObj.ProcessCollisionEnter();

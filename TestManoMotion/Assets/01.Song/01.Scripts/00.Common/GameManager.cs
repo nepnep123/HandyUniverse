@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 	//델리게이트 이벤트, FadeOut / In -> 행성 UI 표시 
 	public event VoidNotier OnStartInfo;
 	
-	private void Awake()
+    private void Awake()
+
 	{
 		mainPos = GameObject.Find("MainPosition").transform;
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
 		mano = FindObjectOfType<ManoVisualization>();
 		fadeCanvas = FindObjectOfType<FadeChange>();
 
-		if (instance == null) instance = GetComponent<GameManager>();
+        if (instance == null) instance = GetComponent<GameManager>();
 
 		else Destroy(this);
 
