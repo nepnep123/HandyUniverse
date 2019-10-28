@@ -6,13 +6,15 @@ public class AutoRotate : MonoBehaviour {
 
 
 	private Transform tr;
-	public Vector3 rotation;
+	private float y;
+	private float speed = 20.0f;
 
 	void Start () {
 		tr = GetComponent<Transform> ();
 	}
 		
 	void Update () {
-		tr.Rotate (rotation * Time.deltaTime);	
+		y += Time.deltaTime * speed;
+		tr.rotation = Quaternion.Euler(0, y, 0);
 	}
 }

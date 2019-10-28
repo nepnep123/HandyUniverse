@@ -16,11 +16,20 @@ public class GameManager : MonoBehaviour
 
 	//델리게이트 이벤트, FadeOut / In -> 행성 UI 표시 
 	public event VoidNotier OnStartInfo;
-	
-    private void Awake()
 
+	//[HideInInspector]
+	//public GameObject enterPlanetPos;
+
+
+	private void Awake()
 	{
 		mainPos = GameObject.Find("MainPosition").transform;
+
+		////임의의 빈오브젝트를 만들어서 행성이 다가오는 위치를 정해준다. 
+		//enterPlanetPos = new GameObject("enterPlanetPos");
+		//Vector3 temp = new Vector3(camPos.position.x, camPos.position.y, camPos.position.z + 1);
+		//enterPlanetPos.transform.position = temp;
+
 
 		hand = FindObjectOfType<PrimeHand>();
 		mano = FindObjectOfType<ManoVisualization>();
@@ -42,31 +51,13 @@ public class GameManager : MonoBehaviour
 		GameManager.instance.mano._layer_background.enabled = temp;
 	}
 
-	public void Exit()
-	{
-		GameManager.instance.hand.mode.ModeChange(GameManager.instance.hand.entryMode);
-		fadeCanvas.FadeOut();
-		BackGroundOn(true);
-		
-		//////////////////////////작업 필요..
-
-		camPos.position = mainPos.position;
-		camPos.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-		fadeCanvas.FadeIn();
-	}
-
-
 	//World 나가는 메소드
 	public IEnumerator ExitWorld()
 	{
 		//핸드 모드 entryMode 변경
-		GameManager.instance.hand.mode.ModeChange(GameManager.instance.hand.entryMode);
-
+		GameManager.instance.hand.mode.ModeChange(hand.entryMode);
 		fadeCanvas.FadeOut();
-		//masterBook.gameObject.SetActive(true);
 		BackGroundOn(true);
-		//마스터북 다시 닫기 
-		GameManager.instance.masterBook.CloseBook();
 		yield return new WaitForSeconds(3.0f);
 		
 		//밖으로 나왔을때 transform 초기화 
@@ -80,7 +71,7 @@ public class GameManager : MonoBehaviour
 	{
 
 		fadeCanvas.FadeOut();
-		masterBook.gameObject.SetActive(false);
+		masterBook.CloseBook();
 		yield return new WaitForSeconds(3.0f);
 		BackGroundOn(false);
 		fadeCanvas.FadeIn();

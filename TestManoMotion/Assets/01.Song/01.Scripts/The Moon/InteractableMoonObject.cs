@@ -14,9 +14,8 @@ public class InteractableMoonObject : InteractableObject
 		SecondHint,
 		FirstPosMove,
 		SecondPosMove,
+		FinalPosMove,
 		HandPrintZone,
-		ExitPotal
-
 	}
 
 	public MoonSymbol symbol = MoonSymbol.FirstHint;
@@ -27,36 +26,29 @@ public class InteractableMoonObject : InteractableObject
 		{
 			case MoonSymbol.FirstHint:
 				isTouched = true;
-				//빌드전에 제거 필요
-				//this.gameObject.transform.Translate(new Vector3(0, 0.3f, 0));
-				//Destroy(this.gameObject);
-				//MoonUICtrl.instance.ShowPicture(1);
 				break;
 			case MoonSymbol.SecondHint:
 				isTouched = true;
-				//빌드전에 제거 필요
-				//this.gameObject.transform.Translate(new Vector3(0, 0.3f, 0));
-				//Destroy(this.gameObject);
-				//MoonUICtrl.instance.ShowPicture(2);
 				break;
-				///////////////////////////////////////////////////
+
+
 			case MoonSymbol.FirstPosMove:
 				MoonWorld.instance.GoFirstPos();
 				break;
 			case MoonSymbol.SecondPosMove:
 				MoonWorld.instance.GoSecondPos();
 				break;
+
+
 				//충돌되는순간 제스처를 통해서 이벤트 처리
 			case MoonSymbol.HandPrintZone:
 				canPrinted = true;
 				break;
 
-				//손과 포탈과 충돌시 포탈을 타게된다. 
-			case MoonSymbol.ExitPotal:
-				//Book_v2에 구독하고있는 ClosePortal 실행. 
-				GameManager.instance.masterBook.ClosePortal();
 
-				Destroy(MoonWorld.instance.potalPrefab, 3.0f);
+				//마지막 단계로 이동.
+			case MoonSymbol.FinalPosMove:
+				isTouched = true;
 				break;
 		}
 	}
@@ -79,7 +71,7 @@ public class InteractableMoonObject : InteractableObject
 				if (isTouched == true)
 				{
 					isTouched = false;
-					Destroy(this.gameObject);
+					this.gameObject.SetActive(false);
 					MoonUICtrl.instance.ShowPicture(1);
 				}
 				break;
@@ -87,8 +79,19 @@ public class InteractableMoonObject : InteractableObject
 				if (isTouched == true)
 				{	
 					isTouched = false;
-					Destroy(this.gameObject);
+					this.gameObject.SetActive(false);
 					MoonUICtrl.instance.ShowPicture(2);
+				}
+				break;
+
+			//포탈 나가는 마지막 단계 
+			case MoonSymbol.FinalPosMove:
+				if (isTouched == true)
+				{
+					isTouched = false;
+					this.gameObject.SetActive(false);
+					//마지막 장소로 이동. 
+					MoonWorld.instance.GoFinalPos();
 				}
 				break;
 		}
