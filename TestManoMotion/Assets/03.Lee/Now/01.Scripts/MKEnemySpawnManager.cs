@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// 3.5초 있다가 활성화 됨
 public class MKEnemySpawnManager : MonoBehaviour
 {
-    public static MKEnemySpawnManager instance;
-
     public GameObject meteorPrefab;
 
-    public Transform planet;
     private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
 
-    void Awake()
+    private void Start()
     {
-        instance = this;
+        MKManager.instance.OnPlanetCreated += StartSpawn;
     }
+
+    private void OnDisable()
+    {
+        MKManager.instance.OnPlanetCreated -= StartSpawn;
+    }
+
+    private void StartSpawn()
+    {
+        StartCoroutine(DelayMeteor());
+    }
+    
+    public IEnumerator DelayMeteor()
+    {
+        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(SpawnMeteor());
+    }
+
 
     public IEnumerator SpawnMeteor()
     {
@@ -30,6 +43,7 @@ public class MKEnemySpawnManager : MonoBehaviour
         Vector3 randomPos = Random.onUnitSphere;
 
         float r = Random.Range(0f, radius);
-        return (randomPos * r) + planet.position;
+        //return (randomPos * r) + MKManager.instance.planet.transform.position;
+        return (randomPos * r) + MKManager.instance.planet.transform.GetChild(0).transform.GetChild(0).transform.position;
     }
 }
