@@ -5,9 +5,9 @@ using UnityEngine;
 public class PrimeHand : MonoBehaviour
 {
     public Mode mode;
-    EntryMode entryMode;
-    // 예시 1
-    //MarsMode marsMode;
+    public EntryMode entryMode;
+	public MoonMode moonMode;
+
 
     public InteractableObject curObj;
 
@@ -18,7 +18,7 @@ public class PrimeHand : MonoBehaviour
     private void Awake()
     {
         entryMode = new EntryMode(this);
-        //marsMode = new MarsMode(this);
+		moonMode = new MoonMode(this);
         mode = entryMode;
     }
 
@@ -90,8 +90,10 @@ public class PrimeHand : MonoBehaviour
 		var inter = other.GetComponent<InteractableObject>();
         if(inter != null)
         {
-            inter.ProcessCollisionEnter();
-            curObj = inter;
+
+			if (curObj != null) curObj.ProcessCollisionExit();
+			curObj = inter;
+            curObj.ProcessCollisionEnter();
         }
 	}
 
@@ -101,6 +103,7 @@ public class PrimeHand : MonoBehaviour
         if(curObj!=null)
         {
             curObj.ProcessCollisionExit();
+			/////////////
         }
     }
 }

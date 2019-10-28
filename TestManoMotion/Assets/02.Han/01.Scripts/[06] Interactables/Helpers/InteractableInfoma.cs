@@ -20,11 +20,19 @@ public class InteractableInfoma : InteractableTrinity
         }
         CloseInfos();
     }
+
     public override void ProcessPick()
     {
+        if (helper.drone.releaseStack.Count > 1)
+            helper.drone.ReturnBack();
         isPicked = true;
         venuses[(int)helper.curPos].gameObject.SetActive(true);
         helper.drone.releaseStack.Push(CloseInfos);
+    }
+
+    public override void CloseObjs()
+    {
+        base.CloseObjs();
     }
 
     public void CloseInfos()

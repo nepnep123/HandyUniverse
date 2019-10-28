@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class BookPageSetter : MonoBehaviour
 {
     protected Book_v2 book;
+	protected GameManager gameMgr;
 
     public RawImage raw;
     public Text text;
 
     public Text centText;
     public RawImage centRaw;
+
+
 
     public PageInfo_Scriptable[] pageInfos;
     public int maxBookPlaneIndex = 0;
@@ -22,10 +25,10 @@ public class BookPageSetter : MonoBehaviour
 	public Transform[] pagePlanets_pre;
 	public World[] world_pre;
 
-	//송영훈
 	//책안에 있는 행성 및 맵 생성 후 True 반환
 	bool isSetting = false;
 	Transform planetPos;
+
 
 	public void InitBookSetter(PageInfo_Scriptable[] infos)
     {
@@ -34,6 +37,8 @@ public class BookPageSetter : MonoBehaviour
         book.OnPageFlipedEnd += PageEndSub;
         book.OnRequestPortal += OpenPortal;
 		book.OnBookOpened += BookOpenedSub;
+		book.OnRequestClosePortal += ExitWorldCtrl;
+
 
 		if (infos.Length == 0) Debug.LogError("아무런 스크립터블을 받지 못하였다.");
         pageInfos = infos;
@@ -66,17 +71,19 @@ public class BookPageSetter : MonoBehaviour
 				Debug.Log("pageplanet = " + pagePlanets_pre[i]);
 				Debug.Log("world_pre = " + world_pre[i]);
 			}
-			EnableAllPage();
+			DisableAllPage();
 			isSetting = true;
 		}
 	}
-
-    private void OnDisable()
+	private void OnDestroy()
     {
         book.OnPageFlipStart -= PageStartSub;
         book.OnPageFlipedEnd -= PageEndSub;
         book.OnRequestPortal -= OpenPortal;
 		book.OnBookOpened -= BookOpenedSub;
+		book.OnRequestClosePortal -= ExitWorldCtrl;
+
+		book.bookOpenEffect.SetActive(false);
 	}
 
 
@@ -87,13 +94,17 @@ public class BookPageSetter : MonoBehaviour
 		//백그라운드 끄고 / 마스터북 끄고 / 페이드 아웃 - 페이드 인 
 		GameManager.instance.StartCoroutine(GameManager.instance.EnterWorld());
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
+		world_pre[book.curPlaneIndex].InitWorld();
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
 	}
 
-    public void ClosePortal()
+	//Book_v2::ClosePortal()
+    public void ExitWorldCtrl()
     {
-
-    }
+		book.gameObject.SetActive(true);
+		DisableAllPage();
+		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
+	}
 
     #endregion
 
@@ -109,7 +120,7 @@ public class BookPageSetter : MonoBehaviour
         {
             SetPreingPage(book.curPlaneIndex);
 		}
-		EnableAllPage();
+		DisableAllPage();
 	}
 
     protected virtual void PageEndSub(bool booleana)
@@ -140,20 +151,25 @@ public class BookPageSetter : MonoBehaviour
         raw.texture = pageInfos[curIndex].leftTexture;
     }
 	#endregion
-
+	
 	//송영훈
 	void BookOpenedSub()
 	{
 		//해당 페이지 행성 생성
 		pagePlanets_pre[0].gameObject.SetActive(true);
+		//UIManager에서 책을 열었을때 주변 효과를 생성 시킨다. 
+		book.bookOpenEffect.SetActive(true);
 	}
 
-	void EnableAllPage()
+
+
+	void DisableAllPage()
 	{
 		for (int i = 0; i < pageInfos.Length; i++)
 		{
 			pagePlanets_pre[i].gameObject.SetActive(false);
 			world_pre[i].gameObject.SetActive(false);
 		}
+		book.bookOpenEffect.SetActive(false);
 	}
 }

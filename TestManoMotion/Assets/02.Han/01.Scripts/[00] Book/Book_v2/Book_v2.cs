@@ -17,12 +17,17 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     public int curPlaneIndex = 0;
     public int maxBookPlaneIndex = 0;
 
+	//책이 열렸을때 생기는 이펙트
+	public GameObject bookOpenEffect;
+
 
 	//델리게이트 이벤트, 책을 넘길때 발생
 	public event VoidNotier OnBookOpened;
     public event VoidBoolNotier OnPageFlipStart;
     public event VoidBoolNotier OnPageFlipedEnd;
     public event VoidNotier OnRequestPortal;
+	public event VoidNotier OnRequestClosePortal;
+
     public Text title;
     //걍 하이러키뷰에서 미리 넣어놨음. 0은 왼쪽, 1은 오른쪽 즉, 총 길이는 2
     //bookPages의 0,1,2,3에 넣어주기, 0,1 그리고 2,3 에게...
@@ -37,6 +42,8 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     #region 외부접근 가능 메서드
     public void InitBook(string name)
     {
+		bookOpenEffect.SetActive(false);
+
         //이 책 초기화
         bookAnim = GetComponent<Animator>();
         page = GetComponentInChildren<Page>(true);
@@ -65,17 +72,21 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     public void NextPage() => PNPage(true);
     public void PrePage() => PNPage(false);
     public void OpenPortal() => OnRequestPortal?.Invoke();
-    #endregion
 
-    #region 내부 메서드
+	public void ClosePortal() => OnRequestClosePortal?.Invoke();
 
-    void OCBook(bool booleana)
+	#endregion
+
+	#region 내부 메서드
+
+	void OCBook(bool booleana)
     {
         if (isOpenable == false) return;
         if (booleana == IsBookOpened) return;
         StopAllCoroutines();
         bookAnim.SetBool("OpenBook", booleana);
-        if (booleana == false) { page.OnOffPage(false); }
+		//책이 닫혔을때 이펙트는 사라진다. 
+        if (booleana == false) { page.OnOffPage(false); bookOpenEffect.SetActive(false); }
         isOpenable = false;
         StartCoroutine(CheckBookTime(booleana));
     }
@@ -96,8 +107,8 @@ public class Book_v2 : MonoBehaviour//InteractableBook
         }
         StopAllCoroutines();
         isOpenable = false;
-        OnPageFlipStart?.Invoke(booleana);
-        StartCoroutine(CheckPageTime(booleana));
+		OnPageFlipStart?.Invoke(booleana);
+		StartCoroutine(CheckPageTime(booleana));
     }
 
     //책을 열고 닫을 때 다른 행동을 막는 이뉴머레이터
