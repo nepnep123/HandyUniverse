@@ -16,15 +16,18 @@ public class MKScoreManager : MonoBehaviour
     private float scoreUnit = 20;
 
     private bool scoreIncreasing = true;
-    public bool hasStarted = false;
+    private bool hasStarted = false;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null) instance = GetComponent<MKScoreManager>();
+        else Destroy(instance);
     }
 
     private void Start()
     {
+        MKManager.instance.OnPlanetCreated += StartCounting;
+
         textScore = GameObject.Find("TextScore").GetComponent<Text>();
         textHighScore = GameObject.Find("TextHighScore").GetComponent<Text>();
 
@@ -34,6 +37,16 @@ public class MKScoreManager : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        MKManager.instance.OnPlanetCreated -= StartCounting;
+    }
+
+    private void StartCounting()
+    {
+        hasStarted = true;
+    }
+    
     private void Update()
     {
         if (hasStarted == false)
