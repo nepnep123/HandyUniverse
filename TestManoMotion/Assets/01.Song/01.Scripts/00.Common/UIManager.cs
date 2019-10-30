@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
 	private Animator anim;
 
+    //재현's UI
+    public Image venusInstruct;
 
 	private void Awake()
 	{
