@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class InteractableGallary : InteractableTrinity
 {
-    
     public InteractablePhoto photoPrefab;
     public List<InteractablePhoto>[] photos;
     bool isOpened = false;
-    
+
+    public InteractablePhoto curSelectedPhoto;
+
     public override void ProcessInit<T>(T obj)
     {
-        photos = new List<InteractablePhoto>[2];
+        photos = new List<InteractablePhoto>[3];
         base.ProcessInit(obj);
         //찾아낸 텍스쳐투디들 : 어쩔 수 없는 하드코드
         var lakshmis = PhotoUtils.ReadTexturesInFolder("Venus_Lakshmi");
         var maxwells = PhotoUtils.ReadTexturesInFolder("Venus_Maxwell");
+        var venusis = PhotoUtils.ReadTexturesInFolder("Venus_Venus");
         List<InteractablePhoto> photongs = new List<InteractablePhoto>();
         List<InteractablePhoto> photonis = new List<InteractablePhoto>();
+        List<InteractablePhoto> photoves = new List<InteractablePhoto>();
         for(int i = 0; i< lakshmis.Count; i++)
         {
             var a = Instantiate(photoPrefab, transform);
+            a.transform.localPosition = Vector3.zero;
             a.GetComponent<MeshRenderer>().material.mainTexture = lakshmis[i];
             photongs.Add(a);
         }
@@ -28,16 +32,33 @@ public class InteractableGallary : InteractableTrinity
         for(int i =0; i< maxwells.Count; i++)
         {
             var a = Instantiate(photoPrefab, transform);
+            a.transform.localPosition = Vector3.zero;
             a.GetComponent<MeshRenderer>().material.mainTexture = maxwells[i];
             photonis.Add(a);
         }
+        for(int i = 0; i < venusis.Count; i++)
+        {
+            var a = Instantiate(photoPrefab, transform);
+            a.transform.localPosition = Vector3.zero;
+            a.GetComponent<MeshRenderer>().material.mainTexture = venusis[i];
+            photoves.Add(a);
+        }
         photos[0] = photongs;
         photos[1] = photonis;
+        photos[2] = photoves;
+        //모든 사진들 초기화
+        for (int i = 0; i < photos.Length; i++)
+        {
+            foreach (InteractablePhoto ip in photos[i])
+            {
+                ip.ProcessInit(this);
+            }
+        }
         OpenCloseAll(false);
     }
     public void OpenCloseAll(bool booleana)
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < photos.Length; i++)
         {
             foreach(InteractablePhoto photo in photos[i])
             {
@@ -45,84 +66,66 @@ public class InteractableGallary : InteractableTrinity
             }
         }
     }
-
-    /*
     public override void ProcessPick()
     {
-        helper.drone.releaseStack.Push(CloseGallery);
+        //helper.drone.releaseStack.Push(CloseGallery);
         //Todo : 갤러리를 열어라
-        OpenCloseAll(true);
-        Debug.Log("fuck1");
-        switch (helper.curPos)
+        OpenCloseAll(false);
+        OpenGallery(helper.curPos);
+        helper.drone.releaseStack.Push(CloseGallery);
+    }
+
+    void OpenGallery(VenusPos vs)
+    {
+        ActivePositionPhoto(vs);
+        for (int i = 0; i < photos[(int)vs].Count; i++)
         {
-            case VenusPos.Lakshmi:
-                Debug.Log("fuck1_1");
-                OpenGallery(0);
-                break;
-            case VenusPos.Maxwell:
-                OpenGallery(1);
-                break;
-            case VenusPos.Venus:
-                break;
+            Vector3 front = (helper.target.transform.position + (helper.target.transform.forward));    //센터에서 타겟을 바라보는 벡터
+            int halfI = photos[(int)vs].Count / 2;
+            Quaternion rot = Quaternion.AngleAxis((-halfI + i) * 35f, Vector3.up);
+            Debug.Log(i * 20f);
+            Vector3 rottedVector = rot * front;
+            rottedVector = rottedVector.normalized * 0.6f;
+            Vector3 finalDestination = helper.target.transform.position + rottedVector;
+            //Vector3 rottedVector = front;
+            //Debug.Log(rottedVector);
+            photos[(int)vs][i].StartSpread(finalDestination);
         }
-    }
-
-    void Update()
-    {
-        if(isOpened == false)
-            transform.Rotate(Vector3.up, 45f * Time.deltaTime, Space.World);
-        else
-            transform.LookAt(helper.target);
-    }
-
-    public void OpenGallery(int index)
-    {
-        Debug.Log("fuck2");
-        isOpened = true;
-        StartCoroutine(SpreadObjs(true, index));
-    }
-
-    public void CloseGallery()
-    {
-        Debug.Log("fuck");
-        isOpened = false;
-        switch (helper.curPos)
+        /*
+        foreach (InteractablePhoto ip in photos[(int)vs])
         {
-            case VenusPos.Lakshmi:
-                StartCoroutine(SpreadObjs(false, 0));
-                break;
-            case VenusPos.Maxwell:
-                StartCoroutine(SpreadObjs(false, 1));
-                break;
-            case VenusPos.Venus:
-                break;
-        }
+            ip.StartSpread();
+        }*/
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 0.4f);
     }
 
-    IEnumerator SpreadObjs(bool booleana, int index)
+    void CloseGallery()
     {
-        float timer = 0;
-        while (timer < 0.75f)
+        for(int i = 0; i < photos.Length; i++)
         {
-            timer += Time.deltaTime;
-            for (int i = 0; i < photos[index].Count; i++)
+            foreach (InteractablePhoto ip in photos[i])
             {
-                Vector3 localPos = photos[index][i].transform.localPosition;
-                Vector3 randomVect = new Vector3(Random.Range(0f, 2f), Random.Range(0f, 2f), 0);
-                Vector3 targetPos = booleana ? localPos + randomVect : Vector3.zero;
-                Vector3 lerped = Vector3.Lerp(localPos, targetPos, Time.deltaTime * 0.8f);
-                //timer * 0.015f
-                photos[index][i].transform.localPosition = lerped;
-            }
-            yield return null;
-        }
-        if (booleana == false)
-        {
-            for (int i = 0; i < photos[index].Count; i++)
-            {
-                photos[index][i].transform.localPosition = Vector3.zero;
+                if(ip.gameObject.activeSelf)
+                    ip.StartShrink();
             }
         }
     }
-    */
+    void ActivePositionPhoto(VenusPos vs)
+    {
+        foreach(InteractablePhoto ip in photos[(int)vs])
+        {
+            ip.gameObject.SetActive(true);
+        }
+    }
+    public void InactiveAllOutline()
+    {
+        foreach (InteractablePhoto ip in photos[(int)helper.curPos])
+        {
+            ip.outliner.SetActive(false);
+        }
+    }
 }

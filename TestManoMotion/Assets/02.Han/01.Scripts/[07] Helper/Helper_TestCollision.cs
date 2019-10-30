@@ -37,5 +37,9 @@ public class Helper_TestCollision : MonoBehaviour
         {
             FindObjectOfType<InteractableDrone>().ReturnBack();
         }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            curObj.ProcessClick();
+        }
     }
 }
