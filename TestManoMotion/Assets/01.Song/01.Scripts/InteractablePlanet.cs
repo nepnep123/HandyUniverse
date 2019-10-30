@@ -18,16 +18,6 @@ public class InteractablePlanet : InteractableObject
 	}
 
 	//클릭했을때 페이지 행성으로 이동. 
-	public override void ProcessPick()
-    {
-        transform.SetParent(GameManager.instance.hand.transform);
-    }
-
-    public override void ProcessDrop()
-    {
-        transform.SetParent(null);
-    }
-
     public override void ProcessClick()
 	{
         transform.SetParent(null);
