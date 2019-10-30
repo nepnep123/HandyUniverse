@@ -18,19 +18,10 @@ public class KManager : MonoBehaviour
 
     public GameObject solar;
 
-    private GameObject panelTouch;
-
     private void Awake()
     {
         if (instance == null) instance = GetComponent<KManager>();
         else Destroy(instance);
-    }
-
-    private void Start()
-    {
-        GameManager.instance.BackGroundOn(false);
-        //BackGroundOff();
-        panelTouch = GameObject.Find("PanelTouch"); // 칼리버레이션 하면 다시 true
     }
 
     public void solarGenerate()
@@ -118,17 +109,4 @@ public class KManager : MonoBehaviour
             }
         }
     }
-
-
-    // 제스쳐
-    //private void Update()
-    //{
-    //    PlanetHandLeftRight(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
-    //}
-
-    //private void PlanetHandLeftRight(TrackingInfo tracking_info)
-    //{
-    //    float angle = Mathf.LerpAngle(transform.rotation.z, tracking_info.rotation, 0.8f);
-    //    transform.eulerAngles = new Vector3(0, 0, -angle);
-    //}
 }
