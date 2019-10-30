@@ -11,11 +11,14 @@ public class Book_v2 : MonoBehaviour//InteractableBook
 {
     private Animator bookAnim;
     private Page page;
-    private bool isOpenable = true;     //페이지든 책이든 열기 가능한지
+    public bool isOpenable = true;     //페이지든 책이든 열기 가능한지
     private float bookAnimTime = 0;     //책 애니메이션 시간
     private float pageAnimTime = 0;     //페이지 애니메이션 시간
     public int curPlaneIndex = 0;
     public int maxBookPlaneIndex = 0;
+
+	//책이 열렸을때 생기는 이펙트
+	public GameObject bookOpenEffect;
 
 
 	//델리게이트 이벤트, 책을 넘길때 발생
@@ -32,13 +35,15 @@ public class Book_v2 : MonoBehaviour//InteractableBook
     [SerializeField] public RawImages[] centerPages;
 
     //원래 isBookOpened 였는데 auto 속성하니까 이렇게 됨
-    public bool IsBookOpened { get; private set; } = false;
+    public bool IsBookOpened { get; set; } = false;
     public bool isPlanetGrowing = false;
     // Start is called before the first frame update
 
     #region 외부접근 가능 메서드
     public void InitBook(string name)
     {
+		bookOpenEffect.SetActive(false);
+
         //이 책 초기화
         bookAnim = GetComponent<Animator>();
         page = GetComponentInChildren<Page>(true);
@@ -75,15 +80,26 @@ public class Book_v2 : MonoBehaviour//InteractableBook
 	#region 내부 메서드
 
 	void OCBook(bool booleana)
-    {
-        if (isOpenable == false) return;
-        if (booleana == IsBookOpened) return;
-        StopAllCoroutines();
-        bookAnim.SetBool("OpenBook", booleana);
-        if (booleana == false) { page.OnOffPage(false); }
-        isOpenable = false;
-        StartCoroutine(CheckBookTime(booleana));
-    }
+	{
+		if (isOpenable == false) return;
+		if (booleana == IsBookOpened) return;
+		StopAllCoroutines();
+		bookAnim.SetBool("OpenBook", booleana);
+		//책이 닫혔을때 이펙트는 사라진다. 
+		if (booleana == false)
+		{
+			page.OnOffPage(false);
+			bookOpenEffect.SetActive(false);
+			SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.closebookSound);
+		}
+		else
+		{
+			//bolleana == ture : 책이 열릴때.
+			SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.openbookSound);
+		}
+		isOpenable = false;
+		StartCoroutine(CheckBookTime(booleana));
+	}
     void PNPage(bool booleana)
     {
         if (isOpenable == false) return;
@@ -114,11 +130,12 @@ public class Book_v2 : MonoBehaviour//InteractableBook
             curTime += Time.deltaTime;
             yield return null;
         }
+
 		//BookPageSetter가 구독하고 있다. 
 		OnBookOpened?.Invoke();
 		isOpenable = true;
         IsBookOpened = booleana;
-    }
+	}
     IEnumerator CheckPageTime(bool booleana)
     {
         float curTime = 0;

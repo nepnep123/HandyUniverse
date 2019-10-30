@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoonMode : Mode
 {
-	public bool isFinished;
 
 	public MoonMode(PrimeHand hand) : base(hand)
 	{
@@ -18,17 +17,8 @@ public class MoonMode : Mode
 
 	public override void OnTriggeredGrab()
 	{
-		//행성안에 UI가 모두 끝나야지 Grab제스쳐로 나갈수 있다. 
-		if (isFinished == true && UIManager.instance.canMove == true)
-		{
-			MoonWorld.instance.AbleExitPotal();
-			isFinished = false;
-		}
-
-		else {
-			if(hand.curObj != null)
-				hand.curObj.ProcessGrab();
-		}
+		if (hand.curObj != null)
+			hand.curObj.ProcessGrab();
 	}
 	public override void OnTriggeredRelease()
 	{

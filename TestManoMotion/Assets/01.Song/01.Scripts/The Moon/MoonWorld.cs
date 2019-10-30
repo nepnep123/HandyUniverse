@@ -12,8 +12,9 @@ public class MoonWorld : World
 	public Transform start_Pos;
 	public Transform first_Pos;
 	public Transform second_Pos;
+	public Transform final_Pos;
 
-	public GameObject exitPotal;
+	public GameObject finalHint;
 
 	private void Awake()
 	{
@@ -106,14 +107,36 @@ public class MoonWorld : World
 			yield return null;
 		}
 	}
-	public GameObject potalPrefab;
 
-	//나가는 포탈 생성
-	public void AbleExitPotal()
+	public void GoFinalPos() => StartCoroutine(MovePlayerFP());
+	public IEnumerator MovePlayerFP()
 	{
-		Vector3 ablePos = campos.position + new Vector3(0, 0, 0.5f);
+		//이동하기전에 이전에 있는 myInfo OFF
+		MoonUICtrl.instance.myInfo.SetActive(false);
+		MoonUICtrl.instance.exitInfo.SetActive(true);
 
-		potalPrefab = Instantiate(exitPotal, ablePos, Quaternion.identity);
+		yield return new WaitForSeconds(3.0f);
+
+		while (true)
+		{
+			campos.position = Vector3.MoveTowards(campos.position, final_Pos.position, Time.deltaTime * 1f);
+			campos.LookAt(final_Pos);
+
+			if (campos.position == final_Pos.position)
+			{
+				//도착하면 3초뒤에 밖으로 나감.
+				campos.rotation = final_Pos.rotation;
+				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.teleportSound);
+				MoonSoundManager.instance.StopBGM();
+				yield return new WaitForSeconds(3.0f);
+
+				//Book_v2에 구독하고있는 ClosePortal 실행. 
+				GameManager.instance.masterBook.ClosePortal();
+			}
+
+			yield return null;
+		}
+
 	}
-	
+
 }

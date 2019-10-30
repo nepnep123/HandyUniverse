@@ -27,7 +27,8 @@ public class Page : MonoBehaviour
     }
     public void PNPage(bool booleana)
     {
-        if (booleana == true)
+		SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.nextpageSound);
+		if (booleana == true)
         {
             anim.Play("PageAnim");
         }
