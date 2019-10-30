@@ -10,22 +10,16 @@ public class MKPlayerCol : MonoBehaviour
     {
         if (col.gameObject.name == "SphereEnemy(Clone)")
         {
-            MKScoreManager.instance.enabled = false;
             MKManager.instance.EndGame();
 
             //Instantiate(deathEffect, transform.position, transform.rotation);
-
-            Destroy(gameObject);
         }
     }
 
     private void OnParticleCollision()
     {
-        MKScoreManager.instance.enabled = false;
         MKManager.instance.EndGame();
 
         //Instantiate(deathEffect, transform.position, transform.rotation);
-
-        Destroy(gameObject);
     }
 }

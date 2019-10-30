@@ -9,17 +9,23 @@ public class MKEnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        MKManager.instance.OnPlanetCreated += StartSpawn;
+        MKManager.instance.OnStart += StartSpawn;
+        MKManager.instance.OnEnd += StopSpawn;
     }
 
     private void OnDisable()
     {
-        MKManager.instance.OnPlanetCreated -= StartSpawn;
+        MKManager.instance.OnStart -= StartSpawn;
+        MKManager.instance.OnEnd -= StopSpawn;
     }
 
     private void StartSpawn()
     {
         StartCoroutine(DelayMeteor());
+    }
+    private void StopSpawn()
+    {
+        StopAllCoroutines();
     }
     
     public IEnumerator DelayMeteor()
@@ -31,7 +37,7 @@ public class MKEnemySpawnManager : MonoBehaviour
 
     public IEnumerator SpawnMeteor()
     {
-        Instantiate(meteorPrefab, RandomSphereInPoint(0.7f), Quaternion.identity);
+        var a = Instantiate(meteorPrefab, RandomSphereInPoint(0.7f), Quaternion.identity);
 
         yield return waitForSeconds;
 

@@ -10,7 +10,7 @@ public class MKScoreManager : MonoBehaviour
     private Text textScore;             // 점수
     private Text textHighScore;         // 최고 점수
 
-    private float textScorePoint;
+    public float textScorePoint;
     private float highTextScorePoint;
 
     private float scoreUnit = 20;
@@ -26,7 +26,8 @@ public class MKScoreManager : MonoBehaviour
 
     private void Start()
     {
-        MKManager.instance.OnPlanetCreated += StartCounting;
+        MKManager.instance.OnStart += StartCounting;
+        MKManager.instance.OnEnd += StopCounting;
 
         textScore = GameObject.Find("TextScore").GetComponent<Text>();
         textHighScore = GameObject.Find("TextHighScore").GetComponent<Text>();
@@ -39,14 +40,20 @@ public class MKScoreManager : MonoBehaviour
 
     private void OnDisable()
     {
-        MKManager.instance.OnPlanetCreated -= StartCounting;
+        MKManager.instance.OnStart -= StartCounting;
+        MKManager.instance.OnEnd -= StopCounting;
     }
 
     private void StartCounting()
     {
         hasStarted = true;
     }
-    
+
+    private void StopCounting()
+    {
+        hasStarted = false;
+    }
+
     private void Update()
     {
         if (hasStarted == false)

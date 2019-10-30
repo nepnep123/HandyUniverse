@@ -17,8 +17,13 @@ public class MKEnemyCol : MonoBehaviour
 
     void FixedUpdate()
     {
-        Attract(rb);
+        transform.position = Vector3.MoveTowards(transform.position, MKManager.instance.planet.transform.position, 0.1f * Time.deltaTime);
+        transform.RotateAround(MKManager.instance.planet.transform.position, Vector3.right, 30f * Time.deltaTime);
+        //Attract(rb);
     }
+
+    // 마노모션으로 좌우 이동 시키기
+
 
     private void Attract(Rigidbody rigidbody)
     {
