@@ -9,17 +9,11 @@ public class VenusWorld : World
     public Helper helper;
     // Start is called before the first frame update
 
-    bool isInit = false;
-
-    private void Update()
-    {
-        if (isInit == true) return;
-        InitWorld();
-        isInit = true;
-    }
-
     public override void InitWorld()
     {
+        PhotoUtils.MakeFolder("Venus_Lakshmi");
+        PhotoUtils.MakeFolder("Venus_Maxwell");
+        PhotoUtils.MakeFolder("Venus_Venus");
         var a = GetComponentsInChildren<InteractableObject>(true);
         foreach(InteractableObject aa in a)
         {
@@ -30,12 +24,10 @@ public class VenusWorld : World
         venusSounds.InitVenusSounds();
         //Todo 테스트용
 #if !UNITY_EDITOR
-        GameManager.instance.hand.mode = new VenusMode(GameManager.instance.hand);
         BackGroundOff();
 #endif
-        PhotoUtils.MakeFolder("Venus_Lakshmi");
-        PhotoUtils.MakeFolder("Venus_Maxwell");
-        PhotoUtils.MakeFolder("Venus_Venus");
+        GameManager.instance.hand.venusMode.helper = this.helper;
+        GameManager.instance.hand.mode = GameManager.instance.hand.venusMode;
     }
 
     private void SetVenusFog()

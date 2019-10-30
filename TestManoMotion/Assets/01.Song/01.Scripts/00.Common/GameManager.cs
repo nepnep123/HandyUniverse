@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
 	[HideInInspector]
 	public GameObject zone;
+	public bool isCanCreateBook = false;
 
 	//BOOKZONE 버튼으로 활성화
 	public void OpenBookZone()
@@ -97,5 +98,7 @@ public class GameManager : MonoBehaviour
 
 		Animator zoneAnim = zone.GetComponent<Animator>();
 		zoneAnim.SetTrigger("OpenZone");
+		//Zone을 생성하고 다음에 제스처를 통해서 책을 생성한다. 
+		isCanCreateBook = true;
 	}
 }

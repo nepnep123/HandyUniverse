@@ -50,7 +50,8 @@ public class InteractablePlanet : InteractableObject
 
 	IEnumerator GrowPlanet()
 	{
-		Vector3 targetPos = GameManager.instance.camPos.position + new Vector3(0, 0, 0.005f);
+		//수정
+		Vector3 targetPos = GameManager.instance.camPos.GetChild(0).transform.position + new Vector3(0, 0, 0.005f);
 		float dis = Vector3.Distance(transform.position, targetPos);
 
 		while (dis >= 0.2f)

@@ -8,7 +8,7 @@ public class PrimeHand : MonoBehaviour
     public KTutorialMode kTutorialMode;
     public EntryMode entryMode;
 	public MoonMode moonMode;
-
+    public VenusMode venusMode;
 
     public InteractableObject curObj;
 
@@ -21,8 +21,8 @@ public class PrimeHand : MonoBehaviour
         kTutorialMode = new KTutorialMode(this);
         entryMode = new EntryMode(this);
 		moonMode = new MoonMode(this);
-        //mode = entryMode;
-        mode = kTutorialMode;
+        venusMode = new VenusMode(this);
+        mode = entryMode;
     }
 
     //TODO : 안전장치 필요
