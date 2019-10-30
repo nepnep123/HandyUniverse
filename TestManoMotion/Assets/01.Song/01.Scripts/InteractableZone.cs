@@ -21,6 +21,19 @@ public class InteractableZone : InteractableObject
 			this.book = book as Book_v2;
 		isInit = true;
 	}
+	public override void ProcessCollisionEnter()
+	{
+		switch (triobj)
+		{
+			case TriggerObj.CreateBook:
+				isBookZone = true;
+				break;
+		}
+	}
+	public override void ProcessCollisionExit()
+	{
+		isBookZone = false;
+	}
 
 	//BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
 	public override void ProcessRelease()
@@ -33,19 +46,6 @@ public class InteractableZone : InteractableObject
 		}
 	}
 
-	public override void ProcessCollisionEnter()
-	{
-		switch (triobj)
-		{
-			case TriggerObj.CreateBook:
-				isBookZone = true;
-				break;
-		}
-	}
 
-	public override void ProcessCollisionExit()
-	{
-		isBookZone = false;
-	}
 
 }

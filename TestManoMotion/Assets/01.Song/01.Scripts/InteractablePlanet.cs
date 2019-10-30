@@ -63,6 +63,8 @@ public class InteractablePlanet : InteractableObject
 			yield return null;
 		}
         book.isPlanetGrowing = false;
+		//행성안으로 들어가면 메인 사운드 OFF
+		SoundManager.instance.StopBackGroundSound();
 		book.OpenPortal();
 	}
 }

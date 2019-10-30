@@ -44,6 +44,7 @@ public class InteractableMoonObject : InteractableObject
 
 				//충돌되는순간 제스처를 통해서 이벤트 처리
 			case MoonSymbol.HandPrintZone:
+				SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.bookZone);
 				canPrinted = true;
 				break;
 
