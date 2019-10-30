@@ -80,16 +80,26 @@ public class Book_v2 : MonoBehaviour//InteractableBook
 	#region 내부 메서드
 
 	void OCBook(bool booleana)
-    {
-        if (isOpenable == false) return;
-        if (booleana == IsBookOpened) return;
-        StopAllCoroutines();
-        bookAnim.SetBool("OpenBook", booleana);
+	{
+		if (isOpenable == false) return;
+		if (booleana == IsBookOpened) return;
+		StopAllCoroutines();
+		bookAnim.SetBool("OpenBook", booleana);
 		//책이 닫혔을때 이펙트는 사라진다. 
-        if (booleana == false) { page.OnOffPage(false); bookOpenEffect.SetActive(false); }
-        isOpenable = false;
-        StartCoroutine(CheckBookTime(booleana));
-    }
+		if (booleana == false)
+		{
+			page.OnOffPage(false);
+			bookOpenEffect.SetActive(false);
+			SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.closebookSound);
+		}
+		else
+		{
+			//bolleana == ture : 책이 열릴때.
+			SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.openbookSound);
+		}
+		isOpenable = false;
+		StartCoroutine(CheckBookTime(booleana));
+	}
     void PNPage(bool booleana)
     {
         if (isOpenable == false) return;

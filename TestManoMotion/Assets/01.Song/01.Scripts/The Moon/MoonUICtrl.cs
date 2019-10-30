@@ -91,6 +91,7 @@ public class MoonUICtrl : MonoBehaviour
 	public void StartMoonInfo()
 	{
 		infoImg.SetActive(true);
+		MoonSoundManager.instance.PlayBGM();
 		StartCoroutine(AfterInfo());
 	}
 
@@ -116,10 +117,14 @@ public class MoonUICtrl : MonoBehaviour
 	private string msg;
 	public IEnumerator LoadingAndPrint()
 	{
+		MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.handprintSound);
+		yield return new WaitForSeconds(2.0f);
 		//미션 클리어시 5초동안 로딩... 후 바닥에 손바닥 생성
 		loading_particle.SetActive(true);
+		MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.loadingSound);
 		yield return new WaitForSeconds(5.0f);
 		loading_particle.SetActive(false);
+
 		printing_img.SetActive(true);
 
 		myInfo.SetActive(false);

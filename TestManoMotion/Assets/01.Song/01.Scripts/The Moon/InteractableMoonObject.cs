@@ -33,9 +33,11 @@ public class InteractableMoonObject : InteractableObject
 
 
 			case MoonSymbol.FirstPosMove:
+				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.arrowTouchSound);
 				MoonWorld.instance.GoFirstPos();
 				break;
 			case MoonSymbol.SecondPosMove:
+				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.arrowTouchSound);
 				MoonWorld.instance.GoSecondPos();
 				break;
 
@@ -71,6 +73,7 @@ public class InteractableMoonObject : InteractableObject
 				if (isTouched == true)
 				{
 					isTouched = false;
+					MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.clickSound);
 					this.gameObject.SetActive(false);
 					MoonUICtrl.instance.ShowPicture(1);
 				}
@@ -79,6 +82,7 @@ public class InteractableMoonObject : InteractableObject
 				if (isTouched == true)
 				{	
 					isTouched = false;
+					MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.clickSound);
 					this.gameObject.SetActive(false);
 					MoonUICtrl.instance.ShowPicture(2);
 				}
@@ -89,6 +93,7 @@ public class InteractableMoonObject : InteractableObject
 				if (isTouched == true)
 				{
 					isTouched = false;
+					MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.clickSound);
 					this.gameObject.SetActive(false);
 					//마지막 장소로 이동. 
 					MoonWorld.instance.GoFinalPos();

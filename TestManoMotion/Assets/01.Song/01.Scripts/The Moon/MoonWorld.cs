@@ -126,6 +126,8 @@ public class MoonWorld : World
 			{
 				//도착하면 3초뒤에 밖으로 나감.
 				campos.rotation = final_Pos.rotation;
+				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.teleportSound);
+				MoonSoundManager.instance.StopBGM();
 				yield return new WaitForSeconds(3.0f);
 
 				//Book_v2에 구독하고있는 ClosePortal 실행. 

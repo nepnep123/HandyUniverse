@@ -14,26 +14,23 @@ public class GameManager : MonoBehaviour
 	public ManoVisualization mano;
 	public FadeChange fadeCanvas;
 
+	public MasterBookCreator master;
+
+	//master책을 생성하기위한 공간
+	public GameObject bookZone;
+
 	//델리게이트 이벤트, FadeOut / In -> 행성 UI 표시 
 	public event VoidNotier OnStartInfo;
-
-	//[HideInInspector]
-	//public GameObject enterPlanetPos;
-
+	
 
 	private void Awake()
 	{
 		mainPos = GameObject.Find("MainPosition").transform;
 
-		////임의의 빈오브젝트를 만들어서 행성이 다가오는 위치를 정해준다. 
-		//enterPlanetPos = new GameObject("enterPlanetPos");
-		//Vector3 temp = new Vector3(camPos.position.x, camPos.position.y, camPos.position.z + 1);
-		//enterPlanetPos.transform.position = temp;
-
-
 		hand = FindObjectOfType<PrimeHand>();
 		mano = FindObjectOfType<ManoVisualization>();
 		fadeCanvas = FindObjectOfType<FadeChange>();
+		master = FindObjectOfType<MasterBookCreator>();
 
         if (instance == null) instance = GetComponent<GameManager>();
 
@@ -41,7 +38,7 @@ public class GameManager : MonoBehaviour
 
 		//mainPos는 처음 메인카메라의 위치를 갖는다. 
 		camPos = Camera.main.transform.parent.transform;
-		mainPos.position = camPos.position;
+		//mainPos.position = camPos.position;
 	}
 	
 	public void BackGroundOn(bool temp)
@@ -79,5 +76,26 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(3.0f);
 		//MoonUIMGR 구독중
 		OnStartInfo?.Invoke();
+	}
+
+	[HideInInspector]
+	public GameObject zone;
+
+	//BOOKZONE 버튼으로 활성화
+	public void OpenBookZone()
+	{
+		Quaternion rotation = Quaternion.identity;
+		rotation.eulerAngles = new Vector3(-90, 0, 0);
+
+		zone = Instantiate(bookZone, camPos.position + new Vector3(0, -0.5f, 1), rotation);
+		mainPos.position = zone.transform.position + new Vector3(0, 0.5f, -1);
+
+		var msg = "BOOK ZONE을 생성하였습니다. " + "\n" + "\n"
+			+ "RELEASE 제스처를 통해 " + "\n"
+			+ "MASTER BOOK을 생성합니다. ";
+		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
+
+		Animator zoneAnim = zone.GetComponent<Animator>();
+		zoneAnim.SetTrigger("OpenZone");
 	}
 }
