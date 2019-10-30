@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class VenusMode : Mode
 {
-    InteractableDrone drone;
+    public Helper helper;
     public VenusMode(PrimeHand hand) : base(hand)
     {
         this.hand = hand;
-        drone = GameObject.FindObjectOfType<InteractableDrone>();
     }
 
     //public override void OnTriggeredGrab() => hand.curObj.ProcessGrab();
@@ -23,5 +22,5 @@ public class VenusMode : Mode
             hand.curObj.ProcessDrop();
     }
 
-    public override void OnTriggeredRelease() => drone.ReturnBack();
+    public override void OnTriggeredRelease() => helper.drone.ReturnBack();
 }
