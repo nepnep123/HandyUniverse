@@ -17,7 +17,6 @@ public class MasterBookCreator : MonoBehaviour
 		GameManager.instance.masterBook = booker;
 
 		booker.InitBook("The Worlds");
-
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
     }
 }

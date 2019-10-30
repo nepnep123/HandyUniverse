@@ -11,7 +11,9 @@ public class VenusWorld : World
 
     public override void InitWorld()
     {
-        GameManager.instance.hand.mode = GameManager.instance.hand.venusMode;
+        PhotoUtils.MakeFolder("Venus_Lakshmi");
+        PhotoUtils.MakeFolder("Venus_Maxwell");
+        PhotoUtils.MakeFolder("Venus_Venus");
         var a = GetComponentsInChildren<InteractableObject>(true);
         foreach(InteractableObject aa in a)
         {
@@ -24,9 +26,8 @@ public class VenusWorld : World
 #if !UNITY_EDITOR
         BackGroundOff();
 #endif
-        PhotoUtils.MakeFolder("Venus_Lakshmi");
-        PhotoUtils.MakeFolder("Venus_Maxwell");
-        PhotoUtils.MakeFolder("Venus_Venus");
+        GameManager.instance.hand.venusMode.helper = this.helper;
+        GameManager.instance.hand.mode = GameManager.instance.hand.venusMode;
     }
 
     private void SetVenusFog()

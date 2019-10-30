@@ -10,6 +10,7 @@ public class InteractablePhoto : InteractableObject
     Helper helper;
     bool isInited = false;
     float originalScale = 0;
+    float scaledScale = 0;
     public bool isOpended = false;
     public GameObject outliner;
 
@@ -25,6 +26,7 @@ public class InteractablePhoto : InteractableObject
         outliner = transform.Find("Outliner").gameObject;
         outliner.SetActive(false);
         originalScale = transform.localScale.x;
+        scaledScale = originalScale * 3f;
     }
 
     public override void ProcessCollisionEnter()
@@ -44,7 +46,7 @@ public class InteractablePhoto : InteractableObject
     IEnumerator Scalar()
     {
         isOpended = true;
-        float scalar = transform.localScale.x *3f;
+        float scalar = scaledScale;
         float loScale = transform.localScale.x;
         while (loScale < scalar)
         {
