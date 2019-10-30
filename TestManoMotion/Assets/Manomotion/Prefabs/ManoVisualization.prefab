@@ -185,9 +185,9 @@ MonoBehaviour:
   _show_border_flags: 0
   _show_bounding_box: 0
   _show_contour: 1
-  _show_inner: 1
-  _show_fingertips: 0
-  _show_fingertip_labels: 0
+  _show_inner: 0
+  _show_fingertips: 1
+  _show_fingertip_labels: 1
   _show_palm_center: 1
   _show_hand_layer: 1
   _show_background_layer: 1

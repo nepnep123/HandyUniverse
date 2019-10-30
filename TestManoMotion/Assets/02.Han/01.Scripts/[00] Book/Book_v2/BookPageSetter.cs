@@ -90,20 +90,23 @@ public class BookPageSetter : MonoBehaviour
 	#region 외부 접근 가능 메서드
 	public void OpenPortal()
 	{
-        Debug.Log("Portal Opened...");
 		//백그라운드 끄고 / 마스터북 끄고 / 페이드 아웃 - 페이드 인 
 		GameManager.instance.StartCoroutine(GameManager.instance.EnterWorld());
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
 		world_pre[book.curPlaneIndex].InitWorld();
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
+		book.gameObject.SetActive(false);
 	}
 
 	//Book_v2::ClosePortal()
     public void ExitWorldCtrl()
     {
 		book.gameObject.SetActive(true);
-		DisableAllPage();
+		book.isOpenable = true;
+		book.IsBookOpened = false;
+
 		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
+		DisableAllPage();
 	}
 
     #endregion
@@ -163,7 +166,7 @@ public class BookPageSetter : MonoBehaviour
 
 
 
-	void DisableAllPage()
+	public void DisableAllPage()
 	{
 		for (int i = 0; i < pageInfos.Length; i++)
 		{

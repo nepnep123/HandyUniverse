@@ -7,6 +7,9 @@ public class InteractablePlanet : InteractableObject
 	Book_v2 book;
 
 	public bool isInit = false;
+
+
+
 	public override void ProcessInit<T>(T book)
 	{
 		if (book is Book_v2)
@@ -19,25 +22,17 @@ public class InteractablePlanet : InteractableObject
     {
         transform.SetParent(GameManager.instance.hand.transform);
     }
-    public override void ProcessGrab()
-    {
-        transform.SetParent(GameManager.instance.hand.transform);
-    }
-    public override void ProcessRelease()
-    {
-        transform.SetParent(null);
-    }
+
     public override void ProcessDrop()
     {
         transform.SetParent(null);
     }
+
     public override void ProcessClick()
 	{
-        //GameManager.instance.hand.curObj.transform.SetParent(null);
         transform.SetParent(null);
         if(book.isPlanetGrowing == false)
         {
-            Debug.Log("프로세스 클릭, 플래닛 그로우 시작");
             book.isPlanetGrowing = true;
             StartCoroutine(GrowPlanet());
         }
@@ -48,11 +43,6 @@ public class InteractablePlanet : InteractableObject
 	{
 		GetComponent<Outline>().OutlineWidth = 10;
 	}
-	public override void ProcessCollisionExit()
-	{
-		//GetComponent<Outline>().OutlineWidth = 0;
-	}
-
 	private void OnDisable()
 	{
 		GetComponent<Outline>().OutlineWidth = 0;
@@ -60,12 +50,11 @@ public class InteractablePlanet : InteractableObject
 
 	IEnumerator GrowPlanet()
 	{
-		Vector3 targetPos = GameManager.instance.camPos.position + new Vector3(0.1f, -0.15f, 0.005f);
+		Vector3 targetPos = GameManager.instance.camPos.position + new Vector3(0, 0, 0.005f);
 		float dis = Vector3.Distance(transform.position, targetPos);
 
 		while (dis >= 0.2f)
 		{
-            
 			dis = Vector3.Distance(transform.position, targetPos);
 
 			//Lerp 특성상 0으로 정확하게 맞춰지진 않는다. 

@@ -174,12 +174,13 @@ public class GizmoManager : MonoBehaviour
     void Update()
     {
 
-        DisplayRotationGizmo(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
-        DisplayManoclass(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
+        //DisplayRotationGizmo(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
+        //DisplayManoclass(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
         DisplayTriggerGesture(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
-        DisplayContinuousGesture(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
-        //DisplayHandState(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
-        DisplayDepth(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
+        //DisplayContinuousGesture(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
+		//수정
+		//DisplayHandState(ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info);
+        //DisplayDepth(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info);
         //DisplayFlags(ManomotionManager.Instance.Hand_infos[0].hand_info.warning);
 
     }
@@ -291,28 +292,28 @@ public class GizmoManager : MonoBehaviour
             {
 
                 case ManoGestureTrigger.CLICK:
-                    triggerGestureText.text = "Trigger: Click";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Click" + "</color>";
                     break;
                 case ManoGestureTrigger.SWIPE_LEFT:
-                    triggerGestureText.text = "Trigger: Swipe Left";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Swipe Left" + "</color>";
                     break;
                 case ManoGestureTrigger.SWIPE_RIGHT:
-                    triggerGestureText.text = "Trigger: Swipe Right";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Swipe Right" + "</color>";
                     break;
                 case ManoGestureTrigger.GRAB:
-                    triggerGestureText.text = "Trigger: Grab";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Grab" + "</color>";
                     break;
                 case ManoGestureTrigger.TAP_POINTING:
-                    triggerGestureText.text = "Trigger: Tap";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Tap" + "</color>";
                     break;
                 case ManoGestureTrigger.DROP:
-                    triggerGestureText.text = "Trigger: Drop";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Drop" + "</color>";
                     break;
                 case ManoGestureTrigger.PICK:
-                    triggerGestureText.text = "Trigger: Pick";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Pick" + "</color>";
                     break;
                 case ManoGestureTrigger.RELEASE:
-                    triggerGestureText.text = "Trigger: Release";
+                    triggerGestureText.text = "Trigger: " + "<color=blue>" + "Release" + "</color>";
                     break;
                 case ManoGestureTrigger.NO_GESTURE:
                     triggerGestureText.text = "Trigger: ";

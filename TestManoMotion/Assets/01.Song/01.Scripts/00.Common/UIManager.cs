@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 	public Text mission_txt;
 
 	private Animator anim;
-	public bool canMove = false;
+
 
 	private void Awake()
 	{
@@ -25,13 +25,10 @@ public class UIManager : MonoBehaviour
 	public IEnumerator ShowMissionUI(string content)
 	{
 		mission_txt.text = content;
-
+		yield return new WaitForSeconds(3.0f);
 		anim.SetBool("IsShowMission", true);
 		yield return new WaitForSeconds(5.0f);
 		anim.SetBool("IsShowMission", false);
-		//UI를 보고나서 3초 뒤에 제스처로 이동한다.
-		yield return new WaitForSeconds(3.0f);
-		canMove = true;
 	}
 
 }
