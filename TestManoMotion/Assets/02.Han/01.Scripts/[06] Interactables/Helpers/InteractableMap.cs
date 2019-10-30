@@ -14,7 +14,7 @@ public class InteractableMap : InteractableTrinity
     {
         base.ProcessInit(obj);
         //인덱스 초기화
-        var a = GetComponentsInChildren<InteractableIndex>();
+        var a = GetComponentsInChildren<InteractableIndex>(true);
         indexes = new InteractableIndex[a.Length];
         for (int i = 0; i < a.Length; i++)
         {

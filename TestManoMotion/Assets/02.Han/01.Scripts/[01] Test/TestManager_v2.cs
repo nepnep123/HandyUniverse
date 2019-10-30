@@ -16,6 +16,7 @@ public class TestManager_v2 : MonoBehaviour
     static public TestManager_v2 instance;
     private void Awake()
     {
+        PhotoUtils.MakeFolder("Venus_Venus");
         instance = GetComponent<TestManager_v2>();
     }
     bool isInit = false;

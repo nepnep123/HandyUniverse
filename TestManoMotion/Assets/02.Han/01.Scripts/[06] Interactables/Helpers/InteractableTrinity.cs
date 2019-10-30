@@ -6,7 +6,7 @@ public class InteractableTrinity : InteractableObject
 {
     public ParticleSystem childicle;
     public InteractableDrone drone;
-    protected Helper helper;
+    public Helper helper;
     public bool isPicked = false;
 
     public override void ProcessInit<T>(T obj)
@@ -30,10 +30,5 @@ public class InteractableTrinity : InteractableObject
     public void SelectObj(bool booleana)
     {
         childicle.gameObject.SetActive(booleana);
-    }
-
-    public virtual void CloseObjs() {
-        if (helper.drone.releaseStack.Count > 1)
-            helper.drone.ReturnBack();
     }
 }

@@ -18,7 +18,7 @@ public class VenusWorld : World
         isInit = true;
     }
 
-    public void InitWorld()
+    public override void InitWorld()
     {
         var a = GetComponentsInChildren<InteractableObject>(true);
         foreach(InteractableObject aa in a)
@@ -35,6 +35,7 @@ public class VenusWorld : World
 #endif
         PhotoUtils.MakeFolder("Venus_Lakshmi");
         PhotoUtils.MakeFolder("Venus_Maxwell");
+        PhotoUtils.MakeFolder("Venus_Venus");
     }
 
     private void SetVenusFog()

@@ -33,8 +33,9 @@ public class Helper : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            target = GameManager.instance.camPos;
-            arDevice = target.parent;
+            //target = GameManager.instance.camPos;
+            target = Camera.main.transform;
+            arDevice = GameManager.instance.camPos;
         }
     }
 
@@ -102,18 +103,6 @@ public class Helper : MonoBehaviour
             }
             Activer(false);
             isAbleToLook = true;
-        }
-    }
-
-    public void SetInfo(LR lr)
-    {
-        if(lr == LR.Left)
-        {
-            curPos = VenusPos.Lakshmi;
-        }
-        else
-        {
-            curPos = VenusPos.Maxwell;
         }
     }
 
