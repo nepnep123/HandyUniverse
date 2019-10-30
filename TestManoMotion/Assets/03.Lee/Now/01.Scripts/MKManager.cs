@@ -15,6 +15,7 @@ public class MKManager : MonoBehaviour
     private float FirstScale;
     private GameObject panelTouch;
 
+    public GameObject playPlayer;
     public GameObject planet;
     private GameObject buttonGeneratePlanet;
     private GameObject panelGameOver;
@@ -28,11 +29,8 @@ public class MKManager : MonoBehaviour
 
     Vector3 transformPos = new Vector3(0, 0, 0.4f);
 
-    private WaitForSeconds waitForSeconds = new WaitForSeconds(3.5f);
-
-    public VoidNotier OnPlanetCreated;
-
-    private bool viewMode;
+    public VoidNotier OnStart;
+    public VoidNotier OnEnd;
 
     private void Awake()
     {
@@ -135,29 +133,42 @@ public class MKManager : MonoBehaviour
         planetSphereCollider = planet.GetComponentInChildren<SphereCollider>();
         buttonGeneratePlanet.SetActive(false);
 
-        var player = GameObject.FindWithTag("Player").gameObject;
-        player.SetActive(false); // 차 안보이게 하기
+        playPlayer = GameObject.FindWithTag("Player").gameObject;
+        playPlayer.SetActive(false); // 차 안보이게 하기
 
         SetARObject(planetObj);
-
-        if (viewMode == true)
-        {
-            //panelTouch.SetActive(false);
-
-            OnPlanetCreated?.Invoke(); // 방송
-            // = 
-            //if(OnPlanetCreated != null)
-            //{
-            //    OnPlanetCreated();
-            //}
-        }
     }
+
+    public void GameStart()
+    {
+        panelTouch.SetActive(false);
+        playPlayer.SetActive(true);
+
+        planet.GetComponent<MKPlanetLeftRight>().enabled = true;
+        planet.transform.GetChild(0).transform.GetComponent<MKLookAt>().enabled = true;
+        planet.transform.GetChild(0).transform.GetChild(0).GetComponent<MKPlanetUpDown>().enabled = true;
+
+        BroadCastingStart();
+    }
+
+    private void BroadCastingStart()
+    {
+        OnStart?.Invoke();
+    }
+
+    private void BroadCastingStop()
+    {
+        OnEnd?.Invoke();
+    }
+
 
     public void EndGame() // 게임끝 -> 패널 짠
     {
-        //TextDistanceScoreResult.text = "NOW SCORE : " + Mathf.Round(PlayerPrefs.GetFloat("NowScore")) + "M";
-        //TextHighDistanceScoreResult.text = "HIGH SCORE : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")) + "M";
-        panelGameOver.SetActive(true);
+        textScoreResult.text = "NOW SCORE : " + Mathf.Round(PlayerPrefs.GetFloat("NowScore")) + "M";
+        textHighScoreResult.text = "HIGH SCORE : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")) + "M";
+        BroadCastingStop();                              // 적 그만
+        playPlayer.SetActive(false);                     // 플레이어 안보이게
+        panelGameOver.SetActive(true);                   // 패널 등장
     }
 
     public void PauseGame() // 일시정지
@@ -174,10 +185,13 @@ public class MKManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    //public void Restart() // 씬 리스타트.. 이거 수정해야
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //}
+    public void Restart() // 다시 시작
+    {
+        panelGameOver.SetActive(false);
+        MKScoreManager.instance.textScorePoint = 0;
+        BroadCastingStart();
+        playPlayer.SetActive(true);
+    }
 
     public void QuitGame() // 게임종료
     {

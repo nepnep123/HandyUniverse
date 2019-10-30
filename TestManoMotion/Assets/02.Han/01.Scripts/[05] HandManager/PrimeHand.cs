@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrimeHand : MonoBehaviour
 {
     public Mode mode;
+    public KTutorialMode kTutorialMode;
     public EntryMode entryMode;
 	public MoonMode moonMode;
 
@@ -17,9 +18,11 @@ public class PrimeHand : MonoBehaviour
 
     private void Awake()
     {
+        kTutorialMode = new KTutorialMode(this);
         entryMode = new EntryMode(this);
 		moonMode = new MoonMode(this);
-        mode = entryMode;
+        //mode = entryMode;
+        mode = kTutorialMode;
     }
 
     //TODO : 안전장치 필요

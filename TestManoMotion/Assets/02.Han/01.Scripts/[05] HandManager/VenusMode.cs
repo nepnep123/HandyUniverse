@@ -17,6 +17,11 @@ public class VenusMode : Mode
         if (hand.curObj != null)
             hand.curObj.ProcessPick();
     }
+    public override void OnTriggeredDrop()
+    {
+        if (hand.curObj != null)
+            hand.curObj.ProcessDrop();
+    }
 
     public override void OnTriggeredRelease() => drone.ReturnBack();
 }

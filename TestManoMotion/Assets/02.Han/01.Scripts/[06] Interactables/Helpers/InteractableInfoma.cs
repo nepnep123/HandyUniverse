@@ -30,11 +30,6 @@ public class InteractableInfoma : InteractableTrinity
         helper.drone.releaseStack.Push(CloseInfos);
     }
 
-    public override void CloseObjs()
-    {
-        base.CloseObjs();
-    }
-
     public void CloseInfos()
     {
         isPicked = false;
