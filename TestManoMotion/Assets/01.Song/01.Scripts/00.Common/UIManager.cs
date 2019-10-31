@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
 	public IEnumerator ShowMissionUI(string content)
 	{
 		mission_txt.text = content;
-		yield return new WaitForSeconds(3.0f);
 		anim.SetBool("IsShowMission", true);
 		yield return new WaitForSeconds(5.0f);
 		anim.SetBool("IsShowMission", false);
