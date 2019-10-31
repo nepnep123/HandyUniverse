@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 	//master책을 생성하기위한 공간
 	public GameObject bookZone;
 
+	public GameObject keyZone;
+	public GameObject bookKey;
+
 	//델리게이트 이벤트, FadeOut / In -> 행성 UI 표시 
 	public event VoidNotier OnStartInfo;
 	
@@ -34,10 +37,8 @@ public class GameManager : MonoBehaviour
 		master = FindObjectOfType<MasterBookCreator>();
 
         if (instance == null) instance = GetComponent<GameManager>();
-
 		else Destroy(this);
 
-		//mainPos는 처음 메인카메라의 위치를 갖는다. 
 		camPos = Camera.main.transform.parent.transform;
 		//mainPos.position = camPos.position;
 	}
@@ -94,12 +95,13 @@ public class GameManager : MonoBehaviour
 
 		var msg = "BOOK ZONE을 생성하였습니다. " + "\n" + "\n"
 			+ "RELEASE 제스처를 통해 " + "\n"
-			+ "MASTER BOOK을 생성합니다. ";
+			+ "Mission Book을 생성합니다. ";
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 		Animator zoneAnim = zone.GetComponent<Animator>();
 		SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.bookZone);
 		zoneAnim.SetTrigger("OpenZone");
+
 		//Zone을 생성하고 다음에 제스처를 통해서 책을 생성한다. 
 		isCanCreateBook = true;
 		Destroy(GameObject.Find("BookZone_Btn"));

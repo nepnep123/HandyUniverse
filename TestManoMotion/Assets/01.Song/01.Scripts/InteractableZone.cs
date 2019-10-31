@@ -8,10 +8,13 @@ public class InteractableZone : InteractableObject
 
 	public bool isInit = false;
 	private bool isBookZone = false;
+	private bool canPick = false;
 
+	
 	public enum TriggerObj
 	{
-		CreateBook
+		CreateBook,
+		BookKey
 	}
 	public TriggerObj triobj = TriggerObj.CreateBook;
 
@@ -28,24 +31,85 @@ public class InteractableZone : InteractableObject
 			case TriggerObj.CreateBook:
 				isBookZone = true;
 				break;
+			case TriggerObj.BookKey:
+				canPick = true;
+				break;
 		}
 	}
 	public override void ProcessCollisionExit()
 	{
-		isBookZone = false;
+		switch (triobj)
+		{
+			case TriggerObj.CreateBook:
+				isBookZone = false;
+				break;
+			case TriggerObj.BookKey:
+				canPick = false;
+				break;
+		}
 	}
 
-	//BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
-	public override void ProcessRelease()
+	public override void ProcessPick()
 	{
-		if (isBookZone == true && GameManager.instance.isCanCreateBook == true)
+		switch (triobj)
 		{
-			GameManager.instance.master.CreateMasterBook();
-			Destroy(GameManager.instance.hand.curObj.gameObject.GetComponent<BoxCollider>());
-			GameManager.instance.isCanCreateBook = false;
+			case TriggerObj.BookKey:
+				if(canPick == true)
+				{
+					this.transform.SetParent(GameManager.instance.hand.transform);
+				}
+				break;
 		}
 	}
 
 
+	
+	public override void ProcessDrop()
+	{
+		switch (triobj)
+		{
+			case TriggerObj.BookKey:
+				{ 
+					this.transform.SetParent(null);
+					canPick = false;
+					//Heart와 MissionBook과 충돌해있는 상태에서 Drop 제스처 취할시 마스터책 발생
+					if(BookKey.isBookKeyIn == true)
+					{
+						//미션 클리어(마스터 북 생성)
+						Destroy(GameObject.FindWithTag("KEYZONE"));
 
+						GameManager.instance.master.CreateMasterBook();
+						SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.closebookSound);
+						GameManager.instance.camPos.position = GameManager.instance.mainPos.position;
+
+						Destroy(this.gameObject);
+
+					}
+				}
+				break;
+		}
+	}
+
+	
+
+	//BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
+	public override void ProcessRelease()
+	{
+		if (isBookZone == true)
+		{
+
+			var msg = "MasterBook을 생성하기 위해서는 " + "\n"
+				+ "옆에 존재하는 열쇠를 집어서 책을 열어야합니다. " + "\n" + "\n"
+				+ "Pick & Drop을 사용해 열쇠를 집어 책을 연다. ";
+			StartCoroutine(UIManager.instance.ShowMissionUI(msg));
+
+			Destroy(GameManager.instance.zone.GetComponent<BoxCollider>());
+
+
+			Instantiate(GameManager.instance.keyZone, GameManager.instance.zone.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+			Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position
+				+ new Vector3(0.8f, 0.25f, 0f), Quaternion.identity);
+		}
+
+	}
 }

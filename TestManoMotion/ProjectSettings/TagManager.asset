@@ -12,6 +12,7 @@ TagManager:
   - Coin
   - Fire
   - Planet
+  - KEYZONE
   layers:
   - Default
   - TransparentFX
