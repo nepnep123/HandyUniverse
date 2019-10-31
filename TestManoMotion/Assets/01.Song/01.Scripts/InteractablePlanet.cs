@@ -8,7 +8,8 @@ public class InteractablePlanet : InteractableObject
 
 	public bool isInit = false;
 
-
+    //재현, 아웃라인 대신 예쁜이파티클
+    public ParticleSystem platicle;
 
 	public override void ProcessInit<T>(T book)
 	{
@@ -31,11 +32,13 @@ public class InteractablePlanet : InteractableObject
 	//충돌시 아웃라인 처리 
 	public override void ProcessCollisionEnter()
 	{
-		GetComponent<Outline>().OutlineWidth = 10;
+        platicle.gameObject.SetActive(true);
+		//GetComponent<Outline>().OutlineWidth = 10;
 	}
 	private void OnDisable()
 	{
-		GetComponent<Outline>().OutlineWidth = 0;
+        platicle.gameObject.SetActive(false);
+        //GetComponent<Outline>().OutlineWidth = 0;
 	}
 
 	IEnumerator GrowPlanet()

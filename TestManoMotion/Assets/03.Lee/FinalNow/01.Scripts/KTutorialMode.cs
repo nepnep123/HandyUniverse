@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KTutorialMode : Mode
 {
-    public static bool grablockdIs = true;
+    public KWorld kworld;
 
     public KTutorialMode(PrimeHand hand) : base(hand)
     {
@@ -16,14 +16,17 @@ public class KTutorialMode : Mode
         base.ModeChange(mode);
     }
 
-
     // 1 주먹
     public override void OnTriggeredGrab()
     {
-        Debug.Log(123);
-        if (grablockdIs == true)
+        if(kworld.isFirstMissionStarted == true)
         {
-            KManager.instance.solarGenerate();
+            kworld.CountFirstMission(ManoGestureTrigger.GRAB);
+        }
+
+        if (kworld.isGoodBye == true)
+        {
+            kworld.CountGoodBye(ManoGestureTrigger.GRAB);
         }
     }
     // 2 집기
@@ -41,13 +44,17 @@ public class KTutorialMode : Mode
     // 4 보자기
     public override void OnTriggeredRelease()
     {
-        if (hand.curObj != null)
-            hand.curObj.ProcessRelease();
+        if (kworld.isFirstMissionStarted == true)
+        {
+            kworld.CountFirstMission(ManoGestureTrigger.RELEASE);
+        }
     }
     // 5 집기놓기
     public override void OnTriggeredClick()
     {
-        if (hand.curObj != null)
-            hand.curObj.ProcessClick();
+        if (kworld.isSecondMissionStarted == true)
+        {
+            kworld.CountSecondMission(ManoGestureTrigger.CLICK);
+        }
     }
 }
