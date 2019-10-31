@@ -42,9 +42,6 @@ public class Helper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //by재현, 두둥실, 1015
-        float ocil = Mathf.Sin(1.57f * Time.time);
-        transform.position += new Vector3(0, ocil * 0.002f, 0);
         //따라가기
         Vector3 pPos = new Vector3(target.position.x, 0.5f, target.position.z);
         Vector3 thisPos = transform.position;
@@ -54,6 +51,9 @@ public class Helper : MonoBehaviour
             Vector3 lerpMove = Vector3.Lerp(thisPos, pPos, Time.deltaTime * 0.6f);
             transform.position = lerpMove;
         }
+        //by재현, 두둥실, 1015
+        float ocil = Mathf.Sin(1.57f * Time.time);
+        transform.position += new Vector3(0, ocil * 0.002f, 0);
         //바라보기
         if (isAbleToLook == true)
         {

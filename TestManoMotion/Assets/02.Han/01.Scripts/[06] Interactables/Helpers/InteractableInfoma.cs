@@ -25,14 +25,12 @@ public class InteractableInfoma : InteractableTrinity
     {
         if (helper.drone.releaseStack.Count > 1)
             helper.drone.ReturnBack();
-        isPicked = true;
         venuses[(int)helper.curPos].gameObject.SetActive(true);
         helper.drone.releaseStack.Push(CloseInfos);
     }
 
     public void CloseInfos()
     {
-        isPicked = false;
         for(int i = 0; i < venuses.Length; i++)
         {
             venuses[i].gameObject.SetActive(false);

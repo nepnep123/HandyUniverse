@@ -11,6 +11,7 @@ public class VenusWorld : World
 
     public override void InitWorld()
     {
+        SetVenusFog();
         PhotoUtils.MakeFolder("Venus_Lakshmi");
         PhotoUtils.MakeFolder("Venus_Maxwell");
         PhotoUtils.MakeFolder("Venus_Venus");
@@ -19,7 +20,8 @@ public class VenusWorld : World
         {
             aa.ProcessInit(helper);
         }
-        SetVenusFog();
+
+
         venusSounds = GetComponentInChildren<VenusSfx>();
         venusSounds.InitVenusSounds();
         //Todo 테스트용
@@ -33,9 +35,17 @@ public class VenusWorld : World
 
     private void SetVenusFog()
     {
+        Debug.Log("뭐지");
         RenderSettings.fog = true;
         RenderSettings.fogColor = venusFog;
         RenderSettings.fogDensity = 0.4f;
+        if (RenderSettings.fog == true)
+        {
+            Debug.Log("뭐냐구 시방True");
+            Debug.Log(RenderSettings.fogDensity);
+        }
+        else
+            Debug.Log("이게 대체 왜이러니false");
     }
 
     void BackGroundOff()

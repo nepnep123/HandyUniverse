@@ -22,5 +22,6 @@ public class VenusMode : Mode
             hand.curObj.ProcessDrop();
     }
 
-    public override void OnTriggeredRelease() => helper.drone.ReturnBack();
+    //public override void OnTriggeredRelease() => helper.drone.ReturnBack();
+    public override void OnTriggeredGrab() => helper.drone.ReturnBack();
 }
