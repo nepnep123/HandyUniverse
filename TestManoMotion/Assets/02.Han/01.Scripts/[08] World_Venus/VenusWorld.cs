@@ -28,6 +28,7 @@ public class VenusWorld : World
 #endif
         GameManager.instance.hand.venusMode.helper = this.helper;
         GameManager.instance.hand.mode = GameManager.instance.hand.venusMode;
+        UIManager.instance.StartCoroutine(UIManager.instance.InstructSequence());
     }
 
     private void SetVenusFog()
