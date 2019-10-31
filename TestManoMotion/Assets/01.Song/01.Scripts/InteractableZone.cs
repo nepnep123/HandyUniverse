@@ -29,7 +29,8 @@ public class InteractableZone : InteractableObject
 		{
 			GameManager.instance.master.CreateMasterBook();
 			Destroy(GameManager.instance.hand.curObj.gameObject.GetComponent<BoxCollider>());
-			GameManager.instance.isCanCreateBook = false;
+            GameManager.instance.hand.curObj = null;
+            GameManager.instance.isCanCreateBook = false;
 		}
 	}
 

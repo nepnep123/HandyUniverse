@@ -46,5 +46,6 @@ MonoBehaviour:
   masterBookPrefab: {fileID: 9012839826028636122, guid: 22d8ab0010a9424499a4e4643e320158,
     type: 3}
   pageInfos:
+  - {fileID: 11400000, guid: db532a9c9c30d1d409283394f74f6190, type: 2}
   - {fileID: 11400000, guid: 1278a37de149d45419743c68d9e8b105, type: 2}
   - {fileID: 11400000, guid: 64b0926de768eb94782fc50119e7e96f, type: 2}
