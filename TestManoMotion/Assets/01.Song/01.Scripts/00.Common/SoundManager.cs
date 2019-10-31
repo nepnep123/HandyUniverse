@@ -6,6 +6,15 @@ public class SoundManager : MonoBehaviour
 {
 	public static SoundManager instance;
 
+
+	public AudioClip bookZone;
+	public AudioClip openbookSound;
+	public AudioClip closebookSound;
+	public AudioClip nextpageSound;
+
+
+	public AudioSource soundPlayer;
+
 	private void Awake()
 	{
 		if (instance == null) instance = GetComponent<SoundManager>();
@@ -14,15 +23,20 @@ public class SoundManager : MonoBehaviour
 		soundPlayer = gameObject.GetComponent<AudioSource>();
 	}
 
-	public AudioClip openbookSound;
-	public AudioClip closebookSound;
-	public AudioClip nextpageSound;
-
-	public AudioSource soundPlayer;
-
 	private void Start()
 	{
-
+		StartBackGroundSound();
 	}
+
+	public void StartBackGroundSound()
+	{
+		soundPlayer.Play();
+	}
+
+	public void StopBackGroundSound()
+	{
+		soundPlayer.Stop();
+	}
+
 
 }

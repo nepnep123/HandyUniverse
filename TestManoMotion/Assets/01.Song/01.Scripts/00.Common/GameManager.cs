@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,12 +62,12 @@ public class GameManager : MonoBehaviour
 		camPos.position = mainPos.position;
 		camPos.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 		fadeCanvas.FadeIn();
+		SoundManager.instance.StartBackGroundSound();
 	}
 
 	//World 들어가는 메소드
 	public IEnumerator EnterWorld()
 	{
-
 		fadeCanvas.FadeOut();
 		masterBook.CloseBook();
 		yield return new WaitForSeconds(3.0f);
@@ -97,8 +98,16 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 		Animator zoneAnim = zone.GetComponent<Animator>();
+		SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.bookZone);
 		zoneAnim.SetTrigger("OpenZone");
 		//Zone을 생성하고 다음에 제스처를 통해서 책을 생성한다. 
 		isCanCreateBook = true;
+		Destroy(GameObject.Find("BookZone_Btn"));
+	}
+
+	//리셋 버튼을 클릭했을때 다시 메뉴창으로 넘어간다. 
+	public void GotoMenu()
+	{
+		SceneManager.LoadScene("IntroScene");
 	}
 }

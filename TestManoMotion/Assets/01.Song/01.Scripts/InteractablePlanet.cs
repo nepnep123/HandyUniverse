@@ -8,7 +8,8 @@ public class InteractablePlanet : InteractableObject
 
 	public bool isInit = false;
 
-
+    //재현, 아웃라인 대신 예쁜이파티클
+    public ParticleSystem platicle;
 
 	public override void ProcessInit<T>(T book)
 	{
@@ -18,16 +19,6 @@ public class InteractablePlanet : InteractableObject
 	}
 
 	//클릭했을때 페이지 행성으로 이동. 
-	public override void ProcessPick()
-    {
-        transform.SetParent(GameManager.instance.hand.transform);
-    }
-
-    public override void ProcessDrop()
-    {
-        transform.SetParent(null);
-    }
-
     public override void ProcessClick()
 	{
         transform.SetParent(null);
@@ -41,11 +32,13 @@ public class InteractablePlanet : InteractableObject
 	//충돌시 아웃라인 처리 
 	public override void ProcessCollisionEnter()
 	{
-		GetComponent<Outline>().OutlineWidth = 10;
+        platicle.gameObject.SetActive(true);
+		//GetComponent<Outline>().OutlineWidth = 10;
 	}
 	private void OnDisable()
 	{
-		GetComponent<Outline>().OutlineWidth = 0;
+        platicle.gameObject.SetActive(false);
+        //GetComponent<Outline>().OutlineWidth = 0;
 	}
 
 	IEnumerator GrowPlanet()
@@ -63,6 +56,8 @@ public class InteractablePlanet : InteractableObject
 			yield return null;
 		}
         book.isPlanetGrowing = false;
+		//행성안으로 들어가면 메인 사운드 OFF
+		SoundManager.instance.StopBackGroundSound();
 		book.OpenPortal();
 	}
 }
