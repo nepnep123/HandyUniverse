@@ -10,6 +10,8 @@ public class InteractableGallary : InteractableTrinity
 
     public InteractablePhoto curSelectedPhoto;
 
+    public bool isTouchable = false;
+
     public override void ProcessInit<T>(T obj)
     {
         photos = new List<InteractablePhoto>[3];
@@ -70,9 +72,14 @@ public class InteractableGallary : InteractableTrinity
     {
         //helper.drone.releaseStack.Push(CloseGallery);
         //Todo : 갤러리를 열어라
+        Invoke("Boolifier", 1.5f);
+        Debug.Log("1");
         OpenCloseAll(false);
+        Debug.Log("2");
         OpenGallery(helper.curPos);
-        helper.raycaster.isRaycastable = true;
+        Debug.Log("3");
+        helper.raycaster.IsRaycasterble = true;
+        Debug.Log("4");
         helper.drone.releaseStack.Push(CloseGallery);
     }
 
@@ -84,7 +91,6 @@ public class InteractableGallary : InteractableTrinity
             Vector3 front = (helper.target.transform.position + (helper.target.transform.forward));    //센터에서 타겟을 바라보는 벡터
             int halfI = photos[(int)vs].Count / 2;
             Quaternion rot = Quaternion.AngleAxis((-halfI + i) * 35f, Vector3.up);
-            Debug.Log(i * 20f);
             Vector3 rottedVector = rot * front;
             rottedVector = rottedVector.normalized * 0.6f;
             Vector3 finalDestination = helper.target.transform.position + rottedVector;
@@ -106,7 +112,8 @@ public class InteractableGallary : InteractableTrinity
 
     void CloseGallery()
     {
-        helper.raycaster.isRaycastable = false;
+        Boolifier();
+        helper.raycaster.IsRaycasterble = false;
         for (int i = 0; i < photos.Length; i++)
         {
             foreach (InteractablePhoto ip in photos[i])
@@ -129,5 +136,10 @@ public class InteractableGallary : InteractableTrinity
         {
             ip.outliner.SetActive(false);
         }
+    }
+
+    void Boolifier()
+    {
+        isTouchable = !isTouchable;
     }
 }

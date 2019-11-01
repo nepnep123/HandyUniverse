@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Helper_Raycaster : MonoBehaviour
 {
-    public bool isRaycastable = false;
+    private bool isRaycastable = false;
+    public bool IsRaycasterble { get => isRaycastable; set => isRaycastable = value; }
     Transform handTr;
     Transform camTr;
 
@@ -18,7 +19,7 @@ public class Helper_Raycaster : MonoBehaviour
     void Update()
     {
         if (isRaycastable == false) return;
-        Ray ray = new Ray(handTr.position, (camTr.position - handTr.position));
+        Ray ray = new Ray(handTr.position, (handTr.position - camTr.position));
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, 10f, 1 << 8))
         {
@@ -29,5 +30,11 @@ public class Helper_Raycaster : MonoBehaviour
             curPhoto = a;
             curPhoto.ProcessCollisionEnter();
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Ray ray = new Ray(handTr.position, (camTr.position - handTr.position));
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(ray);
     }
 }
