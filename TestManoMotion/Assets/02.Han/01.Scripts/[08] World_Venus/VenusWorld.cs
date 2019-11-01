@@ -12,9 +12,9 @@ public class VenusWorld : World
     public override void InitWorld()
     {
         SetVenusFog();
-        PhotoUtils.MakeFolder("Venus_Lakshmi");
-        PhotoUtils.MakeFolder("Venus_Maxwell");
-        PhotoUtils.MakeFolder("Venus_Venus");
+        //PhotoUtils.MakeFolder("Venus_Lakshmi");
+        //PhotoUtils.MakeFolder("Venus_Maxwell");
+        //PhotoUtils.MakeFolder("Venus_Venus");
         var a = GetComponentsInChildren<InteractableObject>(true);
         foreach(InteractableObject aa in a)
         {
