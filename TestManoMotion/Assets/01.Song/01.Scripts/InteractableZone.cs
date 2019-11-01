@@ -16,8 +16,9 @@ public class InteractableZone : InteractableObject
 	private void Awake()
 	{
 		bookkeyScript = FindObjectOfType<BookKey>();
-		bookkeyScript.particle.SetActive(false);
+		
 	}
+
 
 	public enum TriggerObj
 	{
@@ -85,11 +86,11 @@ public class InteractableZone : InteractableObject
 					//Heart와 MissionBook과 충돌해있는 상태에서 Drop 제스처 취할시 마스터책 발생
 					if(BookKey.isBookKeyIn == true)
 					{
+						SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.keySound);
 						//미션 클리어(마스터 북 생성)
 						Destroy(GameObject.FindWithTag("KEYZONE"));
 
 						GameManager.instance.master.CreateMasterBook();
-						SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.closebookSound);
 						GameManager.instance.camPos.position = GameManager.instance.mainPos.position;
 
 						Destroy(this.gameObject);
@@ -110,7 +111,6 @@ public class InteractableZone : InteractableObject
 		}
 	}
 
-	//public GameObject bookkey_pre_particle;
 
 	//BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
 	public override void ProcessRelease()
@@ -127,9 +127,9 @@ public class InteractableZone : InteractableObject
 
 
 			Instantiate(GameManager.instance.keyZone, GameManager.instance.zone.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-			var bookkey_pre = Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position
+			Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position
 				+ new Vector3(0.8f, 0.25f, 0f), Quaternion.identity);
-			//bookkey_pre_particle = bookkey_pre.GetComponentInChildren<ParticleSystem>().gameObject;
+			
 		}
 
 	}

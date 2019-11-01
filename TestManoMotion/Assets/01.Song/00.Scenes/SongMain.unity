@@ -655,7 +655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &498885385
 MonoBehaviour:
@@ -881,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 6136609198085765513, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6136609198085765513, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
         type: 3}
@@ -1236,7 +1236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1838460006
 PrefabInstance:
@@ -1337,7 +1337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1931267554
 MonoBehaviour:
@@ -1392,6 +1392,7 @@ MonoBehaviour:
   openbookSound: {fileID: 8300000, guid: 0a3398a6a7dcd054e8bc90110185aa5d, type: 3}
   closebookSound: {fileID: 8300000, guid: 154d8af5bc4b8bc4f861c08e50097673, type: 3}
   nextpageSound: {fileID: 8300000, guid: 751c7811a4253df4b8be2f7555e55b0e, type: 3}
+  keySound: {fileID: 8300000, guid: a29cbb76ed07d48dd9b5b58db38f9e5c, type: 3}
   soundPlayer: {fileID: 0}
 --- !u!82 &1931267557
 AudioSource:
