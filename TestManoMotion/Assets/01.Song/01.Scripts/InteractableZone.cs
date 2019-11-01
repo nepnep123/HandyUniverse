@@ -9,7 +9,7 @@ public class InteractableZone : InteractableObject
 	public bool isInit = false;
 	private bool isBookZone = false;
 	private bool canPick = false;
-	private bool isGrab = false;
+	//private bool isGrab = false;
 
 	private BookKey bookkeyScript;
 
@@ -107,17 +107,6 @@ public class InteractableZone : InteractableObject
 	{
 		if (isBookZone == true)
 		{
-			isGrab = true;
-		}
-	}
-
-
-	//BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
-	public override void ProcessRelease()
-	{
-		if (isGrab == true)
-		{
-			isGrab = false;
 			var msg = "MasterBook을 생성하기 위해서는 " + "\n"
 				+ "옆에 존재하는 열쇠를 집어서 책을 열어야합니다. " + "\n" + "\n"
 				+ "Pick & Drop을 사용해 열쇠를 집어 책을 엽니다. ";
@@ -129,8 +118,29 @@ public class InteractableZone : InteractableObject
 			Instantiate(GameManager.instance.keyZone, GameManager.instance.zone.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
 			Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position
 				+ new Vector3(0.8f, 0.25f, 0f), Quaternion.identity);
-			
 		}
-
 	}
+
+
+	////BOOKZONE을 생성하고 RELEASE 제스처로 마스터 책을 생성한다. 
+	//public override void ProcessRelease()
+	//{
+	//	if (isGrab == true)
+	//	{
+	//		isGrab = false;
+	//		var msg = "MasterBook을 생성하기 위해서는 " + "\n"
+	//			+ "옆에 존재하는 열쇠를 집어서 책을 열어야합니다. " + "\n" + "\n"
+	//			+ "Pick & Drop을 사용해 열쇠를 집어 책을 엽니다. ";
+	//		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
+
+	//		Destroy(GameManager.instance.zone.GetComponent<BoxCollider>());
+
+
+	//		Instantiate(GameManager.instance.keyZone, GameManager.instance.zone.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+	//		Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position
+	//			+ new Vector3(0.8f, 0.25f, 0f), Quaternion.identity);
+			
+	//	}
+
+	//}
 }
