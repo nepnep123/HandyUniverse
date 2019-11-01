@@ -6,6 +6,8 @@ public class BookKey : MonoBehaviour
 {
 	public static bool isBookKeyIn = false;
 
+	public GameObject particle;
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("KEYZONE"))

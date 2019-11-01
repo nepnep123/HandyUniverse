@@ -94,8 +94,8 @@ public class GameManager : MonoBehaviour
 		mainPos.position = zone.transform.position + new Vector3(0, 0.5f, -1);
 
 		var msg = "BOOK ZONE을 생성하였습니다. " + "\n" + "\n"
-			+ "RELEASE 제스처를 통해 " + "\n"
-			+ "Mission Book을 생성합니다. ";
+			+ "GRAB & RELEASE 제스처를 통해 " + "\n"
+			+ "미션을 받습니다.";
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 		Animator zoneAnim = zone.GetComponent<Animator>();
