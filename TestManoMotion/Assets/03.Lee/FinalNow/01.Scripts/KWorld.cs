@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class KWorld : World
 {
+    public static KWorld instance;
+
     public GameObject planet;
     public GameObject MissionSuccessParticle;
+    public ParticleSystem hidePlanetParticle;
 
     public bool isFirstMissionStarted = false;
     public bool isSecondMissionStarted = false;
@@ -18,6 +21,12 @@ public class KWorld : World
 
     private WaitForSeconds waitForSeconds = new WaitForSeconds(2.9f);
 
+    private void Awake()
+    {
+        if (instance == null) instance = GetComponent<KWorld>();
+        else Destroy(this);
+    }
+
     private void Start()
     {
         MissionSuccessParticle.SetActive(false);
@@ -28,6 +37,8 @@ public class KWorld : World
 
             arrows[i].SetActive(false);
         }
+
+        planet.SetActive(false);
     }
 
     public override void InitWorld()
@@ -35,21 +46,14 @@ public class KWorld : World
         GameManager.instance.hand.mode = GameManager.instance.hand.kTutorialMode;
         GameManager.instance.hand.kTutorialMode.kworld = this;
 
-        StartCoroutine(Interval());
-    }
-
-    IEnumerator Interval()
-    {
-        StartCoroutine(UIManager.instance.ShowMissionUI("Handy Universe에 오신걸 환영합니다\n\nUniverse를 체험하기에 앞서서\n간단한 핸드모션을 배워보겠습니다"));
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(UIManager.instance.ShowMissionUI("첫번째는 '그랩 앤 릴리즈'입니다\n다음과 같은 모션을 취해 '은하계'를 ON/OFF 해봅시다"));
+        UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK());
         StartCoroutine(MissionStart());
     }
 
     IEnumerator MissionStart()
     {
-        yield return new WaitForSeconds(1f);
-        //StartCoroutine(UIManager.instance.ShowMissionUI("첫번째는 '그랩 앤 릴리즈'입니다\n다음과 같은 모션을 취해 '은하계'를 ON/OFF 해봅시다"));
+        yield return null;
+        
         isFirstMissionStarted = true;
     }
 
@@ -61,6 +65,13 @@ public class KWorld : World
         if (mgt == ManoGestureTrigger.GRAB)
         {
             planet.SetActive(false);
+
+            for (int i = 0; i < arrows.Length; i++)
+            {
+                var hiding = Instantiate(hidePlanetParticle, planets[i].transform.position, planets[i].transform.rotation);
+                hiding.Play();
+            }
+
             grabCount++;
         }
         else
@@ -73,12 +84,6 @@ public class KWorld : World
         if ((grabCount >= 2) && (releaseCount >= 2))
         {
             StartCoroutine(MissionParticle1());
-
-            // 파티클 생성 = 성공의 의미
-            StartCoroutine(UIManager.instance.ShowMissionUI("두번째는 '클릭'입니다\n클릭으로 행성을 선택해봅시다."));
-            isFirstMissionStarted = false;
-            planet.SetActive(true); // 만에하나
-            isSecondMissionStarted = true;
         }
 
         IEnumerator MissionParticle1()
@@ -86,6 +91,13 @@ public class KWorld : World
             MissionSuccessParticle.SetActive(true);
             yield return waitForSeconds;
             MissionSuccessParticle.SetActive(false);
+
+            // 파티클 생성 = 성공의 의미
+            StartCoroutine(UIManager.instance.ShowMissionUI("두번째는 '클릭'입니다\n\n다음과 같은 모션을 취하여\n'클릭'으로 차례를 넘겨봅시다"));
+            
+            isFirstMissionStarted = false;
+            planet.SetActive(true); // 만에하나
+            isSecondMissionStarted = true;
         }
     }
 
@@ -105,9 +117,6 @@ public class KWorld : World
                 }
 
                 StartCoroutine(MissionParticle2());
-
-                StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
-                isGoodBye = true;
             }
 
             IEnumerator MissionParticle2()
@@ -115,6 +124,8 @@ public class KWorld : World
                 MissionSuccessParticle.SetActive(true);
                 yield return waitForSeconds;
                 MissionSuccessParticle.SetActive(false);
+                StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
+                isGoodBye = true;
             }
         }
     }
