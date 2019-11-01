@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
 	//World 나가는 메소드
 	public IEnumerator ExitWorld()
 	{
+		bookZone.SetActive(true);
+
 		//핸드 모드 entryMode 변경
 		GameManager.instance.hand.mode.ModeChange(hand.entryMode);
 		fadeCanvas.FadeOut();
@@ -69,6 +71,8 @@ public class GameManager : MonoBehaviour
 	//World 들어가는 메소드
 	public IEnumerator EnterWorld()
 	{
+		bookZone.SetActive(false);
+
 		fadeCanvas.FadeOut();
 		masterBook.CloseBook();
 		yield return new WaitForSeconds(3.0f);

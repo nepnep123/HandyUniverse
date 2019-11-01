@@ -793,7 +793,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5339,7 +5339,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9301,7 +9301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6833940269843780157}
   m_LocalRotation: {x: 0.0420098, y: -0.70585775, z: -0.70585775, w: 0.0420098}
-  m_LocalPosition: {x: -0.061, y: 0.396, z: -0.115}
+  m_LocalPosition: {x: -0.061, y: 0.396, z: -0.198}
   m_LocalScale: {x: 47.629375, y: 47.629337, z: 47.62935}
   m_Children:
   - {fileID: 3404307308820855056}

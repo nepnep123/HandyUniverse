@@ -87,14 +87,12 @@ public class InteractableZone : InteractableObject
 					if(BookKey.isBookKeyIn == true)
 					{
 						SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.keySound);
-						//미션 클리어(마스터 북 생성)
 						Destroy(GameObject.FindWithTag("KEYZONE"));
-
+						
+						//미션 클리어(마스터 북 생성)
 						GameManager.instance.master.CreateMasterBook();
 						GameManager.instance.camPos.position = GameManager.instance.mainPos.position;
-
 						Destroy(this.gameObject);
-
 					}
 				}
 				break;
@@ -116,6 +114,7 @@ public class InteractableZone : InteractableObject
 		if(isGrab == true)
 		{
 			isGrab = false;
+			isBookZone = false;
 			var msg = "MasterBook을 생성하기 위해서는 " + "\n"
 				+ "옆에 존재하는 열쇠를 집어서 책을 열어야합니다. " + "\n" + "\n"
 				+ "Pick & Drop을 사용해 열쇠를 집어 책을 엽니다. ";
