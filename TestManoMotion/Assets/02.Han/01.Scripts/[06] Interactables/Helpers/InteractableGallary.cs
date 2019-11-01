@@ -72,6 +72,7 @@ public class InteractableGallary : InteractableTrinity
         //Todo : 갤러리를 열어라
         OpenCloseAll(false);
         OpenGallery(helper.curPos);
+        helper.raycaster.isRaycastable = true;
         helper.drone.releaseStack.Push(CloseGallery);
     }
 
@@ -105,7 +106,8 @@ public class InteractableGallary : InteractableTrinity
 
     void CloseGallery()
     {
-        for(int i = 0; i < photos.Length; i++)
+        helper.raycaster.isRaycastable = false;
+        for (int i = 0; i < photos.Length; i++)
         {
             foreach (InteractablePhoto ip in photos[i])
             {
