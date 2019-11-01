@@ -19,7 +19,7 @@ public class KWorld : World
 
     private int count = 0;
 
-    private WaitForSeconds waitForSeconds = new WaitForSeconds(2.9f);
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
 
     private void Awake()
     {
@@ -84,16 +84,15 @@ public class KWorld : World
         if ((grabCount >= 2) && (releaseCount >= 2))
         {
             StartCoroutine(MissionParticle1());
+            UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK2());
         }
+        
 
         IEnumerator MissionParticle1()
         {
             MissionSuccessParticle.SetActive(true);
             yield return waitForSeconds;
             MissionSuccessParticle.SetActive(false);
-
-            // 파티클 생성 = 성공의 의미
-            StartCoroutine(UIManager.instance.ShowMissionUI("두번째는 '클릭'입니다\n\n다음과 같은 모션을 취하여\n'클릭'으로 차례를 넘겨봅시다"));
             
             isFirstMissionStarted = false;
             planet.SetActive(true); // 만에하나

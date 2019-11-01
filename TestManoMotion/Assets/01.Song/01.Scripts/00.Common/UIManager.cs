@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public VenusInstructor venusInstruct;
     //강원's UI
     public KVenusInstructor KvenusInstruct;
+    public KVenusInstructor2 KvenusInstruct2;
 
     private void Awake()
 	{
@@ -82,6 +83,27 @@ public class UIManager : MonoBehaviour
         KWorld.instance.planet.SetActive(true);
     }
 
-    #endregion
+    public IEnumerator InstructSequenceK2()
+    {
+        yield return new WaitForSeconds(4f);
 
+        float timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime;
+            KvenusInstruct2.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3f);
+        timer = 1;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            KvenusInstruct2.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+    }
+    #endregion
 }
