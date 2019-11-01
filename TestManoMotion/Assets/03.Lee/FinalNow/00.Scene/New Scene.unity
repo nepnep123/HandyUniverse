@@ -1148,7 +1148,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1322468466}
-  - component: {fileID: 1322468467}
   m_Layer: 0
   m_Name: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   m_TagString: Untagged
@@ -1170,18 +1169,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1322468467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322468465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd8dced07da57c74088a3d40bb8b106f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1487093485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,8 +1407,8 @@ MonoBehaviour:
   master: {fileID: 0}
   bookZone: {fileID: 4020896268199817684, guid: 5a3f7e7d978546a47b2e8a6e3c26a30c,
     type: 3}
-  keyZone: {fileID: 0}
-  bookKey: {fileID: 0}
+  keyZone: {fileID: 5899266335830021458, guid: 9f4aa057b085a6e4b9ce449652d38dd6, type: 3}
+  bookKey: {fileID: 6699851263907952871, guid: e8247925ae99a3140b17751f3c4302a2, type: 3}
   zone: {fileID: 0}
   isCanCreateBook: 0
 --- !u!114 &1931267555
@@ -1452,6 +1439,7 @@ MonoBehaviour:
   openbookSound: {fileID: 8300000, guid: 0a3398a6a7dcd054e8bc90110185aa5d, type: 3}
   closebookSound: {fileID: 8300000, guid: 154d8af5bc4b8bc4f861c08e50097673, type: 3}
   nextpageSound: {fileID: 8300000, guid: 751c7811a4253df4b8be2f7555e55b0e, type: 3}
+  keySound: {fileID: 0}
   soundPlayer: {fileID: 0}
 --- !u!82 &1931267557
 AudioSource:
