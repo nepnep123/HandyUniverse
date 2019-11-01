@@ -37,7 +37,7 @@ public class EntryMode : Mode
     public override void OnTriggeredGrab()
     {
 		if (hand.curObj != null)
-			hand.curObj.ProcessPick();
+			hand.curObj.ProcessGrab();
 	}
 	public override void OnTriggeredPick()
 	{
