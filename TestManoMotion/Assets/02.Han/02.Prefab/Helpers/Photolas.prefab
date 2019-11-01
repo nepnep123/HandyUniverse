@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4793277638706681946}
   - component: {fileID: 2109770113151039643}
   - component: {fileID: 7797260736999386295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Photolas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

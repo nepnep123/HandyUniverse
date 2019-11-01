@@ -14,6 +14,8 @@ public class Helper : MonoBehaviour
 
     public Transform arDevice;
     public bool isAbleToLook = true;
+
+    public Helper_Raycaster raycaster;
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,6 +38,7 @@ public class Helper : MonoBehaviour
             //target = GameManager.instance.camPos;
             target = Camera.main.transform;
             arDevice = GameManager.instance.camPos;
+            raycaster = GetComponent<Helper_Raycaster>();
         }
     }
 
@@ -46,7 +49,7 @@ public class Helper : MonoBehaviour
         Vector3 pPos = new Vector3(target.position.x, 0.5f, target.position.z);
         Vector3 thisPos = transform.position;
         float dist = Vector3.Distance(pPos, thisPos);
-        if (dist > 1.2f)
+        if (dist > 1f)
         {
             Vector3 lerpMove = Vector3.Lerp(thisPos, pPos, Time.deltaTime * 0.6f);
             transform.position = lerpMove;

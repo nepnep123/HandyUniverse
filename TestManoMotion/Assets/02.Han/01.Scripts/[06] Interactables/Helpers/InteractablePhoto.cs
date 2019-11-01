@@ -31,6 +31,7 @@ public class InteractablePhoto : InteractableObject
 
     public override void ProcessCollisionEnter()
     {
+        Debug.Log("충돌시작");
         gallary.InactiveAllOutline();
         outliner.SetActive(true);
         StopAllCoroutines();
@@ -38,6 +39,7 @@ public class InteractablePhoto : InteractableObject
     }
     public override void ProcessCollisionExit()
     {
+        Debug.Log("충돌 ㅌㅌ");
         gallary.InactiveAllOutline();
         StopAllCoroutines();
         StartCoroutine(Unscalar());
@@ -84,7 +86,7 @@ public class InteractablePhoto : InteractableObject
 
     public void StartShrink()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
         transform.SetParent(null);
         StartCoroutine(ShrinkThis());
     }
