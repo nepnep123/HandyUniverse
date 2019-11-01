@@ -9263,7 +9263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInit: 0
   triobj: 1
-  bookkey_pre_particle: {fileID: 0}
 --- !u!114 &6699851263907952873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9293,7 +9292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7258041485681085921
 Transform:
   m_ObjectHideFlags: 0

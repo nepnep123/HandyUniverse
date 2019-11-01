@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 	public AudioClip openbookSound;
 	public AudioClip closebookSound;
 	public AudioClip nextpageSound;
+	public AudioClip keySound;
 
 
 	public AudioSource soundPlayer;
