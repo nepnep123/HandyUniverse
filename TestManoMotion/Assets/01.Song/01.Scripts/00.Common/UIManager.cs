@@ -80,7 +80,6 @@ public class UIManager : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1f);
-        KWorld.instance.planet.SetActive(true);
     }
 
     public IEnumerator InstructSequenceK2()

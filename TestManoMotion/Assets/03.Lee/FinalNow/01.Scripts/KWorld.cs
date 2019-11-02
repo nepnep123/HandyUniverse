@@ -13,9 +13,10 @@ public class KWorld : World
     public bool isFirstMissionStarted = false;
     public bool isSecondMissionStarted = false;
     public bool isGoodBye = false;
+    private bool isEnabled = false;
 
-    public GameObject[] arrows = new GameObject[8];
-    public GameObject[] planets = new GameObject[8];
+    public GameObject[] arrows = new GameObject[9];
+    public MeshRenderer[] planetsMeshRenderer = new MeshRenderer[9];
 
     private int count = 0;
 
@@ -33,12 +34,15 @@ public class KWorld : World
 
         for (int i = 0; i < arrows.Length; i++)
         {
-            arrows[i].GetComponent<KArrow>().targetPlanet = planets[i].transform;
+            arrows[i].GetComponent<KArrow>().targetPlanet = planetsMeshRenderer[i].transform;
 
             arrows[i].SetActive(false);
         }
 
-        planet.SetActive(false);
+        for (int i = 0; i < planetsMeshRenderer.Length; i++)
+        {
+            planetsMeshRenderer[i].enabled = false;
+        }
     }
 
     public override void InitWorld()
@@ -64,24 +68,36 @@ public class KWorld : World
     {
         if (mgt == ManoGestureTrigger.GRAB)
         {
-            planet.SetActive(false);
-
-            for (int i = 0; i < arrows.Length; i++)
+            if(isEnabled == true)
             {
-                var hiding = Instantiate(hidePlanetParticle, planets[i].transform.position, planets[i].transform.rotation);
-                hiding.Play();
-            }
+                for (int i = 0; i < planetsMeshRenderer.Length; i++)
+                {                
+                    planetsMeshRenderer[i].enabled = false;
 
-            grabCount++;
+                    var hiding = Instantiate(hidePlanetParticle, planetsMeshRenderer[i].transform.position, planetsMeshRenderer[i].transform.rotation);
+                    hiding.Play();
+                }
+                Debug.Log(grabCount);
+                grabCount++;
+                isEnabled = false;
+            }
         }
         else
         {
-            planet.SetActive(true);
-            releaseCount++;
+            if(isEnabled == false)
+            {
+                for (int i = 0; i < planetsMeshRenderer.Length; i++)
+                {    
+                    planetsMeshRenderer[i].enabled = true;
+                }
+                releaseCount++;
+                Debug.Log(releaseCount);
+                isEnabled = true;
+            }
         }
 
         //  Start SecondMission!!
-        if ((grabCount >= 2) && (releaseCount >= 2))
+        if ((grabCount >= 2) && (releaseCount >= 3))
         {
             StartCoroutine(MissionParticle1());
             UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK2());
@@ -95,7 +111,10 @@ public class KWorld : World
             MissionSuccessParticle.SetActive(false);
             
             isFirstMissionStarted = false;
-            planet.SetActive(true); // 만에하나
+            for (int i = 0; i < planetsMeshRenderer.Length; i++)
+            {
+                planetsMeshRenderer[i].enabled = true;
+            }
             isSecondMissionStarted = true;
         }
     }
@@ -147,7 +166,7 @@ public class KWorld : World
 
     private void ArrowPosition()
     {
-        arrows[count].transform.position = planets[count].transform.position + new Vector3(0f, 0.05f, 0f);
+        arrows[count].transform.position = planetsMeshRenderer[count].transform.position + new Vector3(0f, 0.05f, 0f);
     }
 
     private int GetPreIndex()
