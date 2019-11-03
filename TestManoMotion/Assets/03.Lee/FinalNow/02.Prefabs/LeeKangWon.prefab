@@ -3991,6 +3991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b22aa149d223b4a8c2e81929c73e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  kBullet: {fileID: -486209780401776357, guid: 9981d892c1f307043b106ac7c78a563c, type: 3}
   planet: {fileID: 3227548013666621758}
   MissionSuccessParticle: {fileID: 1222037024588393317}
   hidePlanetParticle: {fileID: 96208216386865637, guid: 4a3b49b7257a3874ea59eb686dfc9196,
@@ -3998,6 +4000,8 @@ MonoBehaviour:
   isFirstMissionStarted: 0
   isSecondMissionStarted: 0
   isGoodBye: 0
+  isThirdMissionStarted: 0
+  isThirdMissionStarted2: 0
   arrows:
   - {fileID: 5966850380656683432}
   - {fileID: 5378140864120829617}
@@ -7556,6 +7560,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: SolarSystem2
       objectReference: {fileID: 0}
+    - target: {fileID: 7318024924703049850, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024924528572819, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024924487905542, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024924340388252, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024924354358263, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024924269489105, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024923980597701, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024923217129364, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024922981698462, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
+      objectReference: {fileID: 0}
     - target: {fileID: 4877070978335035122, guid: 969fa344cdde50e4a878d8c35ea51bce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7610,6 +7659,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318024923639674579, guid: 969fa344cdde50e4a878d8c35ea51bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: DIEPLANET
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 969fa344cdde50e4a878d8c35ea51bce, type: 3}

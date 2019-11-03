@@ -24,6 +24,11 @@ public class KTutorialMode : Mode
             kworld.CountFirstMission(ManoGestureTrigger.GRAB);
         }
 
+        if (kworld.isThirdMissionStarted == true)
+        {
+            kworld.CountThirdMission(ManoGestureTrigger.GRAB);
+        }
+
         if (kworld.isGoodBye == true)
         {
             kworld.CountGoodBye(ManoGestureTrigger.GRAB);
@@ -47,6 +52,11 @@ public class KTutorialMode : Mode
         if (kworld.isFirstMissionStarted == true)
         {
             kworld.CountFirstMission(ManoGestureTrigger.RELEASE);
+        }
+
+        if (kworld.isThirdMissionStarted2 == true)
+        {
+            kworld.CountThirdMission2(ManoGestureTrigger.RELEASE);
         }
     }
     // 5 집기놓기

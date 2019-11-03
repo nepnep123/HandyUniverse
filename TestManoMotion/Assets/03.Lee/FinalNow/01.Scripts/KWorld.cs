@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KWorld : World
 {
     public static KWorld instance;
+
+    [HideInInspector]
+    public float speed;
+    private float speedMax;
+    public KBullet kBullet;
+    public int dieRealCount;
 
     public GameObject planet;
     public GameObject MissionSuccessParticle;
@@ -13,6 +20,10 @@ public class KWorld : World
     public bool isFirstMissionStarted = false;
     public bool isSecondMissionStarted = false;
     public bool isGoodBye = false;
+    public bool isThirdMissionStarted = false;
+    public bool isThirdMissionStarted2 = false;
+    private bool isGrabbed = false;
+
     private bool isEnabled = false;
 
     public GameObject[] arrows = new GameObject[9];
@@ -22,14 +33,23 @@ public class KWorld : World
 
     private WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
 
+    public int grabCount = 0;
+    public int releaseCount = 0;
+
     private void Awake()
     {
         if (instance == null) instance = GetComponent<KWorld>();
         else Destroy(this);
     }
 
+    // 미션 후 나오는 파티클 끄고
+    // 화살표 전부 끄고
+    // 행성들 메쉬 전부 끄고
     private void Start()
     {
+        speed = 0f;
+        speedMax = 100f;
+
         MissionSuccessParticle.SetActive(false);
 
         for (int i = 0; i < arrows.Length; i++)
@@ -45,6 +65,7 @@ public class KWorld : World
         }
     }
 
+    // 시작하면 UI 나와
     public override void InitWorld()
     {
         GameManager.instance.hand.mode = GameManager.instance.hand.kTutorialMode;
@@ -54,6 +75,7 @@ public class KWorld : World
         StartCoroutine(MissionStart());
     }
 
+    // 첫번째 미션 스타트
     IEnumerator MissionStart()
     {
         yield return null;
@@ -61,9 +83,7 @@ public class KWorld : World
         isFirstMissionStarted = true;
     }
 
-    public int grabCount = 0;
-    public int releaseCount = 0;
-
+    // 첫번째 미션 내용
     public void CountFirstMission(ManoGestureTrigger mgt)
     {
         if (mgt == ManoGestureTrigger.GRAB)
@@ -96,7 +116,6 @@ public class KWorld : World
             }
         }
 
-        //  Start SecondMission!!
         if ((grabCount >= 2) && (releaseCount >= 3))
         {
             StartCoroutine(MissionParticle1());
@@ -119,6 +138,7 @@ public class KWorld : World
         }
     }
 
+    // 두번째 미션 내용
     public void CountSecondMission(ManoGestureTrigger mgt)
     {
         if (mgt == ManoGestureTrigger.CLICK)
@@ -142,8 +162,8 @@ public class KWorld : World
                 MissionSuccessParticle.SetActive(true);
                 yield return waitForSeconds;
                 MissionSuccessParticle.SetActive(false);
-                StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
-                isGoodBye = true;
+
+                isThirdMissionStarted = true;   // 주먹 활성화
             }
         }
     }
@@ -183,6 +203,72 @@ public class KWorld : World
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 세번째 미션 내용
+    public void CountThirdMission(ManoGestureTrigger mgt)
+    {
+        if (mgt == ManoGestureTrigger.GRAB)
+        {
+            isGrabbed = true;
+            StartCoroutine(ChargeSpeed());
+        }
+    }
+
+    IEnumerator ChargeSpeed()
+    {
+        Debug.Log(speed);
+
+        while (isGrabbed == true)
+        {
+            speed += 50 * Time.deltaTime;
+
+            speed = Mathf.Clamp(speed, 0f, speedMax);
+
+            yield return null;
+            isThirdMissionStarted2 = true; // 테스트 : 보자기 활성화
+        }
+    }
+
+    public void CountThirdMission2(ManoGestureTrigger mgt)
+    {
+        if (mgt == ManoGestureTrigger.RELEASE && isGrabbed == true)
+        {
+            isGrabbed = false;
+
+            kBullet.getSpeed = speed;
+            FireBullet();
+            speed = 0;
+            StartCoroutine(ChargeSpeed());
+        }
+
+        if (dieRealCount >= 3)
+        {
+            StartCoroutine(MissionParticle3());
+        }
+    }
+
+    IEnumerator MissionParticle3()
+    {
+        MissionSuccessParticle.SetActive(true);
+        yield return waitForSeconds;
+        MissionSuccessParticle.SetActive(false);
+        StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
+
+        isThirdMissionStarted = false; // 주먹 비활성화
+        isThirdMissionStarted2 = false; // 보자기 비활성화
+        isGoodBye = true; // 테스트 끝나고 주석 풀기
+    }
+
+    private void FireBullet()
+    {
+        var bulletBullet = Instantiate(kBullet);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // 포탈 아웃 내용
     public void CountGoodBye(ManoGestureTrigger mgt)
     {
         if (mgt == ManoGestureTrigger.GRAB)
