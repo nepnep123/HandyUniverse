@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-	//private Transform maincam;
-    // Start is called before the first frame update
-    void Start()
-    {
-		//maincam = Camera.main.transform.parent.gameObject.transform;
-    }
-
     // Update is called once per frame
     void Update()
     {

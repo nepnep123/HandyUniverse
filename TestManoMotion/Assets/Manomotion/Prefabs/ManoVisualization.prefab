@@ -195,6 +195,13 @@ MonoBehaviour:
   cam: {fileID: 0}
   manomotionGenericLayer: {fileID: 1438327353568846, guid: 7331c3471c3b27c4084d7378fe751223,
     type: 3}
+  contour_parent: {fileID: 0}
+  inner_parent: {fileID: 0}
+  fingertip_parent: {fileID: 0}
+  palmcenter_parent: {fileID: 0}
+  fingertip_label_parent: {fileID: 0}
+  joints_parent: {fileID: 0}
+  bounding_box_parent: {fileID: 0}
   _layer_background: {fileID: 0}
   _layer_transparent: {fileID: 0}
   manomotionUI: {fileID: 0}
