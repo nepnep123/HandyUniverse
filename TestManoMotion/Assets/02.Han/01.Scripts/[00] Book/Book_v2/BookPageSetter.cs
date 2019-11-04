@@ -27,7 +27,7 @@ public class BookPageSetter : MonoBehaviour
 
 	//책안에 있는 행성 및 맵 생성 후 True 반환
 	bool isSetting = false;
-	Transform planetPos;
+	public Transform planetPos;
 
 
 	public void InitBookSetter(PageInfo_Scriptable[] infos)
@@ -62,7 +62,7 @@ public class BookPageSetter : MonoBehaviour
 			{
 
 				pagePlanets_pre[i] = Instantiate(pageInfos[i].pagePlanet, planetPos.position, Quaternion.identity);
-				Debug.Log(planetPos.name);
+				
 				//마스터북 초기화 
 				pagePlanets_pre[i].GetComponent<InteractablePlanet>().ProcessInit(book);
 
@@ -94,6 +94,7 @@ public class BookPageSetter : MonoBehaviour
 		GameManager.instance.StartCoroutine(GameManager.instance.EnterWorld());
 		world_pre[book.curPlaneIndex].gameObject.SetActive(true);
 		world_pre[book.curPlaneIndex].InitWorld();
+		pagePlanets_pre[book.curPlaneIndex].transform.position = planetPos.position;
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
 		book.gameObject.SetActive(false);
 		GameManager.instance.zone.SetActive(false);

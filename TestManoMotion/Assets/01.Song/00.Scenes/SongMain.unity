@@ -685,9 +685,9 @@ MonoBehaviour:
   moonExit_ui: {fileID: 2068530480}
   handprintInfo: {fileID: 2132462359}
   venusInstruct: {fileID: 736399680}
-  KvenusInstruct: {fileID: 0}
+  KvenusInstruct: {fileID: 736399683}
   KvenusInstruct2: {fileID: 92742245}
-  KvenusInstruct3: {fileID: 0}
+  KvenusInstruct3: {fileID: 736399681}
 --- !u!1 &557169198
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.999985
       objectReference: {fileID: 0}
+    - target: {fileID: 1945227606, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
 --- !u!114 &736399680 stripped
@@ -980,6 +984,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae84ca5a3102d3498d1d68969ffa4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &736399681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1305138766, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 736399679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d61d38895d0faf45aa9d774e6fca5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &736399683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 753026412, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 736399679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3671168f6101b48a71735e0aa01691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &952121427 stripped
