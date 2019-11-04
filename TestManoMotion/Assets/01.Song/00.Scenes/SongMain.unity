@@ -965,13 +965,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 570919193, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
+    - target: {fileID: 68909649, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -16
+      value: 90.8501
       objectReference: {fileID: 0}
-    - target: {fileID: 1945227606, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1425294949, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 90.84985
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162995962, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43.02588
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
@@ -1772,10 +1776,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManomotionCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1536651578064486, guid: 0f8504ddba966c5459c5954aff90da2d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224931328962143944, guid: 0f8504ddba966c5459c5954aff90da2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1889,5 +1889,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1931267554}
+    - target: {fileID: 224536163582159106, guid: 0f8504ddba966c5459c5954aff90da2d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.553955
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8504ddba966c5459c5954aff90da2d, type: 3}
