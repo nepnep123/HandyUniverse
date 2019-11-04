@@ -261,7 +261,7 @@ public class KWorld : World
 
     private void FireBullet()
     {
-        var bulletBullet = Instantiate(kBullet);
+        var bulletBullet = Instantiate(kBullet, GameManager.instance.hand.transform.position, GameManager.instance.hand.transform.rotation);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
