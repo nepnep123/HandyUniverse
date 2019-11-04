@@ -28,7 +28,7 @@ public class TEST : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.T))
 		{
-			GameManager.instance.hand.curObj.ProcessRelease();
+			GameManager.instance.hand.mode.OnTriggeredRelease();
 		}
 
         if (Input.GetKeyDown(KeyCode.A))
