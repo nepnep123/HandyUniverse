@@ -38,7 +38,7 @@ public class VenusWorld : World
     {
         RenderSettings.fog = true;
         RenderSettings.fogColor = venusFog;
-        RenderSettings.fogDensity = 0.4f;
+        RenderSettings.fogDensity = 0.55f;
     }
 
     void BackGroundOff()

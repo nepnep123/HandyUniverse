@@ -2284,6 +2284,7 @@ MonoBehaviour:
   maxBookPlaneIndex: 0
   pagePlanets_pre: []
   world_pre: []
+  planetPos: {fileID: 0}
 --- !u!1 &8265393766589337206
 GameObject:
   m_ObjectHideFlags: 0
