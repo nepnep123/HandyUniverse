@@ -365,6 +365,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1663737847, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
 --- !u!114 &170856161 stripped
@@ -914,6 +918,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1695406007}
   mission_txt: {fileID: 2079303788}
+  moonExit_ui: {fileID: 0}
+  handprintInfo: {fileID: 0}
   venusInstruct: {fileID: 170856161}
   KvenusInstruct: {fileID: 753026412}
   KvenusInstruct2: {fileID: 1624198236}
@@ -1089,7 +1095,6 @@ GameObject:
   - component: {fileID: 614122949}
   - component: {fileID: 614122948}
   - component: {fileID: 614122947}
-  - component: {fileID: 614122946}
   m_Layer: 5
   m_Name: K01
   m_TagString: Untagged
@@ -1117,20 +1122,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 994, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &614122946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614122944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866204cf8ed46a04b8274becc851b924, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageImage1: {fileID: 0}
-  imageImage2: {fileID: 0}
 --- !u!225 &614122947
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1758,10 +1749,10 @@ RectTransform:
   m_Father: {fileID: 614122945}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.10029685}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 123, y: -24}
-  m_SizeDelta: {x: -746, y: -292}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901146136
 MonoBehaviour:
@@ -2708,12 +2699,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecb9b75aa38b3c489f9ab3e0b5fbf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookZone: {fileID: 0}
+  soundPlayer: {fileID: 0}
+  bookZone: {fileID: 8300000, guid: df55e2185288b0c43b1618abeae7ca23, type: 3}
   openbookSound: {fileID: 8300000, guid: 0a3398a6a7dcd054e8bc90110185aa5d, type: 3}
   closebookSound: {fileID: 8300000, guid: 154d8af5bc4b8bc4f861c08e50097673, type: 3}
   nextpageSound: {fileID: 8300000, guid: 751c7811a4253df4b8be2f7555e55b0e, type: 3}
-  keySound: {fileID: 0}
-  soundPlayer: {fileID: 0}
+  keySound: {fileID: 8300000, guid: a29cbb76ed07d48dd9b5b58db38f9e5c, type: 3}
+  venusSoundPack: {fileID: 11400000, guid: 6cee5d7d7ae6f9d4983f01eaf8c00ead, type: 2}
+  gestureSoundPAck: {fileID: 11400000, guid: e9ed33d55e652c942bc96f46058f2778, type: 2}
 --- !u!82 &1931267557
 AudioSource:
   m_ObjectHideFlags: 0
