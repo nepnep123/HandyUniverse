@@ -10,4 +10,13 @@ public class KRotateSelf : MonoBehaviour {
     {
         transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
 	}
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "BULLET")
+        {
+            //Instantiate(destroyParticle, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
 }

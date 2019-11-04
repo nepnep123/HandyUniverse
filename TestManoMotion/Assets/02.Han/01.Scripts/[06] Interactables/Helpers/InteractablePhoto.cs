@@ -31,6 +31,7 @@ public class InteractablePhoto : InteractableObject
 
     public override void ProcessCollisionEnter()
     {
+        if (gallary.isTouchable == false) return;
         Debug.Log("충돌시작");
         gallary.InactiveAllOutline();
         outliner.SetActive(true);
@@ -39,6 +40,7 @@ public class InteractablePhoto : InteractableObject
     }
     public override void ProcessCollisionExit()
     {
+        if (gallary.isTouchable == false) return;
         Debug.Log("충돌 ㅌㅌ");
         gallary.InactiveAllOutline();
         StopAllCoroutines();

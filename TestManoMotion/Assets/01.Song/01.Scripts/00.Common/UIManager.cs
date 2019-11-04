@@ -19,8 +19,11 @@ public class UIManager : MonoBehaviour
 
     //재현's UI
     public VenusInstructor venusInstruct;
+    //강원's UI
+    public KVenusInstructor KvenusInstruct;
+    public KVenusInstructor2 KvenusInstruct2;
 
-	private void Awake()
+    private void Awake()
 	{
 		if (instance == null) instance = GetComponent<UIManager>();
 		else Destroy(this);
@@ -73,4 +76,51 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    #region 강원, UI관련
+    public IEnumerator InstructSequenceK()
+    {
+        float timer = 0;
+        for (int i = 0; i < KvenusInstruct.canvasGroups.Length; i++)
+        {
+            while (timer < 1)
+            {
+                timer += Time.deltaTime;
+                KvenusInstruct.canvasGroups[i].alpha = timer;
+                yield return null;
+            }
+            yield return new WaitForSeconds(3f);
+            timer = 1;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                KvenusInstruct.canvasGroups[i].alpha = timer;
+                yield return null;
+            }
+        }
+        yield return new WaitForSeconds(1f);
+    }
+
+    public IEnumerator InstructSequenceK2()
+    {
+        yield return new WaitForSeconds(4f);
+
+        float timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime;
+            KvenusInstruct2.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3f);
+        timer = 1;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            KvenusInstruct2.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+    }
+    #endregion
 }
