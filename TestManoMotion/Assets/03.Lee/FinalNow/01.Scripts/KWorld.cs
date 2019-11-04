@@ -220,7 +220,7 @@ public class KWorld : World
 
         while (isGrabbed == true)
         {
-            speed += 50 * Time.deltaTime;
+            speed += 10 * Time.deltaTime;
 
             speed = Mathf.Clamp(speed, 0f, speedMax);
 
@@ -273,6 +273,7 @@ public class KWorld : World
         if (mgt == ManoGestureTrigger.GRAB)
         {
             GameManager.instance.masterBook.ClosePortal();
+            isGoodBye = false;
         }
     }
 }
