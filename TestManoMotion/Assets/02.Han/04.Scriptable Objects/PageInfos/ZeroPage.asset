@@ -15,5 +15,10 @@ MonoBehaviour:
   world: {fileID: 1429408355480062840, guid: 6e744e4980811824fbaf3a595ec6068a, type: 3}
   pagePlanet: {fileID: 8749345069087339628, guid: eefa28a0e3d3a98428f73fce69f2b66b,
     type: 3}
-  leftTexture: {fileID: 2800000, guid: 92c217296280e024cb3b9b68c2ba6edf, type: 3}
-  rightDescribe: "\uC774\uAC15\uC6D0\uC740 \uD55C\uC7AC\uD604\uC774\uB2E4"
+  leftTexture: {fileID: 2800000, guid: d2960fc741c6fda4eaac021307551b25, type: 3}
+  rightDescribe: "\uD29C\uD1A0\uB9AC\uC5BC\n\n\uC774 \uC7A5\uC5D0\uC11C\uB294 \uD578\uB4DC\uC81C\uC2A4\uCCD0\uB97C\n\uC774\uC6A9\uD574
+    \uAC04\uB2E8\uD558\uAC8C \uD29C\uD1A0\uB9AC\uC5BC\uC744\n\uC9C4\uD589\uD569\uB2C8\uB2E4.\n\n\uD0DC\uC591\uACC4\uC758
+    \uD589\uC131\uB4E4\uC774 \uC81C\uC2A4\uCC98\uC5D0\n\uB530\uB77C \uC5B4\uB5BB\uAC8C
+    \uBCC0\uD558\uB294\uC9C0 \uC9C1\uC811\n\uD655\uC778\uD558\uACE0,\n\n\uD074\uB9AD,
+    \uADF8\uB7A9, \uB9B4\uB9AC\uC988 \uB4F1\n\uC5EC\uB7EC\uAC00\uC9C0 \uC190\uB3D9\uC791\uC744
+    \uD6C8\uB828\uD558\uC138\uC694!"

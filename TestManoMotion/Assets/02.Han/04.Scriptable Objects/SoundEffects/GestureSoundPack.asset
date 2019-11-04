@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb77f2455b766d4a8239895388eb77f, type: 3}
+  m_Name: GestureSoundPack
+  m_EditorClassIdentifier: 
+  grab: {fileID: 8300000, guid: e08e22a66f6128a4888f3bf4fa64f9ce, type: 3}
+  pick: {fileID: 8300000, guid: 29e1e99a8421f664fb02a440714aa623, type: 3}
+  release: {fileID: 8300000, guid: bb267232b5524874482756f632a41110, type: 3}
+  click: {fileID: 8300000, guid: 722b10c8dac84694399f485eb77a37c0, type: 3}
+  drop: {fileID: 8300000, guid: 10571fd82694a744583a0a3a0fc9116e, type: 3}

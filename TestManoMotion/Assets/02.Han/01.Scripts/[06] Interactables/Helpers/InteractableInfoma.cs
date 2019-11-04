@@ -25,6 +25,7 @@ public class InteractableInfoma : InteractableTrinity
     {
         if (helper.drone.releaseStack.Count > 1)
             helper.drone.ReturnBack();
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusIconPick);
         venuses[(int)helper.curPos].gameObject.SetActive(true);
         helper.drone.releaseStack.Push(CloseInfos);
     }

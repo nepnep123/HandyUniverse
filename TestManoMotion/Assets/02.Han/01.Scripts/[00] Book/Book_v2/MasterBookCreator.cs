@@ -17,7 +17,7 @@ public class MasterBookCreator : MonoBehaviour
         var booker = Instantiate(masterBookPrefab, GameManager.instance.keyZone.transform.position, rot);
 
 		GameManager.instance.masterBook = booker;
-		booker.InitBook("The Worlds");
+		booker.InitBook("Handy Universe");
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
 
 		var msg = ">> 봉인된 공간이 해제되었습니다. <<" + "\n" + "\n" 

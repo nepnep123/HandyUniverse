@@ -17,6 +17,7 @@ public class InteractableTrinity : InteractableObject
 
     public override void ProcessCollisionEnter()
     {
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusDronePick);
         helper.AllDeselect();
         SelectObj(true);
     }

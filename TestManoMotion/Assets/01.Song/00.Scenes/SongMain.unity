@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 0
+    m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -951,7 +951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570919193, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.999985
+      value: -16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df4de92ca18f7949bfdc1e0661d55fe, type: 3}
@@ -1389,12 +1389,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecb9b75aa38b3c489f9ab3e0b5fbf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundPlayer: {fileID: 0}
   bookZone: {fileID: 8300000, guid: df55e2185288b0c43b1618abeae7ca23, type: 3}
   openbookSound: {fileID: 8300000, guid: 0a3398a6a7dcd054e8bc90110185aa5d, type: 3}
   closebookSound: {fileID: 8300000, guid: 154d8af5bc4b8bc4f861c08e50097673, type: 3}
   nextpageSound: {fileID: 8300000, guid: 751c7811a4253df4b8be2f7555e55b0e, type: 3}
   keySound: {fileID: 8300000, guid: a29cbb76ed07d48dd9b5b58db38f9e5c, type: 3}
-  soundPlayer: {fileID: 0}
+  venusSoundPack: {fileID: 11400000, guid: 6cee5d7d7ae6f9d4983f01eaf8c00ead, type: 2}
+  gestureSoundPAck: {fileID: 11400000, guid: e9ed33d55e652c942bc96f46058f2778, type: 2}
 --- !u!82 &1931267557
 AudioSource:
   m_ObjectHideFlags: 0

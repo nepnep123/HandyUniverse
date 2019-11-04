@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableVenuses : MonoBehaviour
+public class KVenusInstructor3 : MonoBehaviour
 {
-    public LR LakMax = LR.Left;
+    public CanvasGroup[] canvasGroups;
 }

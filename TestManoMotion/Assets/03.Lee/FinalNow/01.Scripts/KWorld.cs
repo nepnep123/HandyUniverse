@@ -23,7 +23,6 @@ public class KWorld : World
     public bool isThirdMissionStarted = false;
     public bool isThirdMissionStarted2 = false;
     private bool isGrabbed = false;
-
     private bool isEnabled = false;
 
     public GameObject[] arrows = new GameObject[9];
@@ -155,6 +154,7 @@ public class KWorld : World
                 }
 
                 StartCoroutine(MissionParticle2());
+                UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK3());
             }
 
             IEnumerator MissionParticle2()
@@ -162,7 +162,6 @@ public class KWorld : World
                 MissionSuccessParticle.SetActive(true);
                 yield return waitForSeconds;
                 MissionSuccessParticle.SetActive(false);
-
                 isThirdMissionStarted = true;   // 주먹 활성화
             }
         }
@@ -245,6 +244,7 @@ public class KWorld : World
         if (dieRealCount >= 3)
         {
             StartCoroutine(MissionParticle3());
+            StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
         }
     }
 
@@ -253,7 +253,6 @@ public class KWorld : World
         MissionSuccessParticle.SetActive(true);
         yield return waitForSeconds;
         MissionSuccessParticle.SetActive(false);
-        StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
 
         isThirdMissionStarted = false; // 주먹 비활성화
         isThirdMissionStarted2 = false; // 보자기 비활성화

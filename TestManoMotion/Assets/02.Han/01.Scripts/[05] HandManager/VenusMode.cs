@@ -14,14 +14,27 @@ public class VenusMode : Mode
     public override void OnTriggeredPick()
     {
         if (hand.curObj != null)
+        {
+            if (helper.isPickable == false) return;
             hand.curObj.ProcessPick();
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusIconPick);
+        }
     }
     public override void OnTriggeredDrop()
     {
         if (hand.curObj != null)
+        {
+            if (helper.isPickable == false) return;
             hand.curObj.ProcessDrop();
+        }
     }
 
     //public override void OnTriggeredRelease() => helper.drone.ReturnBack();
-    public override void OnTriggeredGrab() => helper.drone.ReturnBack();
+    public override void OnTriggeredGrab()
+    {
+        if (helper.isPickable == false) return;
+        GameManager.instance.hand.curObj = null;
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusRelease);
+        helper.drone.ReturnBack();
+    }
 }

@@ -13,9 +13,8 @@ public class KRotateSelf : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "BULLET")
+        if (col.gameObject.tag == "DIEPLANET")
         {
-            //Instantiate(destroyParticle, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
