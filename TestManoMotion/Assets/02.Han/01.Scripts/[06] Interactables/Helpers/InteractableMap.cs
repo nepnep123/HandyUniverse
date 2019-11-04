@@ -75,29 +75,36 @@ public class InteractableMap : InteractableTrinity
     public void RequestFly(VenusPos venusPos) => StartCoroutine(SoarPlayer(venusPos));
     IEnumerator SoarPlayer(VenusPos venusPos)
     {
+        helper.isPickable = false;
         float y = helper.arDevice.transform.position.y;
-        while (y < 10f)
+        float timer = 0;
+        while (y < 10f || timer < 5f)
         {
+            timer += Time.deltaTime;
             Debug.Log("Soaring...@@@@@@@@@@@");
             y += Time.deltaTime * 3f;
             Vector3 vect = new Vector3(helper.arDevice.transform.position.x, y, helper.arDevice.transform.position.z);
             helper.arDevice.transform.position = vect;
             yield return null;
         }
+        timer = 0;
         Vector3 travelPos = new Vector3(destis[(int)venusPos].transform.position.x, 10f, destis[(int)venusPos].transform.position.z);
         float dist = Vector3.Distance(travelPos, helper.arDevice.transform.position);
-        while (dist > 0.5f)
+        while (dist > 0.5f || timer < 5f)
         {
+            timer += Time.deltaTime;
             Debug.Log("Charging...@@@@@@@@@@@");
             Vector3 desti = Vector3.Lerp(helper.arDevice.transform.position, travelPos, 1.2f * Time.deltaTime);
             helper.arDevice.transform.position = desti;
             dist = Vector3.Distance(helper.arDevice.transform.position, travelPos);
             yield return null;
         }
+        timer = 0;
         float finalY = 10f;
         float y2 = helper.arDevice.transform.position.y;
-        while (finalY > 0.8f)
+        while (finalY > 0.8f || timer < 5f)
         {
+            timer += Time.deltaTime;
             Debug.Log("Descending....@@@@@@@@@@@");
             y2 -= Time.deltaTime * 3f;
             Debug.Log(y2);
@@ -108,6 +115,8 @@ public class InteractableMap : InteractableTrinity
             yield return null;
         }
         Debug.Log("끝났당");
+        helper.arDevice.transform.position = new Vector3(helper.arDevice.transform.position.x, 0.5f, helper.arDevice.transform.position.z);
+        helper.isPickable = true;
     }
 
     #endregion

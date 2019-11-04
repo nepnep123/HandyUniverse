@@ -71,15 +71,6 @@ public class KWorld : World
         GameManager.instance.hand.kTutorialMode.kworld = this;
 
         UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK());
-        StartCoroutine(MissionStart());
-    }
-
-    // 첫번째 미션 스타트
-    IEnumerator MissionStart()
-    {
-        yield return null;
-        
-        isFirstMissionStarted = true;
     }
 
     // 첫번째 미션 내용
@@ -133,7 +124,6 @@ public class KWorld : World
             {
                 planetsMeshRenderer[i].enabled = true;
             }
-            isSecondMissionStarted = true;
         }
     }
 
@@ -244,7 +234,7 @@ public class KWorld : World
         if (dieRealCount >= 3)
         {
             StartCoroutine(MissionParticle3());
-            StartCoroutine(UIManager.instance.ShowMissionUI("수고하셨습니다!\n\n이제 '그랩 앤 릴리즈'로 포탈을 나가고\n튜토리얼에서 배운 핸드모션으로 행성 여행을 떠나봅시다"));
+            UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK4());
         }
     }
 
@@ -256,7 +246,6 @@ public class KWorld : World
 
         isThirdMissionStarted = false; // 주먹 비활성화
         isThirdMissionStarted2 = false; // 보자기 비활성화
-        isGoodBye = true; // 테스트 끝나고 주석 풀기
     }
 
     private void FireBullet()

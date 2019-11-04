@@ -855,6 +855,7 @@ MonoBehaviour:
   KvenusInstruct: {fileID: 44969085}
   KvenusInstruct2: {fileID: 1624198236}
   KvenusInstruct3: {fileID: 1740079591}
+  KvenusInstruct4: {fileID: 1527028087}
 --- !u!1 &557169198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1263,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1527028087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6740078630133589609, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 170856160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db9bf52f13b9094da98d4277d9d6285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1624198236 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1624198236, guid: 5df4de92ca18f7949bfdc1e0661d55fe,
