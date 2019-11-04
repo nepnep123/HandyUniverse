@@ -24,7 +24,7 @@ public class TEST : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			GameManager.instance.hand.curObj.ProcessGrab();
+ 
 		}
 		if (Input.GetKeyDown(KeyCode.T))
 		{

@@ -24,7 +24,6 @@ public class KWorld : World
     public bool isThirdMissionStarted2 = false;
     private bool isGrabbed = false;
     private bool isEnabled = false;
-    public bool test = false;
 
     public GameObject[] arrows = new GameObject[9];
     public MeshRenderer[] planetsMeshRenderer = new MeshRenderer[9];
