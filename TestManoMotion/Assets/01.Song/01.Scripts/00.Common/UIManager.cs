@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     public KVenusInstructor KvenusInstruct;
     public KVenusInstructor2 KvenusInstruct2;
     public KVenusInstructor3 KvenusInstruct3;
+    public KVenusInstructor4 KvenusInstruct4;
 
     private void Awake()
 	{
@@ -99,6 +100,7 @@ public class UIManager : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1f);
+        KWorld.instance.isFirstMissionStarted = true;
     }
 
     public IEnumerator InstructSequenceK2()
@@ -122,6 +124,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(1f);
+        KWorld.instance.isSecondMissionStarted = true;
     }
 
     public IEnumerator InstructSequenceK3()
@@ -145,6 +148,30 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(1f);
+    }
+
+    public IEnumerator InstructSequenceK4()
+    {
+        yield return new WaitForSeconds(4f);
+
+        float timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime;
+            KvenusInstruct4.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3f);
+        timer = 1;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            KvenusInstruct4.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(2f);
+        KWorld.instance.isGoodBye = true;
     }
     #endregion
 }

@@ -12,15 +12,15 @@ public class TEST : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q))
 		{
-			GameManager.instance.hand.curObj.ProcessClick();
+			GameManager.instance.hand.mode.OnTriggeredClick();
 		}
 		if (Input.GetKeyDown(KeyCode.W))
 		{
-			GameManager.instance.hand.curObj.ProcessPick();
+			GameManager.instance.hand.mode.OnTriggeredPick();
 		}
 		if (Input.GetKeyDown(KeyCode.E))
 		{
-			GameManager.instance.hand.curObj.ProcessDrop();
+			GameManager.instance.hand.mode.OnTriggeredDrop();
 		}
 		if (Input.GetKeyDown(KeyCode.R))
 		{
@@ -28,20 +28,7 @@ public class TEST : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.T))
 		{
-			GameManager.instance.hand.curObj.ProcessRelease();
+			GameManager.instance.hand.mode.OnTriggeredRelease();
 		}
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.click);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.grab);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            GameManager.instance.hand.mode.OnTriggeredClick();
-        }
     }
 }
