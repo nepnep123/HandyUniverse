@@ -27,7 +27,7 @@ public class MoonWorld : World
 		campos.position = start_Pos.position;
 
 		RenderSettings.fog = true;
-		Color color = new Color(0.7f, 0.7f, 07f, 1);
+		Color color = new Color(0.5f, 0.5f, 0.5f, 1);
 		RenderSettings.fogColor = color;
 		RenderSettings.fogDensity = 0.07f;
 
@@ -120,6 +120,7 @@ public class MoonWorld : World
 
 		yield return new WaitForSeconds(3.0f);
 		MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.teleportSound);
+		GameManager.instance.camPos.position = second_Pos.position;
 		MoonUICtrl.instance.teleport_particle.SetActive(true);
 
 		while (true)
