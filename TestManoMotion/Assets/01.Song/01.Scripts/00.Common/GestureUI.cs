@@ -10,6 +10,8 @@ public class GestureUI : MonoBehaviour
 
 	private void Start()
 	{
+		imageImage1.enabled = false;
+		imageImage2.enabled = true;
 		StartCoroutine(FadeOff());
 	}
 
