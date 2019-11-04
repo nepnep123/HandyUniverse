@@ -5,4 +5,5 @@ using UnityEngine;
 public class TutorialInstuctor : MonoBehaviour
 {
 	public CanvasGroup[] tutorial_Canvas;
+	public GameObject pageCtrl;
 }

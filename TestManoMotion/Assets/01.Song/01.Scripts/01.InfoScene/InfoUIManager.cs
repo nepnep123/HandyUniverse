@@ -13,27 +13,33 @@ public class InfoUIManager : MonoBehaviour
 	public GameObject startInfo;
 	public GameObject tutorialInfo;
 
-	public TutorialInstuctor tutorial_Info;
+	private TutorialInstuctor tutorial_Info;
 
 	private int count = -1;
 
 	private void Awake()
 	{
 		player = gameObject.GetComponent<AudioSource>();
+		tutorial_Info = FindObjectOfType<TutorialInstuctor>();
 
-		for (int i = 0; i < tutorial_Info.tutorial_Canvas.Length; i++)
-		{
-			tutorial_Info.tutorial_Canvas[i].alpha = 0;
-		}
+
+
+		startInfo.SetActive(true);
+		tutorialInfo.SetActive(false);
 	}
 
 	public void EnterScene()
 	{
 		player.PlayOneShot(clip);
-		SceneManager.LoadScene("SongMain");
-		//startInfo.SetActive(false);
-		//tutorialInfo.SetActive(true);
-		//MainUICtrl(0);
+
+		startInfo.SetActive(false);
+		tutorialInfo.SetActive(true);
+		for (int i = 0; i < tutorial_Info.tutorial_Canvas.Length; i++)
+		{
+			tutorial_Info.tutorial_Canvas[i].alpha = 0;
+		}
+
+		MainUICtrl(0);
 	}
 
 	public void ExitApplication()
@@ -41,21 +47,35 @@ public class InfoUIManager : MonoBehaviour
 		player.PlayOneShot(clip);
 		Application.Quit();
 	}
-	
 
 
+	private void Update()
+	{
+		if(count == tutorial_Info.tutorial_Canvas.Length - 1)
+		{
+			tutorial_Info.pageCtrl.SetActive(false);
+		}
+	}
 	public void MainUICtrl(int temp)
 	{
 		switch (temp)
 		{
 			//다음
 			case 0:
-				++count;
-				StartCoroutine(NextLevel(count));
-				break;
+				if (count >= tutorial_Info.tutorial_Canvas.Length)
+				{
+					Debug.Log("다음 페이지가 없습니다!!!");
+					break;
+				}
+				else
+				{
+					++count;
+					NextLevel(count);
+					break;
+				}
 			//이전
 			case 1:
-				if (count == 0 || count == -1)
+				if (count == -1 || count == 0 )
 				{
 					Debug.Log("이전 페이지가 없습니다!!!");
 					break;
@@ -63,50 +83,32 @@ public class InfoUIManager : MonoBehaviour
 				else
 				{
 					--count;
-					StartCoroutine(NextLevel(count));
+					PreLevel(count);
 					break;
 				}
 		}
 	}
-	public IEnumerator NextLevel(int _count)
+	public void NextLevel(int _count)
 	{
-		float timer = 0;
-
-		while (timer < 1)
-		{
-			timer += Time.deltaTime;
-			tutorial_Info.tutorial_Canvas[_count].alpha = timer;
-			yield return null;
-		}
-
-		yield return new WaitForSeconds(3f);
-		timer = 1;
+		tutorial_Info.tutorial_Canvas[_count].alpha = 1;
 
 		if (_count != 0)
 		{
-			while (timer > 0)
-			{
-				timer -= Time.deltaTime;
-				tutorial_Info.tutorial_Canvas[_count - 1].alpha = timer;
-				yield return null;
-			}
+			tutorial_Info.tutorial_Canvas[_count - 1].alpha = 0;
+		}
+	}
+	public void PreLevel(int _count)
+	{
+		tutorial_Info.tutorial_Canvas[_count].alpha = 1;
+
+		if (_count != 0)
+		{
+			tutorial_Info.tutorial_Canvas[_count + 1].alpha = 0;
 		}
 	}
 
-	//SceneManager.LoadScene("SongMain");
-
-	//public IEnumerator PreLevel()
-	//{
-	//	float timer = 0;
-	//	for (int i = 0; i < tutorial_Info.tutorial_Canvas.Length; i++)
-	//	{
-	//		while (timer < 1)
-	//		{
-	//			timer += Time.deltaTime;
-	//			tutorial_Info.tutorial_Canvas[i].alpha = timer;
-	//			yield return null;
-	//		}
-	//		yield return new WaitForSeconds(3f);
-	//	}
-	//}
+	public void StartMain()
+	{
+		SceneManager.LoadScene("SongMain");
+	}
 }
