@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -486209780401776357}
   m_Layer: 0
   m_Name: CubeCubeCubeCubeCube
-  m_TagString: Untagged
+  m_TagString: DIEPLANET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,15 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192ddf5c6d0738c408d66d6c8ca891dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  getSpeed: 0
+  getSpeed: 6.2221494

@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     //강원's UI
     public KVenusInstructor KvenusInstruct;
     public KVenusInstructor2 KvenusInstruct2;
+    public KVenusInstructor3 KvenusInstruct3;
 
     private void Awake()
 	{
@@ -100,6 +101,29 @@ public class UIManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
             KvenusInstruct2.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+    }
+
+    public IEnumerator InstructSequenceK3()
+    {
+        yield return new WaitForSeconds(4f);
+
+        float timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime;
+            KvenusInstruct3.canvasGroups[0].alpha = timer;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3f);
+        timer = 1;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            KvenusInstruct3.canvasGroups[0].alpha = timer;
             yield return null;
         }
         yield return new WaitForSeconds(1f);
