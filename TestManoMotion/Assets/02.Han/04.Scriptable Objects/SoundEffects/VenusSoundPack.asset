@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66dc8c6886b1054b903cc26b27e0ac0, type: 3}
   m_Name: VenusSoundPack
   m_EditorClassIdentifier: 
+  venusIntro: {fileID: 8300000, guid: ef352596cbbe518488732bcb6a84fb76, type: 3}
   venusWind: {fileID: 8300000, guid: bac03892d8476fb4aa1c28d5371f3377, type: 3}
-  venusFiring: {fileID: 8300000, guid: b30d47887a5ff1e4cb2f91cac169018f, type: 3}
+  venusDronePick: {fileID: 8300000, guid: b609e13eb4a7d4842ab13920a43c80e6, type: 3}
+  venusIconPick: {fileID: 8300000, guid: ba7286c4759e290479177be36b4a0f93, type: 3}
+  venusRelease: {fileID: 8300000, guid: 15a56d01d517e6d4f9a16e22fe5f479b, type: 3}

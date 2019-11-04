@@ -292,28 +292,28 @@ public class GizmoManager : MonoBehaviour
             {
 
                 case ManoGestureTrigger.CLICK:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Click" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Click" + "</color>";
                     break;
                 case ManoGestureTrigger.SWIPE_LEFT:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Swipe Left" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Swipe Left" + "</color>";
                     break;
                 case ManoGestureTrigger.SWIPE_RIGHT:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Swipe Right" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Swipe Right" + "</color>";
                     break;
                 case ManoGestureTrigger.GRAB:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Grab" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Grab" + "</color>";
                     break;
                 case ManoGestureTrigger.TAP_POINTING:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Tap" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Tap" + "</color>";
                     break;
                 case ManoGestureTrigger.DROP:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Drop" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Drop" + "</color>";
                     break;
                 case ManoGestureTrigger.PICK:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Pick" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Pick" + "</color>";
                     break;
                 case ManoGestureTrigger.RELEASE:
-                    triggerGestureText.text = "Trigger: " + "<color=green>" + "Release" + "</color>";
+                    triggerGestureText.text = "Trigger: " + "<color=red>" + "Release" + "</color>";
                     break;
                 case ManoGestureTrigger.NO_GESTURE:
                     triggerGestureText.text = "Trigger: ";

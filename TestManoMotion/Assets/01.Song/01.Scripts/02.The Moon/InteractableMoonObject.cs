@@ -35,23 +35,23 @@ public class InteractableMoonObject : InteractableObject
 			case MoonSymbol.FirstPosMove:
 				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.arrowTouchSound);
 				MoonWorld.instance.GoFirstPos();
+				Destroy(this.gameObject);
 				break;
 			case MoonSymbol.SecondPosMove:
 				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.arrowTouchSound);
 				MoonWorld.instance.GoSecondPos();
+				Destroy(this.gameObject);
 				break;
-
-
+			case MoonSymbol.FinalPosMove:
+				MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.arrowTouchSound);
+				UIManager.instance.moonExit_ui.SetActive(true);
+				MoonWorld.instance.GoFinalPos();
+				Destroy(this.gameObject);
+				break;
+				
 				//충돌되는순간 제스처를 통해서 이벤트 처리
 			case MoonSymbol.HandPrintZone:
-				SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.bookZone);
 				canPrinted = true;
-				break;
-
-
-				//마지막 단계로 이동.
-			case MoonSymbol.FinalPosMove:
-				isTouched = true;
 				break;
 		}
 	}
@@ -86,18 +86,6 @@ public class InteractableMoonObject : InteractableObject
 					MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.clickSound);
 					this.gameObject.SetActive(false);
 					MoonUICtrl.instance.ShowPicture(2);
-				}
-				break;
-
-			//포탈 나가는 마지막 단계 
-			case MoonSymbol.FinalPosMove:
-				if (isTouched == true)
-				{
-					isTouched = false;
-					MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.clickSound);
-					this.gameObject.SetActive(false);
-					//마지막 장소로 이동. 
-					MoonWorld.instance.GoFinalPos();
 				}
 				break;
 		}

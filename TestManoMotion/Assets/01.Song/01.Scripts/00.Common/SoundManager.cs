@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
 	public static SoundManager instance;
 
+	public AudioSource soundPlayer;
 
 	public AudioClip bookZone;
 	public AudioClip openbookSound;
@@ -13,10 +14,13 @@ public class SoundManager : MonoBehaviour
 	public AudioClip nextpageSound;
 	public AudioClip keySound;
 
+    [Header("Venus Sound Pack")]
+    public VenusSound_Scriptable venusSoundPack;
+    [Header("Gesture Sound Pack")]
+    public GestrueSound_Scriptable gestureSoundPAck;
 
-	public AudioSource soundPlayer;
 
-	private void Awake()
+    private void Awake()
 	{
 		if (instance == null) instance = GetComponent<SoundManager>();
 		else DestroyImmediate(instance);

@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 	//World 나가는 메소드
 	public IEnumerator ExitWorld()
 	{
-		bookZone.SetActive(true);
+		//bookZone.SetActive(true);
 
 		//핸드 모드 entryMode 변경
 		GameManager.instance.hand.mode.ModeChange(hand.entryMode);
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 	//World 들어가는 메소드
 	public IEnumerator EnterWorld()
 	{
-		bookZone.SetActive(false);
+		//bookZone.SetActive(false);
 
 		fadeCanvas.FadeOut();
 		masterBook.CloseBook();
@@ -95,11 +95,12 @@ public class GameManager : MonoBehaviour
 		rotation.eulerAngles = new Vector3(-90, 0, 0);
 
 		zone = Instantiate(bookZone, camPos.position + new Vector3(0, -0.5f, 1), rotation);
+		zone.SetActive(true);
 		mainPos.position = zone.transform.position + new Vector3(0, 0.5f, -1);
 
-		var msg = "BOOK ZONE을 생성하였습니다. " + "\n" + "\n"
-			+ "GRAB & RELEASE 제스처를 통해 " + "\n"
-			+ "미션을 받습니다.";
+		var msg = ">> 마스터북을 생성할 공간을 만들었습니다. <<" + "\n" + "\n"
+			+ "GRAB 제스처 후 Release 제스처를 하여 " + "\n"
+			+ "다음 미션을 수행합시다.";
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 		Animator zoneAnim = zone.GetComponent<Animator>();

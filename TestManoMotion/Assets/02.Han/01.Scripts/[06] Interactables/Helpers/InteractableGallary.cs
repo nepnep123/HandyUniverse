@@ -70,21 +70,24 @@ public class InteractableGallary : InteractableTrinity
     }
     public override void ProcessPick()
     {
+        if (helper.drone.releaseStack.Count > 1)
+            helper.drone.ReturnBack();
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusIconPick);
         //helper.drone.releaseStack.Push(CloseGallery);
         //Todo : 갤러리를 열어라
         Invoke("Boolifier", 1.5f);
-        Debug.Log("1");
         OpenCloseAll(false);
-        Debug.Log("2");
         OpenGallery(helper.curPos);
-        Debug.Log("3");
         helper.raycaster.IsRaycasterble = true;
-        Debug.Log("4");
         helper.drone.releaseStack.Push(CloseGallery);
     }
 
     void OpenGallery(VenusPos vs)
     {
+        //1102 추가됨
+        helper.OpenObjects(false);
+        helper.isPickable = false;
+        Invoke("Boolifier2", 1.5f);
         ActivePositionPhoto(vs);
         for (int i = 0; i < photos[(int)vs].Count; i++)
         {
@@ -98,11 +101,6 @@ public class InteractableGallary : InteractableTrinity
             //Debug.Log(rottedVector);
             photos[(int)vs][i].StartSpread(finalDestination);
         }
-        /*
-        foreach (InteractablePhoto ip in photos[(int)vs])
-        {
-            ip.StartSpread();
-        }*/
     }
     private void OnDrawGizmos()
     {
@@ -137,6 +135,9 @@ public class InteractableGallary : InteractableTrinity
             ip.outliner.SetActive(false);
         }
     }
+
+    void Boolifier2() => helper.isPickable = true;
+     
 
     void Boolifier()
     {

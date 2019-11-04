@@ -10,12 +10,26 @@ public class Helper : MonoBehaviour
 
     public InteractableDrone drone;
     public int infoIndex = 0;
+    public int gallIndex = 0;
     public VenusPos curPos = VenusPos.Venus;
 
     public Transform arDevice;
     public bool isAbleToLook = true;
 
     public Helper_Raycaster raycaster;
+
+    //Gesture에 반응하는지 안 하는지 : 핵심
+    //1. helper에서 오브젝트 1차 퍼짐할 때 퍼지는 도중에는 반응 못하도록 막는다.
+    // -OpenObject()
+    //2. InteractableTrinity들이 사용하는 오브젝트 퍼질때:
+    //2_1 맵은 해당사항 false
+    //2_2 인포는 해당사항 false
+    //3. 갤러리 해당사항 true
+    //4. 블랙홀 해당사항 false
+    public bool isPickable = true;
+
+    bool isMoving = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +40,8 @@ public class Helper : MonoBehaviour
             //interacts[i].ProcessInit(this);
             if (interacts[i] is InteractableInfoma)
                 infoIndex = i;
+            if (interacts[i] is InteractableGallary)
+                gallIndex = i;
         }
         Activer(false);
         //인게임
@@ -51,12 +67,18 @@ public class Helper : MonoBehaviour
         float dist = Vector3.Distance(pPos, thisPos);
         if (dist > 1f)
         {
+            isMoving = true;
             Vector3 lerpMove = Vector3.Lerp(thisPos, pPos, Time.deltaTime * 0.6f);
             transform.position = lerpMove;
         }
+        else
+            isMoving = false;
         //by재현, 두둥실, 1015
-        float ocil = Mathf.Sin(1.57f * Time.time);
-        transform.position += new Vector3(0, ocil * 0.002f, 0);
+        if(isMoving == false)
+        {
+            float ocil = Mathf.Sin(1.57f * Time.time);
+            transform.position += new Vector3(0, ocil * 0.002f, 0);
+        }
         //바라보기
         if (isAbleToLook == true)
         {
@@ -76,6 +98,7 @@ public class Helper : MonoBehaviour
     }
     IEnumerator SpreadObjs(bool booleana)
     {
+        isPickable = false;
         if(booleana)
         {
             Activer(true);
@@ -107,6 +130,7 @@ public class Helper : MonoBehaviour
             Activer(false);
             isAbleToLook = true;
         }
+        isPickable = true;
     }
 
     public void AllDeselect()

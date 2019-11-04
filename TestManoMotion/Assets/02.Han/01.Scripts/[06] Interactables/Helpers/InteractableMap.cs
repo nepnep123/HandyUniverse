@@ -43,6 +43,7 @@ public class InteractableMap : InteractableTrinity
     {
         if (helper.drone.releaseStack.Count > 1)
             helper.drone.ReturnBack();
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusIconPick);
         IndexesOnOff(true);
         helper.drone.releaseStack.Push(IndexesOff);
     }
