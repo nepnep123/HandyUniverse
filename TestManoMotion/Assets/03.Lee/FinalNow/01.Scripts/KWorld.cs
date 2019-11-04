@@ -84,6 +84,7 @@ public class KWorld : World
                 {                
                     planetsMeshRenderer[i].enabled = false;
 
+                    SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.hidepickPlanets);
                     var hiding = Instantiate(hidePlanetParticle, planetsMeshRenderer[i].transform.position, planetsMeshRenderer[i].transform.rotation);
                     hiding.Play();
                 }
@@ -100,6 +101,7 @@ public class KWorld : World
                 {    
                     planetsMeshRenderer[i].enabled = true;
                 }
+                SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.hidepickPlanets);
                 releaseCount++;
                 Debug.Log(releaseCount);
                 isEnabled = true;
@@ -108,6 +110,7 @@ public class KWorld : World
 
         if ((grabCount >= 2) && (releaseCount >= 3))
         {
+            isFirstMissionStarted = false;
             StartCoroutine(MissionParticle1());
             UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK2());
         }
@@ -115,11 +118,11 @@ public class KWorld : World
 
         IEnumerator MissionParticle1()
         {
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.success);
             MissionSuccessParticle.SetActive(true);
             yield return waitForSeconds;
             MissionSuccessParticle.SetActive(false);
             
-            isFirstMissionStarted = false;
             for (int i = 0; i < planetsMeshRenderer.Length; i++)
             {
                 planetsMeshRenderer[i].enabled = true;
@@ -134,7 +137,7 @@ public class KWorld : World
         {
             HideArrow();
 
-            if (count == 4)
+            if (count > 3)
             {
                 isSecondMissionStarted = false;
 
@@ -149,6 +152,7 @@ public class KWorld : World
 
             IEnumerator MissionParticle2()
             {
+                SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.success);
                 MissionSuccessParticle.SetActive(true);
                 yield return waitForSeconds;
                 MissionSuccessParticle.SetActive(false);
@@ -210,7 +214,7 @@ public class KWorld : World
 
         while (isGrabbed == true)
         {
-            speed += 10 * Time.deltaTime;
+            speed += Time.deltaTime;
 
             speed = Mathf.Clamp(speed, 0f, speedMax);
 
@@ -231,7 +235,7 @@ public class KWorld : World
             StartCoroutine(ChargeSpeed());
         }
 
-        if (dieRealCount >= 3)
+        if (dieRealCount > 3)
         {
             StartCoroutine(MissionParticle3());
             UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK4());
@@ -240,6 +244,7 @@ public class KWorld : World
 
     IEnumerator MissionParticle3()
     {
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.success);
         MissionSuccessParticle.SetActive(true);
         yield return waitForSeconds;
         MissionSuccessParticle.SetActive(false);
@@ -251,6 +256,7 @@ public class KWorld : World
     private void FireBullet()
     {
         var bulletBullet = Instantiate(kBullet, GameManager.instance.hand.transform.position, GameManager.instance.hand.transform.rotation);
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.fire);
         //var bulletBullet = Instantiate(kBullet, GameManager.instance.mano.palmcenter_parent.transform.position, GameManager.instance.hand.transform.rotation);
     }
 

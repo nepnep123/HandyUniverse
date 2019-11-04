@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2616543566326430659}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: DIEPLANET
+  m_TagString: BULLET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192ddf5c6d0738c408d66d6c8ca891dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyParticle: {fileID: 3344562346063231572, guid: 13b4e0c51506daa4699ad9cb3fc93181,
+  destroyParticle: {fileID: 8403029992539228740, guid: 4cf84ccc1692af84090b4ea7580778ee,
     type: 3}
-  getSpeed: 0.78074104
+  getSpeed: 2.9972627

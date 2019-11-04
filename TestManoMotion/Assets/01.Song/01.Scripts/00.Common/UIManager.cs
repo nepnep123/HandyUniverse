@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
     public IEnumerator InstructSequenceK()
     {
         float timer = 0;
+        //SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.bgm);
         for (int i = 0; i < KvenusInstruct.canvasGroups.Length; i++)
         {
             while (timer < 1)
@@ -153,6 +154,8 @@ public class UIManager : MonoBehaviour
     public IEnumerator InstructSequenceK4()
     {
         yield return new WaitForSeconds(4f);
+
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.end);
 
         float timer = 0;
 

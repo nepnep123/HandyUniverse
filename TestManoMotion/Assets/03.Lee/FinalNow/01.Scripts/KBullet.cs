@@ -20,12 +20,24 @@ public class KBullet : MonoBehaviour
         transform.Translate(Vector3.forward * getSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision col)
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    if(col.gameObject.tag == "DIEPLANET")
+    //    {
+    //        KWorld.instance.dieRealCount++;
+    //        var a = Instantiate(destroyParticle, transform.position, transform.rotation);
+    //        Destroy(a, 2f);
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    void OnParticleCollision(GameObject col2)
     {
-        if(col.gameObject.tag == "DIEPLANET")
+        if (col2.gameObject.tag == "DIEPLANET")
         {
             KWorld.instance.dieRealCount++;
             var a = Instantiate(destroyParticle, transform.position, transform.rotation);
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.fired);
             Destroy(a, 2f);
             Destroy(gameObject);
         }

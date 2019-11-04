@@ -1505,6 +1505,12 @@ MonoBehaviour:
   keySound: {fileID: 8300000, guid: a29cbb76ed07d48dd9b5b58db38f9e5c, type: 3}
   venusSoundPack: {fileID: 11400000, guid: 6cee5d7d7ae6f9d4983f01eaf8c00ead, type: 2}
   gestureSoundPAck: {fileID: 11400000, guid: e9ed33d55e652c942bc96f46058f2778, type: 2}
+  bgm: {fileID: 8300000, guid: 22a54eb1d629ad548947e1d09ec889c8, type: 3}
+  success: {fileID: 8300000, guid: e1b0581c426557641ba30f88722e98e5, type: 3}
+  hidepickPlanets: {fileID: 8300000, guid: 7b71d82b755a7fa418f286e3d3e98e76, type: 3}
+  fire: {fileID: 8300000, guid: 21ce8f41dab1fd342bf9e993753d53ac, type: 3}
+  fired: {fileID: 8300000, guid: fd17498ed5a214a41a8ae18d094bc35b, type: 3}
+  end: {fileID: 8300000, guid: fabd495d9991c284889c9dba6ff9f948, type: 3}
 --- !u!82 &1931267557
 AudioSource:
   m_ObjectHideFlags: 0
