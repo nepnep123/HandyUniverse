@@ -8,19 +8,20 @@ using UnityEngine.Video;
 public class MoonUICtrl : MonoBehaviour
 {
 	public static MoonUICtrl instance;
-	public GameObject infoImg;
+
 	private Text infotxt;
-	public GameObject introVideo;
 	private VideoPlayer video;
 
-
+	public GameObject infoImg;
+	public GameObject introVideo;
 	public GameObject neilInfo;
 	public GameObject edwinInfo;
 	public GameObject myInfo;
-	public GameObject exitInfo;
+	public GameObject clear;
 
 	public GameObject loading_particle;
 	public GameObject printing_img;
+	public GameObject teleport_particle;
 
 	private string mission;
 
@@ -30,20 +31,20 @@ public class MoonUICtrl : MonoBehaviour
 		else Destroy(instance);
 
 		infotxt = infoImg.GetComponentInChildren<Text>();
-		video = introVideo.GetComponent<VideoPlayer>();
+		video = introVideo.GetComponentInChildren<VideoPlayer>();
 	}
 	private void Start()
 	{
 		infoImg.SetActive(false);
 		introVideo.SetActive(false);
-
 		neilInfo.SetActive(false);
 		edwinInfo.SetActive(false);
 		myInfo.SetActive(false);
-		exitInfo.SetActive(false);
 
 		loading_particle.SetActive(false);
 		printing_img.SetActive(false);
+		teleport_particle.SetActive(false);
+		clear.SetActive(false);
 	}
 
 	private void OnEnable()
@@ -85,7 +86,6 @@ public class MoonUICtrl : MonoBehaviour
 		//3초뒤에 힌트 공개 
 		yield return new WaitForSeconds(3.0f);
 		MoonWorld.instance.ShowHint();
-		MoonWorld.instance.finalHint.SetActive(false);
 	}
 
 	public void StartMoonInfo()
@@ -110,7 +110,8 @@ public class MoonUICtrl : MonoBehaviour
 				break;
 			case 3:
 				myInfo.SetActive(true);
-
+				//UIManager-MoonUI
+				StartCoroutine(UIManager.instance.MoonUI());
 				break;
 		}
 	}
@@ -119,6 +120,7 @@ public class MoonUICtrl : MonoBehaviour
 	{
 		MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.handprintSound);
 		yield return new WaitForSeconds(2.0f);
+		
 		//미션 클리어시 5초동안 로딩... 후 바닥에 손바닥 생성
 		loading_particle.SetActive(true);
 		MoonSoundManager.instance.sfxPlayer.PlayOneShot(MoonSoundManager.instance.loadingSound);
@@ -130,10 +132,9 @@ public class MoonUICtrl : MonoBehaviour
 		myInfo.SetActive(false);
 		msg = "미션 클리어 !!!" + "\n" + "\n"
 			+ "당신은 달행성에 미션을 완수 하였습니다. " + "\n"
-			+ "3초 뒤에 Click 제스처를 사용해 행성을 탈출합니다. ";
+			+ ".................... ";
 		StartCoroutine(UIManager.instance.ShowMissionUI(msg));
-
-		MoonWorld.instance.finalHint.SetActive(true);
+		clear.SetActive(true);
 	}
 
 }

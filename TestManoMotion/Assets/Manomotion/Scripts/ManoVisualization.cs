@@ -43,7 +43,7 @@ public class ManoVisualization : MonoBehaviour
     private Transform[][] fingertips_t;
     private Transform[][] fingertip_labels;
     private String[] finger_labels = { "Pinky", "Ring", "Mid", "Index", "Thumb" };
-    private GameObject contour_parent, inner_parent, fingertip_parent, palmcenter_parent, fingertip_label_parent, joints_parent, bounding_box_parent;
+    public GameObject contour_parent, inner_parent, fingertip_parent, palmcenter_parent, fingertip_label_parent, joints_parent, bounding_box_parent;
     private ManoUtils mano_utils;
     private MeshRenderer[] _layer_hands;
     public MeshRenderer _layer_background, _layer_transparent;
@@ -479,7 +479,6 @@ public class ManoVisualization : MonoBehaviour
             Vector3 palm_cent = tracking_info.palm_center;
             float depth = tracking_info.relative_depth;
             ManoUtils.Instance.CalculateNewPosition(palm_cent, depth);
-
         }
     }
 

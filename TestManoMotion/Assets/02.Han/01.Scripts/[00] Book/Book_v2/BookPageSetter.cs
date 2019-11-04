@@ -96,6 +96,7 @@ public class BookPageSetter : MonoBehaviour
 		world_pre[book.curPlaneIndex].InitWorld();
 		pagePlanets_pre[book.curPlaneIndex].gameObject.SetActive(false);
 		book.gameObject.SetActive(false);
+		GameManager.instance.zone.SetActive(false);
 	}
 
 	//Book_v2::ClosePortal()
@@ -106,6 +107,10 @@ public class BookPageSetter : MonoBehaviour
 		book.IsBookOpened = false;
 
 		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
+		GameManager.instance.zone.SetActive(true);
+		
+		//Pog 삭제
+		RenderSettings.fog = false;
 		DisableAllPage();
 	}
 

@@ -35,10 +35,11 @@ public class InteractablePlanet : InteractableObject
         platicle.gameObject.SetActive(true);
 		//GetComponent<Outline>().OutlineWidth = 10;
 	}
+
 	private void OnDisable()
 	{
-        platicle.gameObject.SetActive(false);
-        //GetComponent<Outline>().OutlineWidth = 0;
+		platicle.gameObject.SetActive(false);
+		//GetComponent<Outline>().OutlineWidth = 0;
 	}
 
 	IEnumerator GrowPlanet()

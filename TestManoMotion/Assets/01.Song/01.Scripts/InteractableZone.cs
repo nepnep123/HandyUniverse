@@ -18,6 +18,10 @@ public class InteractableZone : InteractableObject
 		bookkeyScript = FindObjectOfType<BookKey>();
 		
 	}
+	private void OnEnable()
+	{
+		
+	}
 
 
 	public enum TriggerObj
@@ -42,7 +46,8 @@ public class InteractableZone : InteractableObject
 				break;
 			case TriggerObj.BookKey:
 				canPick = true;
-				bookkeyScript.particle.SetActive(true);
+				bookkeyScript.outline.OutlineWidth = 10;
+				this.gameObject.GetComponent<AutoRotate>().enabled = false;
 				break;
 		}
 	}
@@ -55,7 +60,8 @@ public class InteractableZone : InteractableObject
 				break;
 			case TriggerObj.BookKey:
 				canPick = false;
-				bookkeyScript.particle.SetActive(false);
+				bookkeyScript.outline.OutlineWidth = 0;
+				this.gameObject.GetComponent<AutoRotate>().enabled = true;
 				break;
 		}
 	}
@@ -92,6 +98,7 @@ public class InteractableZone : InteractableObject
 						//미션 클리어(마스터 북 생성)
 						GameManager.instance.master.CreateMasterBook();
 						GameManager.instance.camPos.position = GameManager.instance.mainPos.position;
+
 						Destroy(this.gameObject);
 					}
 				}
@@ -115,13 +122,15 @@ public class InteractableZone : InteractableObject
 		{
 			isGrab = false;
 			isBookZone = false;
-			var msg = "MasterBook을 생성하기 위해서는 " + "\n"
-				+ "옆에 존재하는 열쇠를 집어서 책을 열어야합니다. " + "\n" + "\n"
-				+ "Pick & Drop을 사용해 열쇠를 집어 책을 엽니다. ";
+			var msg = ">> 봉인된 공간을 해제 하십시요 <<" + "\n" + "\n"
+				+ "마스터북을 생성하기 위해서는 봉인된 공간을 " + "\n" 
+				+ "열쇠를 사용해 해제 해야 합니다. " + "\n" + "\n" 
+				+ "Pick & Drop 제스처를 사용해 미션을 완수합니다. ";
 			StartCoroutine(UIManager.instance.ShowMissionUI(msg));
 
 			Destroy(GameManager.instance.zone.GetComponent<BoxCollider>());
 
+			GameManager.instance.camPos.position = GameManager.instance.mainPos.position;
 
 			Instantiate(GameManager.instance.keyZone, GameManager.instance.zone.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
 			Instantiate(GameManager.instance.bookKey, GameManager.instance.zone.transform.position

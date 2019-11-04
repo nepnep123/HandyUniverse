@@ -13,6 +13,8 @@ TagManager:
   - Fire
   - Planet
   - KEYZONE
+  - DIEPLANET
+  - BULLET
   layers:
   - Default
   - TransparentFX
