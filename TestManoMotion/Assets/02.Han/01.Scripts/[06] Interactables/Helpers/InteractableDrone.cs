@@ -36,6 +36,7 @@ public class InteractableDrone : InteractableObject
     {
         if (isOpened == false)
         {
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusDronePick);
             helper.OpenObjects(true);
             isOpened = true;
             releaseStack.Push(RequestClose);

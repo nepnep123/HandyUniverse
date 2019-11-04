@@ -82,8 +82,9 @@ public class InteractablePhoto : InteractableObject
         if (isInited == false) return;
         Rotating();
         //이동하기
+        /*
         if (isOpended == false) return;
-        Moving();
+        Moving();*/
     }
 
     public void StartShrink()
@@ -96,11 +97,21 @@ public class InteractablePhoto : InteractableObject
     IEnumerator ShrinkThis()
     {
         float dist = Vector3.Distance(transform.position, gallary.transform.position);
+        float timer = 0;
         while (dist > 0.1f)
         {
+            timer += Time.deltaTime;
             dist = Vector3.Distance(transform.position, gallary.transform.position);
             Vector3 lerped = Vector3.Lerp(transform.position, gallary.transform.position, 2f * Time.deltaTime);
             transform.localPosition = lerped;
+            Debug.Log("Shrinkin...........222222222");
+            if (timer > 1.2f)
+            {
+                Debug.Log("fuck");
+                transform.SetParent(gallary.transform);
+                gameObject.SetActive(false);
+                yield break;
+            }
             yield return null;
         }
         transform.SetParent(gallary.transform);
@@ -117,11 +128,19 @@ public class InteractablePhoto : InteractableObject
         transform.SetParent(null);
         //transform.localPosition = Vector3.zero;
         float dist = Vector3.Distance(transform.position, desti);
-        while (dist > 0.01f)
+        float timer = 0;
+        while (dist > 0.05f)
         {
+            timer += Time.deltaTime;
             Vector3 lerped = Vector3.Lerp(transform.position, desti, 2f * Time.deltaTime);
             transform.position = new Vector3(lerped.x, target.position.y, lerped.z);
             dist = Vector3.Distance(transform.position, desti);
+            Debug.Log("Spreading.....");
+            if (timer > 1.2f)
+            {
+                Debug.Log("fuck");
+                yield break;
+            }
             yield return null;
         }
     }

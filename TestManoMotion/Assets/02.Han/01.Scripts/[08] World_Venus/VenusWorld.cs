@@ -11,6 +11,7 @@ public class VenusWorld : World
 
     public override void InitWorld()
     {
+        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.venusSoundPack.venusIntro);
         SetVenusFog();
         //PhotoUtils.MakeFolder("Venus_Lakshmi");
         //PhotoUtils.MakeFolder("Venus_Maxwell");
@@ -39,13 +40,6 @@ public class VenusWorld : World
         RenderSettings.fog = true;
         RenderSettings.fogColor = venusFog;
         RenderSettings.fogDensity = 0.4f;
-        if (RenderSettings.fog == true)
-        {
-            Debug.Log("뭐냐구 시방True");
-            Debug.Log(RenderSettings.fogDensity);
-        }
-        else
-            Debug.Log("이게 대체 왜이러니false");
     }
 
     void BackGroundOff()

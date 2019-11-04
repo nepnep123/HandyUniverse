@@ -16,6 +16,7 @@ public class PrimeHand : MonoBehaviour
     ManoGestureContinuous preCon;
     ManoGestureTrigger preTri;
 
+
     private void Awake()
     {
         kTutorialMode = new KTutorialMode(this);
@@ -45,6 +46,11 @@ public class PrimeHand : MonoBehaviour
                 {
                     if(preTri != ManoGestureTrigger.GRAB)
                     {
+                        if (SoundManager.instance == null) Debug.Log("사운드매니저 인스턴스 널");
+                        if (SoundManager.instance.soundPlayer == null) Debug.Log("사운드플레이어 널");
+                        if (SoundManager.instance.gestureSoundPAck == null) Debug.Log("제스쳐팩 널");
+                        if (SoundManager.instance.gestureSoundPAck.grab == null) Debug.Log("오디오파일 널");
+                        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.grab);
                         mode.OnTriggeredGrab();
                         preTri = ManoGestureTrigger.GRAB;
                     }
@@ -53,6 +59,7 @@ public class PrimeHand : MonoBehaviour
                 {
                     if(preTri != ManoGestureTrigger.RELEASE)
                     {
+                        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.release);
                         mode.OnTriggeredRelease();
                         preTri = ManoGestureTrigger.RELEASE;
                     }
@@ -63,6 +70,7 @@ public class PrimeHand : MonoBehaviour
                 {
                     if(preTri != ManoGestureTrigger.PICK)
                     {
+                        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.pick);
                         mode.OnTriggeredPick();
                         preTri = ManoGestureTrigger.PICK;
                     }
@@ -71,6 +79,7 @@ public class PrimeHand : MonoBehaviour
                 {
                     if(preTri != ManoGestureTrigger.DROP)
                     {
+                        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.drop);
                         mode.OnTriggeredDrop();
                         preTri = ManoGestureTrigger.DROP;
                     }
@@ -79,7 +88,8 @@ public class PrimeHand : MonoBehaviour
 				{ 
 					if (preTri != ManoGestureTrigger.CLICK)
 					{
-						mode.OnTriggeredClick();
+                        SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.click);
+                        mode.OnTriggeredClick();
 						preTri = ManoGestureTrigger.CLICK;
 					}
 				}

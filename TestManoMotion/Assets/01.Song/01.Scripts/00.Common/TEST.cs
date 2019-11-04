@@ -41,5 +41,17 @@ public class TEST : MonoBehaviour
 		{
 			GameManager.instance.hand.mode.OnTriggeredGrab();
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.click);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.grab);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            GameManager.instance.hand.mode.OnTriggeredClick();
+        }
+    }
 }

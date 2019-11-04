@@ -31,10 +31,4 @@ public class Helper_Raycaster : MonoBehaviour
             curPhoto.ProcessCollisionEnter();
         }
     }
-    private void OnDrawGizmos()
-    {
-        Ray ray = new Ray(handTr.position, (camTr.position - handTr.position));
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(ray);
-    }
 }

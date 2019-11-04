@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
                 venusInstruct.canvasGroups[i].alpha = timer;
                 yield return null;
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
             timer = 1;
             while (timer > 0)
             {
