@@ -19,6 +19,11 @@ public class SoundManager : MonoBehaviour
     [Header("Gesture Sound Pack")]
     public GestrueSound_Scriptable gestureSoundPAck;
 
+    [Header("LKW Sound Pack")]
+    public AudioClip a1;
+    public AudioClip a2;
+    public AudioClip a3;
+
 
     private void Awake()
 	{
