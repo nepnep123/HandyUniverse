@@ -24,16 +24,13 @@ public class TEST : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.R))
 		{
- 
+			GameManager.instance.hand.mode.OnTriggeredGrab();
 		}
 		if (Input.GetKeyDown(KeyCode.T))
 		{
 			GameManager.instance.hand.curObj.ProcessRelease();
 		}
-		if (Input.GetKeyDown(KeyCode.Y))
-		{
-			GameManager.instance.hand.mode.OnTriggeredGrab();
-		}
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.click);
