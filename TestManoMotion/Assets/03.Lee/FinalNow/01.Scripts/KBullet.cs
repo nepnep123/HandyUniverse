@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KBullet : MonoBehaviour
 {
-    //public GameObject destroyParticle;
+    public GameObject destroyParticle;
 
     [HideInInspector]
     public float getSpeed;
@@ -24,8 +24,9 @@ public class KBullet : MonoBehaviour
     {
         if(col.gameObject.tag == "DIEPLANET")
         {
-            //Instantiate(destroyParticle, transform.position, transform.rotation);
             KWorld.instance.dieRealCount++;
+            var a = Instantiate(destroyParticle, transform.position, transform.rotation);
+            Destroy(a, 2f);
             Destroy(gameObject);
         }
     }

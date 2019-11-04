@@ -15,7 +15,6 @@ public class KRotateSelf : MonoBehaviour {
     {
         if (col.gameObject.tag == "DIEPLANET")
         {
-            //Instantiate(destroyParticle, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

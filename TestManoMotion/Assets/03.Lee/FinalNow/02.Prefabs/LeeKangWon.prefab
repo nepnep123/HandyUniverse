@@ -3993,6 +3993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   kBullet: {fileID: -486209780401776357, guid: 9981d892c1f307043b106ac7c78a563c, type: 3}
+  dieRealCount: 0
   planet: {fileID: 3227548013666621758}
   MissionSuccessParticle: {fileID: 1222037024588393317}
   hidePlanetParticle: {fileID: 96208216386865637, guid: 4a3b49b7257a3874ea59eb686dfc9196,
