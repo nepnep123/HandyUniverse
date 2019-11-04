@@ -30,8 +30,10 @@ public class InfoUIManager : MonoBehaviour
 	public void EnterScene()
 	{
 		player.PlayOneShot(clip);
-		startInfo.SetActive(false);
-		tutorialInfo.SetActive(true);
+		SceneManager.LoadScene("SongMain");
+		//startInfo.SetActive(false);
+		//tutorialInfo.SetActive(true);
+		//MainUICtrl(0);
 	}
 
 	public void ExitApplication()
