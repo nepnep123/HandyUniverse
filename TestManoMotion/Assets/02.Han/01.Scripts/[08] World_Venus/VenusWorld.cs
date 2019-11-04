@@ -36,7 +36,6 @@ public class VenusWorld : World
 
     private void SetVenusFog()
     {
-        Debug.Log("뭐지");
         RenderSettings.fog = true;
         RenderSettings.fogColor = venusFog;
         RenderSettings.fogDensity = 0.4f;
