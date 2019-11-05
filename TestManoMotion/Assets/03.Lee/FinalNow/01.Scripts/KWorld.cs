@@ -7,11 +7,31 @@ public class KWorld : World
 {
     public static KWorld instance;
 
+    private AudioSource audioSource;
+    public AudioClip bgm;
+
     [HideInInspector]
     public float speed;
     private float speedMax;
     public KBullet kBullet;
-    public int dieRealCount;
+    
+    private int _dieRealCount;
+    public int dieRealCount
+    {
+        get { return _dieRealCount; }
+        set
+        {
+            _dieRealCount = value;
+            if (_dieRealCount == 4)
+            {
+                isThirdMissionStarted = false; // 주먹 비활성화
+                isThirdMissionStarted2 = false; // 보자기 비활성화
+
+                StartCoroutine(MissionParticle3());
+                UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK4());
+            }
+        }
+    }
 
     public GameObject planet;
     public GameObject MissionSuccessParticle;
@@ -44,8 +64,12 @@ public class KWorld : World
     // 미션 후 나오는 파티클 끄고
     // 화살표 전부 끄고
     // 행성들 메쉬 전부 끄고
-    private void Start()
+    // 시작하면 UI 나와
+    public override void InitWorld()
     {
+        GameManager.instance.hand.mode = GameManager.instance.hand.kTutorialMode;
+        GameManager.instance.hand.kTutorialMode.kworld = this;
+
         speed = 0f;
         speedMax = 100f;
 
@@ -62,15 +86,23 @@ public class KWorld : World
         {
             planetsMeshRenderer[i].enabled = false;
         }
-    }
 
-    // 시작하면 UI 나와
-    public override void InitWorld()
-    {
-        GameManager.instance.hand.mode = GameManager.instance.hand.kTutorialMode;
-        GameManager.instance.hand.kTutorialMode.kworld = this;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = bgm;
+        audioSource.Play();
+        StartCoroutine(VolUp());
 
         UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK());
+    }
+
+    IEnumerator VolUp()
+    {
+        for (float a = 0; a <= 0.07; a += 0.0001f)
+        {
+            audioSource.volume = a;
+
+            yield return 0;  // 1 프레임 대기(화면 처리가 끝날 때까지)
+        }
     }
 
     // 첫번째 미션 내용
@@ -234,12 +266,6 @@ public class KWorld : World
             speed = 0;
             StartCoroutine(ChargeSpeed());
         }
-
-        if (dieRealCount > 3)
-        {
-            StartCoroutine(MissionParticle3());
-            UIManager.instance.StartCoroutine(UIManager.instance.InstructSequenceK4());
-        }
     }
 
     IEnumerator MissionParticle3()
@@ -248,9 +274,17 @@ public class KWorld : World
         MissionSuccessParticle.SetActive(true);
         yield return waitForSeconds;
         MissionSuccessParticle.SetActive(false);
+        StartCoroutine(VolDown());
+    }
 
-        isThirdMissionStarted = false; // 주먹 비활성화
-        isThirdMissionStarted2 = false; // 보자기 비활성화
+    IEnumerator VolDown()
+    {
+        for (float a = 0.07f; a >= 0; a -= 0.0001f)
+        {
+            audioSource.volume = a;
+
+            yield return 0;  // 1 프레임 대기(화면 처리가 끝날 때까지)
+        }
     }
 
     private void FireBullet()
