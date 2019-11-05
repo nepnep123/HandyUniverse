@@ -19,6 +19,13 @@ public class SoundManager : MonoBehaviour
     [Header("Gesture Sound Pack")]
     public GestrueSound_Scriptable gestureSoundPAck;
 
+    [Header("LKW Sound Pack")]
+    //public AudioClip bgm;
+    public AudioClip success;
+    public AudioClip hidepickPlanets;
+    public AudioClip fire;
+    public AudioClip fired;
+    public AudioClip end;
 
     private void Awake()
 	{
@@ -31,7 +38,7 @@ public class SoundManager : MonoBehaviour
 	private void Start()
 	{
 		StartBackGroundSound();
-	}
+    }
 
 	public void StartBackGroundSound()
 	{
