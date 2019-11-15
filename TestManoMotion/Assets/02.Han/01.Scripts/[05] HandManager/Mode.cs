@@ -4,15 +4,8 @@ public class Mode
 {
     public PrimeHand hand;
 
-    public Mode(PrimeHand hand)
-    {
-        this.hand = hand;
-    }
-
-    public virtual void ModeChange(Mode mode)
-    {
-        hand.mode = mode;
-    }
+    public Mode(PrimeHand hand) => this.hand = hand;
+    public virtual void ModeChange(Mode mode) => hand.mode = mode;
 
     public virtual void OnTriggeredGrab() { }       //그랩
     public virtual void OnTriggeredRelease() { }    //릴리즈

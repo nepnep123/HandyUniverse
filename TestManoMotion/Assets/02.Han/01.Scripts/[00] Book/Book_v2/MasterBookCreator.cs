@@ -19,7 +19,8 @@ public class MasterBookCreator : MonoBehaviour
 		GameManager.instance.masterBook = booker;
 		booker.InitBook("Handy Universe");
         booker.GetComponent<BookPageSetter>().InitBookSetter(pageInfos);
-
+        //송영훈
+        //현 상태를 UIManager에게 전달
 		var msg = ">> 봉인된 공간이 해제되었습니다. <<" + "\n" + "\n" 
 			+ "행성 여행을 하기 위한 마스터북이 활성화되었습니다.  " + "\n"
 			+ "책을 터치하여 행성 페이지를 살펴 봅시다.";

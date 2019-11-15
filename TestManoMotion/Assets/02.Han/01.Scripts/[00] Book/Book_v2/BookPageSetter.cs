@@ -5,23 +5,19 @@ using UnityEngine.UI;
 
 public class BookPageSetter : MonoBehaviour
 {
-    protected Book_v2 book;
-	protected GameManager gameMgr;
-
-    public RawImage raw;
-    public Text text;
-
-    public Text centText;
-    public RawImage centRaw;
-
-
-
-    public PageInfo_Scriptable[] pageInfos;
+    //한재현
+    //책 페이지 설정에 필요한 필드들
+    private Book_v2 book;
+    public RawImage raw;                    //책의 왼쪽 텍스쳐
+    public Text text;                       //책플레인의 오른쪽 텍스트
+    public Text centText;                   //페이지의 오른쪽 텍스트
+    public RawImage centRaw;                //넘어가는 페이지
+    public PageInfo_Scriptable[] pageInfos; //스크립터블 오브젝트로 만들어진 페이지 정보
     public int maxBookPlaneIndex = 0;
 
-    World curOpenedWorld;
-	
-
+    //송영훈
+    //책과 게임 매니져, 책속의 행성
+	private GameManager gameMgr;
 	public Transform[] pagePlanets_pre;
 	public World[] world_pre;
 
@@ -29,29 +25,29 @@ public class BookPageSetter : MonoBehaviour
 	bool isSetting = false;
 	public Transform planetPos;
 
-
+    //한재현
+    //책 초기화
 	public void InitBookSetter(PageInfo_Scriptable[] infos)
     {
         book = GetComponent<Book_v2>();
-        book.OnPageFlipStart += PageStartSub;
-        book.OnPageFlipedEnd += PageEndSub;
-        book.OnRequestPortal += OpenPortal;
-		book.OnBookOpened += BookOpenedSub;
-		book.OnRequestClosePortal += ExitWorldCtrl;
+        book.OnPageFlipStart += PageStartSubscriber;    //페이지가 넘어가기 시작할 때
+        book.OnPageFlipedEnd += PageEndSubscriber;      //페이지가 다 넘어 왔을 때
+        book.OnRequestPortal += OpenPortal;             //행성 입장 요청을 할 때
+		book.OnBookOpened += BookOpenedSub;             //책이 열렸을 때
+		book.OnRequestClosePortal += ExitWorldCtrl;     //행성에서 퇴장할 때
 
-
-		if (infos.Length == 0) Debug.LogError("아무런 스크립터블을 받지 못하였다.");
+        //페이지를 초기화함
+		if (infos.Length == 0) Debug.LogError("아무런 스크립터블을 받지 못함");
         pageInfos = infos;
-        maxBookPlaneIndex = pageInfos.Length;
-        book.maxBookPlaneIndex = maxBookPlaneIndex -1;
-        //초기 설정
+        maxBookPlaneIndex = pageInfos.Length;           
+        book.maxBookPlaneIndex = maxBookPlaneIndex -1;  //책 면의 최대 수
         raw.texture = pageInfos[0].leftTexture;
         text.text = pageInfos[0].rightDescribe;
 
 
 		//송영훈
+        //책을 폈을 때 행성이 떠있게 하는 작업
 		planetPos = transform.Find("PlanetPos");
-
 		pagePlanets_pre = new Transform[pageInfos.Length];
 		world_pre = new World[pageInfos.Length];
 		//카메라 위치에 해당 페이지에 맵 생성
@@ -77,17 +73,18 @@ public class BookPageSetter : MonoBehaviour
 	}
 	private void OnDestroy()
     {
-        book.OnPageFlipStart -= PageStartSub;
-        book.OnPageFlipedEnd -= PageEndSub;
+        book.OnPageFlipStart -= PageStartSubscriber;
+        book.OnPageFlipedEnd -= PageEndSubscriber;
         book.OnRequestPortal -= OpenPortal;
 		book.OnBookOpened -= BookOpenedSub;
 		book.OnRequestClosePortal -= ExitWorldCtrl;
-
 		book.bookOpenEffect.SetActive(false);
 	}
 
 
 	#region 외부 접근 가능 메서드
+    //송영훈
+    //행성 입장
 	public void OpenPortal()
 	{
 		//백그라운드 끄고 / 마스터북 끄고 / 페이드 아웃 - 페이드 인 
@@ -110,7 +107,7 @@ public class BookPageSetter : MonoBehaviour
 		GameManager.instance.StartCoroutine(GameManager.instance.ExitWorld());
 		GameManager.instance.zone.SetActive(true);
 		
-		//Pog 삭제
+		//fog 삭제
 		RenderSettings.fog = false;
 		DisableAllPage();
 	}
@@ -118,26 +115,28 @@ public class BookPageSetter : MonoBehaviour
     #endregion
 
     #region 내부사용 메서드
-    protected virtual void PageStartSub(bool booleana)
+    //한재현
+    //페이지가 넘어가기 시작할 때 호출되는 메서드
+    private void PageStartSubscriber(bool booleana)
     {
-
         if(booleana)
-        {
+        {   
+            //현재 페이지의 인덱스로 다음 페이지 설정
             SetNextingPage(book.curPlaneIndex);
 		}
         else
         {
+            //현재 페이지의 인덱스로 이전페이지 설정
             SetPreingPage(book.curPlaneIndex);
 		}
 		DisableAllPage();
 	}
 
-    protected virtual void PageEndSub(bool booleana)
+    private void PageEndSubscriber(bool booleana)
     {
         if (booleana)
 		{
             raw.texture = pageInfos[book.curPlaneIndex].leftTexture;
-			
 		}
 		else
 		{
@@ -147,18 +146,20 @@ public class BookPageSetter : MonoBehaviour
 		book.bookOpenEffect.SetActive(true);
 	}
 
+    //다음 페이지 세팅
     void SetNextingPage(int curIndex)
     {
 		//현재플레인의 텍스트, 다음플레인의 텍스쳐//다음플레인의 텍스트
-		centText.text = pageInfos[curIndex-1].rightDescribe;//현재플레인의 텍스트
-        centRaw.texture = pageInfos[curIndex].leftTexture;//다음플레인의 텍스쳐
-        text.text = pageInfos[curIndex].rightDescribe;
+		centText.text = pageInfos[curIndex-1].rightDescribe;    //이전플레인의 텍스트
+        centRaw.texture = pageInfos[curIndex].leftTexture;      //다음플레인의 텍스쳐
+        text.text = pageInfos[curIndex].rightDescribe;          //다음플레인의 텍스트
     }
+    //이전페이지 세팅
     void SetPreingPage(int curIndex)
     {
-		centText.text = pageInfos[curIndex].rightDescribe;//이전플레인의 텍스트
-        centRaw.texture = pageInfos[curIndex+1].leftTexture;//다음플레인의 텍스쳐
-        raw.texture = pageInfos[curIndex].leftTexture;
+		centText.text = pageInfos[curIndex].rightDescribe;      //이전플레인의 텍스트
+        centRaw.texture = pageInfos[curIndex+1].leftTexture;    //다음플레인의 텍스쳐
+        raw.texture = pageInfos[curIndex].leftTexture;          //이전플레인의 텍스쳐
     }
 	#endregion
 	
@@ -170,9 +171,7 @@ public class BookPageSetter : MonoBehaviour
 		//UIManager에서 책을 열었을때 주변 효과를 생성 시킨다. 
 		book.bookOpenEffect.SetActive(true);
 	}
-
-
-
+    //모든 행성 비활성화
 	public void DisableAllPage()
 	{
 		for (int i = 0; i < pageInfos.Length; i++)

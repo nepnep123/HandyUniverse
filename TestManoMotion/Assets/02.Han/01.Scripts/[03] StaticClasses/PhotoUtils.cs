@@ -18,13 +18,15 @@ public static class PhotoUtils
     /// <param name="folderName">저장할 폴더위치. 예를들어 Application.persistentDataPath + "/Photons" 이런식으로 경로를 설정하면, 이 Photons폴더경로에 Jpg들이 저장됩니다.</param>
     static public void TakePhoto(Texture2D backGroundTexture, string folderName)
     {
-        //ManomotionManager.Instance.Visualization_info.rgb_image;
+        //폴더의 위치
         string folderPath = appPath + folderName;
+        //폴더가 없을 경우 예외처리 및 폴더 생성
         if (Directory.Exists(folderPath) == false)
         {
-            Debug.LogError("Directory doesn't exist. Making New Folder.");
+            Debug.LogError("디렉토리가 없음. 폴더를 새로 생성함");
             MakeFolder(folderName);
         }
+        //BackGroundTexture를 jpg로 인코딩 및 저장
         byte[] bytes = backGroundTexture.EncodeToJPG();
         string fileName = string.Format("{0}/{1}.jpg", folderPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
         File.WriteAllBytes(fileName, bytes);
@@ -37,14 +39,19 @@ public static class PhotoUtils
     /// <returns></returns>
     static public List<Texture2D> ReadTexturesInFolder(string folderName)
     {
+        //폴더가 없을 경우 예외처리 및 폴더 생성
         if (Directory.Exists(appPath) == false)
         {
-            Debug.Log("Directory doesn't exist. Making New Folder.");
+            Debug.Log("디렉토리가 없음. 폴더를 새로 생성함");
             MakeInitFolder();
+            //폴더가 처음 만들어졌다면 파일이 없으므로 null 반환
+            return null;
         }
 
+        //파일이름의 배열을 구하고 그 길이만큼 리스트 초기화
         string[] fileNames = Directory.GetFiles(appPath + folderName);
         List<Texture2D> textures = new List<Texture2D>();
+
         //메타파일 제외하고 다른 파일들로 리스트 구성
         for (int i = 0; i < fileNames.Length; i++)
         {
@@ -54,16 +61,19 @@ public static class PhotoUtils
                 textures.Add(new Texture2D(2, 2, TextureFormat.BGRA32, false));
             }
         }
+
         //구성된 리스트의 텍스쳐에 이미지 로드
         for(int i = 0; i < textures.Count; i++)
         {
             byte[] bytes = File.ReadAllBytes(fileNames[i]);
             textures[i].LoadImage(bytes);
         }
-        //구성된 텍스쳐리스트를 배열로서 반환
+
+        //구성된 텍스쳐리스트를 반환
         return textures;
     }
 
+    //최초로 폴더를 만드는 메서드
     static public void MakeInitFolder()
     {
         StringBuilder sb = new StringBuilder(150);
@@ -78,20 +88,17 @@ public static class PhotoUtils
     /// <param name="folderName">생성할 폴더 이름</param>
     static public void MakeFolder(string folderName)
     {
-        if(Directory.Exists(appPath) == false)
+        //폴더가 없을 경우 예외처리 및 폴더 생성
+        if (Directory.Exists(appPath) == false)
         {
-            Debug.LogError("Directory doesn't exitst");
+            Debug.LogError("디렉토리가 없음. 폴더를 새로 생성함");
             MakeInitFolder();
         }
+
+        //persistentDataPath에 인자로 받은 폴더이름으로 폴더 생성
         StringBuilder sb = new StringBuilder(150);
         sb.Append(appPath);
         sb.Append(folderName);
         Directory.CreateDirectory(sb.ToString());
-    }
-
-    static public string[] GetFolders()
-    {
-        if (Directory.Exists(appPath) == false) MakeInitFolder();
-        return Directory.GetDirectories(appPath);
     }
 }

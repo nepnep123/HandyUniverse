@@ -31,12 +31,10 @@ public class PrimeHand : MonoBehaviour
     {
         if(curObj != null)
         {
-            //TestManager_v2.instance.testica.text = curObj.name;
             float dist = Vector3.Distance(this.transform.position, curObj.transform.position);
             if (dist >= 4f) curObj = null;
         }
         ManoClass cla = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class;
-        //ManoGestureContinuous con = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_continuous;
         ManoGestureTrigger tri = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger;
 
         switch(cla)
@@ -46,10 +44,6 @@ public class PrimeHand : MonoBehaviour
                 {
                     if(preTri != ManoGestureTrigger.GRAB)
                     {
-                        if (SoundManager.instance == null) Debug.Log("사운드매니저 인스턴스 널");
-                        if (SoundManager.instance.soundPlayer == null) Debug.Log("사운드플레이어 널");
-                        if (SoundManager.instance.gestureSoundPAck == null) Debug.Log("제스쳐팩 널");
-                        if (SoundManager.instance.gestureSoundPAck.grab == null) Debug.Log("오디오파일 널");
                         SoundManager.instance.soundPlayer.PlayOneShot(SoundManager.instance.gestureSoundPAck.grab);
                         mode.OnTriggeredGrab();
                         preTri = ManoGestureTrigger.GRAB;
