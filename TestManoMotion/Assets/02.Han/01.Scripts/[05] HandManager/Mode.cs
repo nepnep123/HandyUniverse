@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+//현재 Mode 클래스를 상속받는 클래스들 :
+//EntryMode : 현실에서 책과의 상호작용
+//MoonMode : 달에서의 상호작용
+//VenusMode : 금성에서의 상호작용
 public class Mode
 {
     public PrimeHand hand;
