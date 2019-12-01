@@ -4,6 +4,7 @@
 //EntryMode : 현실에서 책과의 상호작용
 //MoonMode : 달에서의 상호작용
 //VenusMode : 금성에서의 상호작용
+//KTutorialMode : 튜토리얼할 때의 상호작용
 public class Mode
 {
     public PrimeHand hand;
