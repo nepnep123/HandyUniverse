@@ -1,14 +1,25 @@
-# FinalProject
-ManoMotion SDK + ARCore 
+# HandyUniverse
+## 1. 개요
+* ManoMotion SDK를 활용해 AR Tracker를 통해 손동작 인식 및 증강현실 컨텐츠 제작 
+## 2. 개발인원 및 포지션
++ 개발인원 : 클라이언트 개발자 3명
++ 포지션 : 클라이언트 개발 
+## 3. 개발환경
++ 2019.2.5f1
++ Github
+## 4. 사용언어 
++ C#
+## 4. Assets, SDK
++ ManoMotion SDK
+## 5. 개발 플랫폼
++ Android(Mobile, Tablet)
+## 6. 구현 내용
++ ManoMootion SDK를 활용해 AR Tracker Manager 구현
++ 손동작 데이터를 활용한 게임 컨텐츠 제작
++ 3D 공간 제작 및 애니메이션 이펙트 효과 구현 
 
-송영훈, 한재현, 이강원 [어썸플레이스] 
 
-초기 셋팅 
-1. 패키지 매니저에서 XR Legacy Input Helper / Multiplayer HLAPI 설치
-2. Manomotion Serial Key 입력 및 프로젝트 이름 컴퍼니 이름 통일 
-3. XR Setting -> ARCore Supported 추가
 
-안내 사항 
-1. 각자 정해진 폴더기준으로 작업 한다. 
-2. 공통으로 사용하는 에셋을 추가시 00.ImportedAssets폴더에 넣는다  단, 개인만 사용하는 에셋일 경우 자신의 폴더에 넣는다. 
-3. 각자 commit message 사항 정확하게 기입해서 Push 하기 
+
+
+
